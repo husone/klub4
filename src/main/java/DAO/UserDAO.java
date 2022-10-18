@@ -13,13 +13,15 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import database.ConnectDB;
 import entity.User;
 
 /**
  *
  * @author kin, quangpao
- * @version 1.1
+ * @version 1.2
  */
 public class UserDAO {
 
@@ -63,41 +65,6 @@ public class UserDAO {
         }
         return list;
     }
-
-    /*
-     * Add new user to database
-     * @param user
-     * Return: true if add successfully
-     *        false if add failed
-     */
-    public static boolean addUser(User user) {
-        String sql = "INSERT INTO [USERS] (username, name, email, password, dob, address, avatar)\n" +
-                "VALUES (?,?,?,?,?,?,?);";
-        boolean checkAdd = false;
-        try {
-            con = db.openConnection();
-            statement = con.prepareStatement(sql);
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getName());
-            statement.setString(3, user.getEmail());
-            statement.setString(4, user.getPassword());
-            statement.setDate(5, user.getdOB());
-            statement.setString(6, user.getAddress());
-            statement.setString(7, user.getAvatar());
-            checkAdd = statement.execute();
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                statement.close();
-                con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return checkAdd;
-    }
-
 
     /*
      * Delete User by userID
@@ -189,7 +156,7 @@ public class UserDAO {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, email);
-            statement.setString(2, password);
+            statement.setString(2, BCrypt.hashpw(password, BCrypt.gensalt(12)));
             rs = statement.executeQuery();
             if(rs.next()) {
                 checkLogin = true;
@@ -245,5 +212,29 @@ public class UserDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return user;
+    }
+
+    /*
+     * Register User
+     * @param name
+     * @param email
+     * @param password
+     * Return: true if register success
+     *       false if register fail
+     */
+    public static boolean registerUser(String name, String email, String password) {
+        boolean checkRegister = false;
+        String sql = "INSERT INTO USERS (name, email, password) VALUES (?, ?, ?);";
+        try {
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, email);
+            statement.setString(3, BCrypt.hashpw(password, BCrypt.gensalt(12)));
+            checkRegister = statement.execute();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return checkRegister;
     }
 }
