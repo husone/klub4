@@ -18,8 +18,13 @@ import DAO.UserDAO;
  *
  */
 
+
 public class LoginServlet extends HttpServlet {
 
+
+    /*
+     * Process login request
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

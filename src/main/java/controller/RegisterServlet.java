@@ -11,8 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.UserDAO;
 
+/**
+ *
+ * @author quangpao
+ * @version 1.0
+ *
+ */
+
 public class RegisterServlet extends HttpServlet {
 
+
+    /*
+     * Process register request
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
