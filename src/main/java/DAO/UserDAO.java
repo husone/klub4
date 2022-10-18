@@ -18,16 +18,22 @@ import entity.User;
 
 /**
  *
- * author kin
+ * @author kin, quangpao
+ * @version 1.1
  */
 public class UserDAO {
 
-    ConnectDB db = ConnectDB.getInstance();
-    Connection con = null;
-    PreparedStatement statement = null;
-    ResultSet rs = null;
-    
-    public ArrayList<User> getUser() {
+    static ConnectDB db = ConnectDB.getInstance();
+    static Connection con = null;
+    static PreparedStatement statement = null;
+    static ResultSet rs = null;
+
+
+    /*
+     * Get all user
+     * @Return: ArrayList<User>
+     */
+    public static ArrayList<User> getUsers() {
         ArrayList<User> list = new ArrayList<>();
         try {
             con = db.openConnection();
@@ -43,12 +49,10 @@ public class UserDAO {
                 Date dOB = rs.getDate(6);
                 String address = rs.getString(7).trim();
                 String avatar = rs.getString(8).trim();
-                list.add(new User(userID, username, name, email, password, dOB, address,avatar));
+                list.add(new User(userID, username, name, email, password, dOB, address, avatar));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, "UserDAO getUsersMethod", ex);
         }
         try {
             rs.close();
@@ -59,26 +63,29 @@ public class UserDAO {
         }
         return list;
     }
-    
-    
-    public void addUser(User user) {
-        String sql = "INSERT INTO [USERS] (userID, username, name, email, password, dob, address, avatar)\n"+
-                "VALUES (?,?,?,?,?,?,?,?);";
+
+    /*
+     * Add new user to database
+     * @param user
+     * Return: true if add successfully
+     *        false if add failed
+     */
+    public static boolean addUser(User user) {
+        String sql = "INSERT INTO [USERS] (username, name, email, password, dob, address, avatar)\n" +
+                "VALUES (?,?,?,?,?,?,?);";
+        boolean checkAdd = false;
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
-            statement.setInt(1, user.getUserID());
-            statement.setString(2, user.getUsername());
-            statement.setString(3, user.getName());
-            statement.setString(4, user.getEmail());
-            statement.setString(5, user.getPassword());
-            statement.setDate(6, user.getdOB());
-            statement.setString(7, user.getAddress());
-            statement.setString(8, user.getAvatar());
-            statement.execute();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getPassword());
+            statement.setDate(5, user.getdOB());
+            statement.setString(6, user.getAddress());
+            statement.setString(7, user.getAvatar());
+            checkAdd = statement.execute();
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
@@ -88,42 +95,57 @@ public class UserDAO {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        return checkAdd;
     }
-    
-    public boolean deleteUser(int userID) {
-        ArrayList<User> list = getUser();
+
+
+    /*
+     * Delete User by userID
+     * @param userID
+     * Return: true if delete success
+     *        false if delete fail
+     */
+    public static boolean deleteUser(int userID) {
+        ArrayList<User> list = getUsers();
         boolean checkUser = false;
-        //check If we have User ID
+
+        boolean checkDelete = false;
+        // check If we have User ID
         for (User user : list) {
-            if(user.getUserID()==userID) {
-                checkUser=true;
+            if (user.getUserID() == userID) {
+                checkUser = true;
             }
         }
-        if(checkUser) {
-            String sql="DELETE FROM USERS WHERE userID=?;";
+        if (checkUser) {
+            String sql = "DELETE FROM USERS WHERE userID=?;";
             try {
-                con = db.openConnection();               
+                con = db.openConnection();
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, userID);
-                statement.execute();
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+                checkDelete = statement.execute();
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 con.close();
                 statement.close();
-                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return false;
+        return checkDelete;
     }
-    
-    public void updateUser(User user) {
+
+    /*
+     * Update User
+     * @param user
+     * Return: true if update success
+     *        false if update fail
+     */
+    public static boolean updateUser(User user) {
+
+        boolean checkUpdate = false;
+
         String sql = "UPDATE USERS\n"
                 + "SET username = ?, name = ?, email = ?, password = ?, dOB = ?, address = ?, avatar = ?\n"
                 + "WHERE userID = ?;";
@@ -135,31 +157,93 @@ public class UserDAO {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getPassword());
             statement.setDate(5, user.getdOB());
-            statement.setString(6,user.getAddress());
+            statement.setString(6, user.getAddress());
             statement.setInt(7, user.getUserID());
             statement.setString(8, user.getAvatar());
-            statement.execute();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            checkUpdate = statement.execute();
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         try {
             statement.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        return checkUpdate;
     }
 
-    public static void main(String[] args) {
-        UserDAO userDAO = new UserDAO();
-        ArrayList<User> list = userDAO.getUser();
-        for (User user : list) {
-            System.out.println(user);
+    /*
+     * Check Login
+     * @param email
+     * @param password
+     * Return: true if email and password is correct
+     *        false if email and password is incorrect
+     */
+    public static boolean checkLogin(String email, String password) {
+
+        boolean checkLogin = false;
+        String sql = "SELECT * FROM USERS WHERE email = ? AND password = ?;";
+        try {
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.setString(2, password);
+            rs = statement.executeQuery();
+            if(rs.next()) {
+                checkLogin = true;
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return checkLogin;
     }
 
+    /*
+     * Check if email is existed in the database
+     * @param email
+     * Return: true if email is existed
+     *        false if email is not existed
+     */
+    public static boolean checkRegister(String email) {
+
+        boolean checkRegister = false;
+        String sql = "SELECT * FROM USERS WHERE email = ?;";
+        try {
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1, email);
+            rs = statement.executeQuery();
+            if (rs.next()) {
+                checkRegister = true;
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return checkRegister;
+    }
+
+    /*
+     * Get User by email
+     * @param email
+     * Return: User
+     */
+    public static User getUserByEmail(String email) {
+        User user = null;
+        String sql = "SELECT * FROM USERS WHERE email = ?;";
+        try {
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1, email);
+            rs = statement.executeQuery();
+            if (rs.next()) {
+                user = new User(rs.getInt("userID"), rs.getString("username"), rs.getString("name"), rs.getString("email"), rs.getString("password"), rs.getDate("dOB"), rs.getString("address"), rs.getString("avatar"));
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
+    }
 }
