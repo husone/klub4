@@ -15,7 +15,7 @@ public interface DatabaseInfor {
 
     Dotenv dotenv = Dotenv.load();
     public static String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=Klub4;";
+    public static String url = dotenv.get("DTBURL");
     public static String user = dotenv.get("DTBUSERNAME");
     public static String pass = dotenv.get("DTBPASSWORD");
 }
