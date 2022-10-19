@@ -149,14 +149,15 @@ public class UserDAO {
      *        false if email and password is incorrect
      */
     public static boolean checkLogin(String email, String password) {
-
+        System.out.println("email: " + email);
+        System.out.println("password: " + password);
         boolean checkLogin = false;
         String sql = "SELECT * FROM USERS WHERE email = ? AND password = ?;";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, email);
-            statement.setString(2, BCrypt.hashpw(password, BCrypt.gensalt(12)));
+            statement.setString(2, password);
             rs = statement.executeQuery();
             if(rs.next()) {
                 checkLogin = true;
@@ -164,6 +165,8 @@ public class UserDAO {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(getUsers().get(0));
+        System.out.println("checkLogin: " + checkLogin);
         return checkLogin;
     }
 

@@ -21,6 +21,12 @@
   <dependencies>
 
     <dependency>
+      <groupId>com.hynnet</groupId>
+      <artifactId>sqljdbc4-chs</artifactId>
+      <version>4.0.2206.100</version>
+    </dependency>
+    
+    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>

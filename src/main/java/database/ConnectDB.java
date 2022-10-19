@@ -17,7 +17,7 @@ public class ConnectDB implements DatabaseInfor {
 
     public Connection openConnection() throws ClassNotFoundException {
         try {
-            Connection con = DriverManager.getConnection(url);
+            Connection con = DriverManager.getConnection(url, user, pass);
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);

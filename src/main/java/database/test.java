@@ -6,8 +6,14 @@
 package database;
 
 import io.github.cdimascio.dotenv.Dotenv;
+
+import java.util.ArrayList;
+
 import org.mindrot.jbcrypt.*;
+
+import DAO.UserDAO;
 import Email.Generate;
+import entity.User;
 
 /**
  *
@@ -26,5 +32,11 @@ public class test {
         System.out.println(BCrypt.hashpw(password, BCrypt.gensalt(12)));
         System.out.println("BCrypt hash: " + hash);
         System.out.println(Generate.OTP(6));
+
+        ArrayList<User> list = UserDAO.getUsers();
+        for (User user : list) {
+            System.out.println(">>>"+user);
+        }
+        System.out.println(UserDAO.checkLogin("qbao@gmail.com", "12345"));
     }
 }
