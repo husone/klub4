@@ -3,18 +3,12 @@ package com.database;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mindrot.jbcrypt.BCrypt;
 
-import DAO.UserDAO;
-import Email.Generate;
-import entity.User;
-import io.github.cdimascio.dotenv.Dotenv;
 
-public class DatabaseConnectTesting {
+public class DatabaseTests {
     
     @Test
     @DisplayName("Test database connection")
