@@ -37,11 +37,11 @@ jobs:
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
         path: './Database.dacpac'
         action: 'Publish'
-    - name: Setup Java Development Kits built by Oracle
-      uses: actions/setup-java@v3
+    - name: 'Set up latest Oracle JDK 17'
+      uses: oracle-actions/setup-java@v1
       with:
-        distribution: 'zulu'
-        java-version: '17'
+        website: oracle.com
+        release: 18
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Unit Test
