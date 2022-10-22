@@ -25,18 +25,12 @@ public class test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Dotenv dotenv = Dotenv.load();
-        String password = dotenv.get("test");
+        String password = "123456";
         System.out.println(""+password);
-        String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
-        System.out.println(BCrypt.hashpw(password, BCrypt.gensalt(12)));
-        System.out.println("BCrypt hash: " + hash);
-        System.out.println(Generate.OTP(6));
-
-        ArrayList<User> list = UserDAO.getUsers();
-        for (User user : list) {
-            System.out.println(">>>"+user);
-        }
-        System.out.println(UserDAO.checkLogin("qbao@gmail.com", "12345"));
+        System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
+        System.out.println(BCrypt.hashpw("1567723", BCrypt.gensalt()));
+        System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
+        System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
+        System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
     }
 }

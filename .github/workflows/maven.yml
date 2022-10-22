@@ -19,6 +19,14 @@ jobs:
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - uses: azure/sql-action@v2
+        with:
+        connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+        path: './Database.dacpac'
+        action: 'Publish'
+    - name: Azure logout
+      run: |
+        az logout
     - name: Setup Java Development Kits built by Oracle
       uses: oracle-actions/setup-java@v1.3.1
       with:

@@ -44,13 +44,13 @@ public class UserDAO {
             rs = statement.executeQuery();
             while (rs.next()) {
                 int userID = Integer.parseInt(rs.getString(1).trim());
-                String username = rs.getString(2).trim();
+                String username = rs.getString(2);
                 String name = rs.getString(3).trim();
                 String email = rs.getString(4).trim();
                 String password = rs.getString(5).trim();
                 Date dOB = rs.getDate(6);
-                String address = rs.getString(7).trim();
-                String avatar = rs.getString(8).trim();
+                String address = rs.getString(7);
+                String avatar = rs.getString(8);
                 list.add(new User(userID, username, name, email, password, dOB, address, avatar));
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -89,7 +89,9 @@ public class UserDAO {
                 con = db.openConnection();
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, userID);
-                checkDelete = statement.execute();
+                if (statement.executeUpdate() != 0) {
+                    checkDelete = true;
+                }
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -233,8 +235,10 @@ public class UserDAO {
             statement = con.prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, email);
-            statement.setString(3, BCrypt.hashpw(password, BCrypt.gensalt(12)));
-            checkRegister = statement.execute();
+            statement.setString(3, password);
+            if (statement.executeUpdate() != 0) {
+                checkRegister = true;
+            }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

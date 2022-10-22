@@ -20,6 +20,20 @@
 
   <dependencies>
 
+    <!-- jbcrypt denpendency -->
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.3m</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
+      <version>11.2.1.jre18</version>
+    </dependency>
+
+
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-surefire-plugin</artifactId>
@@ -35,12 +49,6 @@
       <scope>test</scope>
     </dependency>
 
-
-    <dependency>
-      <groupId>com.hynnet</groupId>
-      <artifactId>sqljdbc4-chs</artifactId>
-      <version>4.0.2206.100</version>
-    </dependency>
     
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -48,19 +56,6 @@
       <version>1.2</version>
     </dependency>
 
-
-    <dependency>
-      <groupId>at.favre.lib</groupId>
-      <artifactId>bcrypt-parent</artifactId>
-      <version>0.9.0</version>
-      <type>pom</type>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mindrot</groupId>
-      <artifactId>jbcrypt</artifactId>
-      <version>0.4</version>
-    </dependency>
 
     <dependency>
       <groupId>javax.mail</groupId>
