@@ -20,7 +20,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - uses: azure/sql-action@v2
-        with:
+      with:
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
         path: './Database.dacpac'
         action: 'Publish'
