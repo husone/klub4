@@ -22,7 +22,7 @@ jobs:
     - uses: azure/sql-action@v2
       with:
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-        path: './Database.dacpac'
+        path: './Database.bacpac'
         action: 'Publish'
     - name: Setup Java Development Kits built by Oracle
       uses: oracle-actions/setup-java@v1.3.1
