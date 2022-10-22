@@ -26,7 +26,7 @@ import entity.User;
 public class UserDAO {
 
     static ConnectDB db = ConnectDB.getInstance();
-    static Connection con = null;
+    static Connection con = db.openConnection();
     static PreparedStatement statement = null;
     static ResultSet rs = null;
 
@@ -44,16 +44,16 @@ public class UserDAO {
             rs = statement.executeQuery();
             while (rs.next()) {
                 int userID = Integer.parseInt(rs.getString(1).trim());
-                String username = rs.getString(2).trim();
+                String username = rs.getString(2);
                 String name = rs.getString(3).trim();
                 String email = rs.getString(4).trim();
                 String password = rs.getString(5).trim();
                 Date dOB = rs.getDate(6);
-                String address = rs.getString(7).trim();
-                String avatar = rs.getString(8).trim();
+                String address = rs.getString(7);
+                String avatar = rs.getString(8);
                 list.add(new User(userID, username, name, email, password, dOB, address, avatar));
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, "UserDAO getUsersMethod", ex);
         }
         try {
@@ -89,8 +89,10 @@ public class UserDAO {
                 con = db.openConnection();
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, userID);
-                checkDelete = statement.execute();
-            } catch (ClassNotFoundException | SQLException ex) {
+                if (statement.executeUpdate() != 0) {
+                    checkDelete = true;
+                }
+            } catch (SQLException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
@@ -128,7 +130,7 @@ public class UserDAO {
             statement.setInt(7, user.getUserID());
             statement.setString(8, user.getAvatar());
             checkUpdate = statement.execute();
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -162,10 +164,9 @@ public class UserDAO {
             if(rs.next()) {
                 checkLogin = true;
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(getUsers().get(0));
         System.out.println("checkLogin: " + checkLogin);
         return checkLogin;
     }
@@ -188,7 +189,7 @@ public class UserDAO {
             if (rs.next()) {
                 checkRegister = true;
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -211,7 +212,7 @@ public class UserDAO {
             if (rs.next()) {
                 user = new User(rs.getInt("userID"), rs.getString("username"), rs.getString("name"), rs.getString("email"), rs.getString("password"), rs.getDate("dOB"), rs.getString("address"), rs.getString("avatar"));
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return user;
@@ -233,9 +234,11 @@ public class UserDAO {
             statement = con.prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, email);
-            statement.setString(3, BCrypt.hashpw(password, BCrypt.gensalt(12)));
-            checkRegister = statement.execute();
-        } catch (ClassNotFoundException | SQLException ex) {
+            statement.setString(3, password);
+            if (statement.executeUpdate() != 0) {
+                checkRegister = true;
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return checkRegister;

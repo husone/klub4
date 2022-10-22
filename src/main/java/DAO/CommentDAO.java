@@ -41,8 +41,7 @@ public class CommentDAO {
                 String content = rs.getString(5);
                 list.add(new Comment(commentID, userID, postID, time, content));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,8 +68,6 @@ public class CommentDAO {
             statement.setDate(4, timeCmt);
             statement.setString(5, cmt.getContent());
             statement.execute();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -99,8 +96,6 @@ public class CommentDAO {
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, commentID);
                 statement.execute();
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -126,8 +121,6 @@ public class CommentDAO {
             statement.setString(2, cmt.getContent());
             statement.setInt(3, cmt.getCommentID());
             statement.execute();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -154,8 +147,6 @@ public class CommentDAO {
                 String content = rs.getString(5);
                 list.add(new Comment(commentID, userID, postID, time, content));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
