@@ -18,6 +18,7 @@ public class ConnectDB implements DatabaseInfor {
     public Connection openConnection() {
         Connection con = null;
         try {
+            System.out.println("url = " + url + ", user = " + user);
             con = DriverManager.getConnection(url, user, pass);
         } catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
