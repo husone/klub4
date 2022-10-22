@@ -40,7 +40,7 @@ jobs:
     - name: 'Set up latest Oracle JDK 17'
       uses: oracle-actions/setup-java@v1
       with:
-        website: oracle.com
+        website: jdk.java.net
         release: 18
     - name: Build with Maven
       run: mvn -B package --file pom.xml
