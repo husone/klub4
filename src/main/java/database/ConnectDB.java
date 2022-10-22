@@ -16,13 +16,14 @@ public class ConnectDB implements DatabaseInfor {
     private static ConnectDB instance;
 
     public Connection openConnection() {
+        Connection con = null;
         try {
-            Connection con = DriverManager.getConnection(url, user, pass);
-            return con;
+            con = DriverManager.getConnection(url, user, pass);
         } catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-        return null;
+        return con;
     }
 
     // get instance of database only one time
