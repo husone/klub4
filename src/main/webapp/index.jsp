@@ -827,11 +827,13 @@
                 <div class="form-row">
                     <form action="#">
                         <div class="">
-                            <input type="text" class="col-10" id="emailRegister" placeholder="Email address">
-                            <input type="text" class="col-10" id="nameRegister" placeholder="Full name">
-                            <input type="text" class="col-10" id="DOBRegister" placeholder="Date of birth"
+                            <input type="text" class="col-10" id="email-register" name="email-register" placeholder="Email">
+                            <input type="text" class="col-10" id="name-register" name="name-register" placeholder="Name">
+                            <input type="text" class="col-10" id="dob-register" name="Date of birth" placeholder="Date of birth"
                                 onfocus="(this.type='date')">
-                            <input type="password" class="col-10" id="passwordRegister" placeholder="Password">
+                            <input type="password" class="col-10" id="password-register" placeholder="Password" name="password-register">
+                            <input type="password" class="col-10" id="passwordConfirm-register" name="passwordConfirm-register" placeholder="Confirm password">
+                            <input type="text" class="col-10" id="username-register" name="username-register" placeholder="Username">
                             <button type="submit" class="col-10 btn btn-secondary"
                                 style="background-color: #699DEB">Register</button>
                         </div>
