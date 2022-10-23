@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -74,8 +74,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
-                                                <!-- Button -->a href="#" class="btn">Join</a></li>
-                                                <li class="button-header"><a class="btn btn3" id="loginBtn">Log in</a>
+                                                <li class="button-header"><a class="btn btn3" id="loginBtn">Log in</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -825,7 +824,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-row">
-                    <form action="#">
+                    <form action="./RegisterServlet">
                         <div class="">
                             <input type="text" class="col-10" id="emailRegister" placeholder="Email address">
                             <input type="text" class="col-10" id="nameRegister" placeholder="Full name">
@@ -853,7 +852,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-row">
-                    <form action="#">
+                    <form action="./ForgotPWServlet">
                         <div class="">o
                             <input type="text" class="col-10" id="emailForgot" placeholder="Email address">
                             <button type="submit" class="col-10 btn btn-secondary"

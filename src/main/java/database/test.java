@@ -30,7 +30,10 @@ public class test {
         System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
         System.out.println(BCrypt.hashpw("1567723", BCrypt.gensalt()));
         System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
-        System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
-        System.out.println(BCrypt.hashpw(password, BCrypt.gensalt()));
+        String t1 = (BCrypt.hashpw(password, BCrypt.gensalt()));
+        String t2 = (BCrypt.hashpw(password, BCrypt.gensalt()));
+        System.out.println(BCrypt.checkpw(password, t1));
+        System.out.println(BCrypt.checkpw(password, t2));
+
     }
 }
