@@ -1,3 +1,5 @@
 .env
 /target/ 
 /.vscode/
+mysecret.json
+src/main/application.properties
