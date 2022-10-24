@@ -335,6 +335,66 @@
                 </div>
                 <!-- partial -->
                 <!-- partial:partials/_sidebar.html -->
+                <!-- Post Modal -->
+                <div class="modal fade"  id="detailModal" tabindex="-1" role="dialog" aria-hidden="true" >
+                    <div class="modal-dialog" style="max-width: 50%;" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header border-0">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div style="text-align: center;">
+                                    <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                </div>
+                                    
+                                <div class="col-md-5 mt-3">
+                                    <h3>Tiêu đề bài đăng</h3>
+                                </div>
+                                <div style="padding-left: 15px;">
+                                    <p style="text-align: left;">Tôi đã chọn bước ra khỏi một công việc ổn định nhưng tẻ nhạt, chuyển sang một công việc theo đúng cái tên của nó, đó là mạo hiểm, với nhiều điều không đoán trước được, nhưng chắc chắn là vui và ý nghĩa hơn. 
+                                        Câu nói đó đã gợi lòng quyết tâm dấn thân với nghề đầu tư mạo hiểm của tôi.</p>                  
+                                </div>              
+                                <div class="row" style="margin-left: 0;">
+                                    <div class="col-md-5">
+                                        <p>ID: 101</p>
+                                        <p>CLB: CLB Bóng đá</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>Ngày thành lập: 01/01/2020</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button id="returnBtn" type="button" class="btn btn-warning" data-dismiss="modal">Quay lại</button>
+                                    <button id="deleteBtn" type="button" class="btn btn-danger">Xoá</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Delete Confirm Modal -->
+                <div class="modal fade"  id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true" >
+                    <div class="modal-dialog" style="max-width: 30%;" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h4>Xoá bài đăng</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">                   
+                                <div class="text-center">
+                                    <h3 style="color:red;">Bạn có chắc muốn xoá bài đăng này ?</h3>
+                                </div>
+                                <div class="row d-flex justify-content-center mt-4">
+                                    <button id="returnBtn" type="button" class="btn btn-warning mr-1" data-dismiss="modal">Huỷ</button>
+                                    <button id="deleteBtn" type="button" class="btn btn-danger">Xoá</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav" style="position: fixed ;">
                         <li class="nav-item">
@@ -343,13 +403,13 @@
                                 <span class="menu-title">Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="admin-manage-user.html">
                                 <i class="icon-head  menu-icon"></i>
                                 <span class="menu-title">Manage User</span>
                             </a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <a class="nav-link" href="admin-manage-club.html">
                                 <i class="icon-grid menu-icon"></i>
                                 <span class="menu-title">Manage Club</span>
@@ -363,7 +423,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item ">
+                        <li class="nav-item active">
                             <a class="nav-link" href="admin-manage-post.html">
                                 <i class="ti-layout-cta-left icon-lg menu-icon"></i>
                                 <span class="menu-title">Manage Post</span>
@@ -372,13 +432,32 @@
                     </ul>
                 </nav>
                 <!-- partial -->
+                <!-- Detail Club Modal -->
+                <div class="modal fade" id="detailModal" style="display:none" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="content">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="card">
+                                    <div class="card-body justify-content-around">
+                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                        <div class="text-md-center mt-1">
+                                            <h3>Group 1</h3>
+                                        </div>
+                                                  
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="row">
                             <div class="col-md-12 grid-margin">
                                 <div class="row">
                                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                        <h3 class="font-weight-bold">Manage Users</h3>
+                                        <h3 class="font-weight-bold">Manage Posts</h3>
                                         <h6 class="font-weight-normal mb-0"><span class="text-primary">3 unread
                                                 alerts!</span></h6>
                                     </div>
@@ -400,88 +479,123 @@
 
 
                         <div class="row">
-                            <div class="col-md grid-margin stretch-card">
+                            <div class="col-md-4 stretch-card grid-margin">
                                 <div class="card">
                                     <div class="card-body">
-                                        <p class="card-title mb-4">List User</p>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-borderless">
-                                                <thead
-                                                    style="background-color:#4B49AC; border-radius:50px; color: aliceblue;">
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>User Name</th>
-                                                        <th>Email</th>
-                                                        <th>Day join</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
+                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                        <div class="text-md-left mt-1">
+                                            <h2>Tieu de</h2>
+                                            <p>Type something in here</p>
+                                            <h5>Ten CLB: </h5>
+                                            <h5>Tao ngay: </h5>
                                         </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>
+                                                <button type="button" class="btn btn-danger btn-sm deleteBtn" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
+                                                <button type="button" class="btn btn-dark btn-sm detailBtn" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
+                                            </div>                                
+                                        </div>           
                                     </div>
                                 </div>
                             </div>
-
-
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                        <div class="text-md-left mt-1">
+                                            <h2>Tieu de</h2>
+                                            <p>Type something in here</p>
+                                            <h5>Ten CLB: </h5>
+                                            <h5>Tao ngay: </h5>
+                                        </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>
+                                                <button type="button" class="btn btn-danger btn-sm deleteBtn" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
+                                                <button type="button" class="btn btn-dark btn-sm detailBtn" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
+                                            </div>                                
+                                        </div>           
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                        <div class="text-md-left mt-1">
+                                            <h2>Tieu de</h2>
+                                            <p>Type something in here</p>
+                                            <h5>Ten CLB: </h5>
+                                            <h5>Tao ngay: </h5>
+                                        </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>
+                                                <button type="button" class="btn btn-danger btn-sm deleteBtn" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
+                                                <button type="button" class="btn btn-dark btn-sm detailBtn" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
+                                            </div>                                
+                                        </div>           
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                        <div class="text-md-left mt-1">
+                                            <h2>Tieu de</h2>
+                                            <p>Type something in here</p>
+                                            <h5>Ten CLB: </h5>
+                                            <h5>Tao ngay: </h5>
+                                        </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>
+                                                <button type="button" class="btn btn-danger btn-sm deleteBtn" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
+                                                <button type="button" class="btn btn-dark btn-sm detailBtn" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
+                                            </div>                                
+                                        </div>           
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                        <div class="text-md-left mt-1">
+                                            <h2>Tieu de</h2>
+                                            <p>Type something in here</p>
+                                            <h5>Ten CLB: </h5>
+                                            <h5>Tao ngay: </h5>
+                                        </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>
+                                                <button type="button" class="btn btn-danger btn-sm deleteBtn" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
+                                                <button type="button" class="btn btn-dark btn-sm detailBtn" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
+                                            </div>                                
+                                        </div>           
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                                        <div class="text-md-left mt-1">
+                                            <h2>Tieu de</h2>
+                                            <p>Type something in here</p>
+                                            <h5>Ten CLB: </h5>
+                                            <h5>Tao ngay: </h5>
+                                        </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>
+                                                <button type="button" class="btn btn-danger btn-sm deleteBtn" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
+                                                <button type="button" class="btn btn-dark btn-sm detailBtn" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
+                                            </div>                                
+                                        </div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -529,7 +643,7 @@
         <!-- Custom js for this page-->
         <script src="./assets/js/dashboard.js"></script>
         <script src="./assets/js/Chart.roundedBarCharts.js"></script>
-
+        <script src="script.js"></script>
 
     </body>
 
