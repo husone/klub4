@@ -3,3 +3,4 @@
 /.vscode/
 mysecret.json
 src/main/application.properties
+.DS_Store
