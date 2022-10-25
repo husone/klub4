@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.UserDAO;
+import java.sql.Date;
 
 /**
  *
@@ -28,15 +29,22 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String passwordConfirm = request.getParameter("passwordConfirm");
+            String name = request.getParameter("name-register");
+            String email = request.getParameter("email-register");
+            String password = request.getParameter("password-register");
+            String passwordConfirm = request.getParameter("passwordConfirm-register");
+            String address = request.getParameter("address-register");
+            String dob = request.getParameter("dob-register");
+            String username = request.getParameter("username-register");
+
+            //change to Date
+            Date sqlDate = Date.valueOf(dob);
+
 
             boolean isValid = !UserDAO.checkRegister(email);
             boolean isPassword = password.equals(passwordConfirm);
             if (isValid && isPassword) {
-                if (UserDAO.registerUser(name, email, password)) {
+                if (UserDAO.registerUser(username, name, email, password, sqlDate, address)) {
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("login.jsp");
                     dispatcher.forward(request, response);
                 } else {

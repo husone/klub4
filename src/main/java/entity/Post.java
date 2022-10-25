@@ -4,6 +4,7 @@
  */
 package entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -17,10 +18,9 @@ public class Post {
     private String content;
     private Date time;
     private int permission;
-//    foreign key
     private int clubID;
     private int userID;
-
+    private ArrayList<Comment> comments;
     public Post() {
     }
 
@@ -93,7 +93,13 @@ public class Post {
         return userID;
     }
     
-    
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
     
     
     
