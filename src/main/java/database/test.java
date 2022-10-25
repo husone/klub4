@@ -4,16 +4,8 @@
  * and open the template in the editor.
  */
 package database;
-
-import io.github.cdimascio.dotenv.Dotenv;
-
-import java.util.ArrayList;
-
 import org.mindrot.jbcrypt.*;
 
-import DAO.UserDAO;
-import Email.Generate;
-import entity.User;
 
 /**
  *
