@@ -5,7 +5,7 @@
 package entity;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -14,34 +14,62 @@ import java.util.Date;
 public class Post {
     
     private int postID;
-    private char postType;
+    private String title;
     private String content;
     private Date time;
-    private int permission;
     private int clubID;
     private int userID;
+    private String image;
     private ArrayList<Comment> comments;
-    public Post() {
-    }
-
-    public Post(int postID, char postType, String content, Date time, int permission, int clubID, int userID) {
+    
+    // constructor with postID, title, description, content, time, clubID, userID
+    public Post(int postID, String title, String content, Date time, int clubID, int userID) {
         this.postID = postID;
-        this.postType = postType;
+        this.title = title;
         this.content = content;
         this.time = time;
-        this.permission = permission;
         this.clubID = clubID;
         this.userID = userID;
     }
 
-    
-    //Set method
+    public Post(String title, String content, Date time, int clubID, int userID, String image) {
+        this.title = title;
+        this.content = content;
+        this.time = time;
+        this.clubID = clubID;
+        this.userID = userID;
+        this.image = image;
+    }
+
+    // constructor with postID, title, content, time, clubID, userID, image
+    public Post(int postID, String title, String content, Date time, int clubID, int userID, String image) {
+        this.postID = postID;
+        this.title = title;
+        this.content = content;
+        this.time = time;
+        this.clubID = clubID;
+        this.userID = userID;
+        this.image = image;
+    }
+
+    // constructor with postID, title, content, time, clubID, userID, image, comments
+    public Post(int postID, String title, String content, Date time, int clubID, int userID, String image, ArrayList<Comment> comments) {
+        this.postID = postID;
+        this.title = title;
+        this.content = content;
+        this.time = time;
+        this.clubID = clubID;
+        this.userID = userID;
+        this.image = image;
+        this.comments = comments;
+    }
+
     public void setPostID(int postID) {
         this.postID = postID;
     }
 
-    public void setPostType(char postType) {
-        this.postType = postType;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setContent(String content) {
@@ -52,10 +80,6 @@ public class Post {
         this.time = time;
     }
 
-    public void setPermission(int permission) {
-        this.permission = permission;
-    }
-
     public void setClubID(int clubID) {
         this.clubID = clubID;
     }
@@ -63,22 +87,25 @@ public class Post {
     public void setUserID(int userID) {
         this.userID = userID;
     }
-    //Get method
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
 
     public int getPostID() {
         return postID;
     }
 
-    public char getPostType() {
-        return postType;
+    public String getTitle() {
+        return title;
     }
 
     public String getContent() {
         return content;
-    }
-
-    public int getPermission() {
-        return permission;
     }
 
     public Date getTime() {
@@ -92,15 +119,13 @@ public class Post {
     public int getUserID() {
         return userID;
     }
-    
-    public void setComments(ArrayList<Comment> comments) {
-        this.comments = comments;
+
+    public String getImage() {
+        return image;
     }
 
     public ArrayList<Comment> getComments() {
         return comments;
-    }
-    
-    
+    }    
     
 }
