@@ -22,6 +22,7 @@
     <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
     <link rel="stylesheet" href="./assets/css/user-detail.css">
 
+
     <style>
         .pagination {
             display: inline-block;
@@ -63,6 +64,7 @@
                             alt="logo" /></a>
                     <a class="navbar-brand brand-logo-mini" href=""><img src="./assets/img/logo/loder.png"
                             alt="logo" /></a>
+
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
@@ -337,29 +339,22 @@
                 <!-- partial:partials/_sidebar.html -->
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav" style="position: fixed ;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin-dashboard.html">
-                                <i class="ti-layout-grid2 menu-icon"></i>
-                                <span class="menu-title">Dashboard</span>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="manager-manage-member.html">
+                                <i class="ti-user  menu-icon"></i>
+                                <span class="menu-title">Manage Member</span>
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="admin-manage-user.html">
-                                <i class="icon-head  menu-icon"></i>
-                                <span class="menu-title">Manage User</span>
+                            <a class="nav-link" href="admin-manage-fund.html">
+                                <i class="ti-money menu-icon"></i>
+                                <span class="menu-title">Manage Fund</span>
                             </a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="admin-manage-club.html">
                                 <i class="icon-grid menu-icon"></i>
-                                <span class="menu-title">Manage Club</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="ti-bell menu-icon"></i>
-                                <span class="menu-title">Manage Notification</span>
+                                <span class="menu-title">Manage Event</span>
                             </a>
                         </li>
 
@@ -368,6 +363,15 @@
                                 <i class="ti-layout-cta-left icon-lg menu-icon"></i>
                                 <span class="menu-title">Manage Post</span>
                             </a>
+                        </li>
+
+                        <li class="text-center mt-5">
+                            <img src="https://picsum.photos/200/100" class="imf-fluid rounded" alt="">
+                            <h2 style="position:absolute; top: 85%;
+                              left: 50%;
+                              transform: translate(-50%, -50%); ">
+                                FUCLUB
+                            </h2>
                         </li>
                     </ul>
                 </nav>
@@ -378,7 +382,7 @@
                             <div class="col-md-12 grid-margin">
                                 <div class="row">
                                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                        <h3 class="font-weight-bold">Manage Users</h3>
+                                        <h3 class="font-weight-bold">Manage Funds</h3>
                                         <h6 class="font-weight-normal mb-0"><span class="text-primary">3 unread
                                                 alerts!</span></h6>
                                     </div>
@@ -400,83 +404,107 @@
 
 
                         <div class="row">
-                            <div class="col-md grid-margin stretch-card">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <p class="card-title mb-4">List User</p>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-borderless">
-                                                <thead
-                                                    style="background-color:#4B49AC; border-radius:50px; color: aliceblue;">
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>User Name</th>
-                                                        <th>Email</th>
-                                                        <th>Day join</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
+                            <div class="row col-md-12">
+                                <div class="col-12 my-3">
+                                    <button class="create-fund btn bg-success font-weight-bold"><i class="ti-plus"> </i>Create New</button>
+                                </div>
 
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold text-primary" data-toggle="tooltip"
-                                                            data-placement="left" title="Click to view detail"
-                                                            style="cursor:pointer;"><a
-                                                                href="./admin-view-detailUser.html">Hoang Nghia</a></td>
-                                                        <td>Nghiadz</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
+                                <div class="col-md-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="card-title mb-0">Top Products</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Fund's Name</th>
+                                                            <th>Amount/Persion</th>
+                                                            <th>Total Amount</th>
+                                                            <th>Day create</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="view-detail-fund text-primary"
+                                                                style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top" title="Click to view detail">Fund
+                                                                For September</td>
+                                                            <td class="font-weight-bold">15k</td>
+                                                            <td>1.500k</td>
+                                                            <td>01/09/2022</td>
+                                                            <td class="font-weight-medium">
+                                                                <div class="badge badge-warning">Pending</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="view-detail-fund text-primary"
+                                                                style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top" title="Click to view detail">Fund
+                                                                For September</td>
+                                                            <td class="font-weight-bold">15k</td>
+                                                            <td>1.500k</td>
+                                                            <td>01/09/2022</td>
+                                                            <td class="font-weight-medium">
+                                                                <div class="badge badge-success">Completed</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="view-detail-fund text-primary"
+                                                                style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top" title="Click to view detail">Fund
+                                                                For September</td>
+                                                            <td class="font-weight-bold">15k</td>
+                                                            <td>1.500k</td>
+                                                            <td>01/09/2022</td>
+                                                            <td class="font-weight-medium">
+                                                                <div class="badge badge-success">Completed</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="view-detail-fund text-primary"
+                                                                style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top" title="Click to view detail">Fund
+                                                                For September</td>
+                                                            <td class="font-weight-bold">15k</td>
+                                                            <td>1.500k</td>
+                                                            <td>01/09/2022</td>
+                                                            <td class="font-weight-medium">
+                                                                <div class="badge badge-success">Completed</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="view-detail-fund text-primary"
+                                                                style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top" title="Click to view detail">Fund
+                                                                For September</td>
+                                                            <td class="font-weight-bold">15k</td>
+                                                            <td>1.500k</td>
+                                                            <td>01/09/2022</td>
+                                                            <td class="font-weight-medium">
+                                                                <div class="badge badge-success">Completed</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="view-detail-fund text-primary"
+                                                                style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top" title="Click to view detail">Fund
+                                                                For September</td>
+                                                            <td class="font-weight-bold">15k</td>
+                                                            <td>1.500k</td>
+                                                            <td>01/09/2022</td>
+                                                            <td class="font-weight-medium">
+                                                                <div class="badge badge-success">Completed</div>
+                                                            </td>
+                                                        </tr>
+                                                      
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
 
@@ -529,8 +557,78 @@
         <!-- Custom js for this page-->
         <script src="./assets/js/dashboard.js"></script>
         <script src="./assets/js/Chart.roundedBarCharts.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.view-detail-fund').click(function () {
+                    $('#detail-fund-modal').modal('show');
+                });
+
+                $('.delete-user-btn').click(function () {
+                    confirm('Are you sure to delete this user?');
+                    $('#detail-member-modal').modal('hide');
+                });
+
+                $('.font-weight-bold').click(function(event){
+                    event.preventDefault();
+                    window.location.pathname("./manager-manage-fund-create.html")
+                })
 
 
+            });
+        </script>
     </body>
 
 </html>
+
+<div class="modal fade" id="detail-fund-modal" tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width:600px ;">
+            <div class="detail-user container d-flex justify-content-center align-items-center p-0">
+                <div class="card text-black">
+                    <div class="modal-header border-0 m-0">
+                        <h3>Detail Amount Contribution</h3>
+                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i
+                                    class="ti-close text-white"></i></span>
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body p-0 pb-3">
+                        <table class="table mx-auto" style="width: 80% ;">
+                            <tr>
+                                <td class="text-info"><h4>Id</h4></td>
+                                <td><h4>101</h4></td>
+                            </tr>
+                            <tr>
+                                <td class="text-info"><h4>Name</h4></td>
+                                <td><h4>Fund for september</h4></td>
+                            </tr>
+                            <tr>
+                                <td class="text-info"><h4>Description</h4></td>
+                                <td><h4>Fund for maintaining club in september</h4></td>
+                            </tr>
+                            <tr>
+                                <td class="text-info"><h4>Amount/Person</h4></td>
+                                <td><h4>15k</h4></td>
+                            </tr>
+                            <tr>
+                                <td class="text-info"><h4>Total Amount</h4></td>
+                                <td><h4>1.500k (15k x 100 members)</h4></td>
+                            </tr>
+                            <tr>
+                                <td class="text-info"><h4>Day Create</h4></td>
+                                <td><h4>01/09/2022</h4></td>
+                            </tr>
+                        </table>
+
+                        <div class="text-center">
+                            <button class="btn btn-success">Mark as completed</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
