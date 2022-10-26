@@ -4,3 +4,5 @@
 mysecret.json
 src/main/application.properties
 /env/
+.DS_Store
+```
