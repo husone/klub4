@@ -5,7 +5,6 @@
  */
 package database;
 
-import io.github.cdimascio.dotenv.Dotenv;
 
 /**
  *
@@ -13,10 +12,9 @@ import io.github.cdimascio.dotenv.Dotenv;
  */
 public interface DatabaseInfor {
 
-    Dotenv dotenv = Dotenv.load();
 
     public static String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String url = dotenv.get("DTBURL");
-    public static String user = dotenv.get("DTBUSERNAME");
-    public static String pass = dotenv.get("DTBPASSWORD");
+    public static String url = readENV.get("DTBURL");
+    public static String user = readENV.get("DTBUSERNAME");
+    public static String pass = readENV.get("DTBPASSWORD");
 }
