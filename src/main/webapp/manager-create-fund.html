@@ -56,12 +56,7 @@
     </head>
 
     <body>
-
         <div class="container-scroller">
-            <!-- Modal Create Event -->
-            <div class="modal fade">
-
-            </div>
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -350,21 +345,21 @@
                                 <span class="menu-title">Manage Member</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="manager-manage-fund.html">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="admin-manage-fund.html">
                                 <i class="ti-money menu-icon"></i>
                                 <span class="menu-title">Manage Fund</span>
                             </a>
                         </li>
-                        <li class="nav-item  active">
-                            <a class="nav-link" href="manager-manage-event.html">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="admin-manage-club.html">
                                 <i class="icon-grid menu-icon"></i>
                                 <span class="menu-title">Manage Event</span>
                             </a>
                         </li>
 
                         <li class="nav-item ">
-                            <a class="nav-link" href="manager-manage-post.html">
+                            <a class="nav-link" href="admin-manage-post.html">
                                 <i class="ti-layout-cta-left icon-lg menu-icon"></i>
                                 <span class="menu-title">Manage Post</span>
                             </a>
@@ -387,114 +382,50 @@
                             <div class="col-md-12 grid-margin">
                                 <div class="row">
                                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                        <h3 class="font-weight-bold">Manage Events</h3>
-                                        
+                                        <h3 class="font-weight-bold">Manage Funds</h3>
+                                      
                                     </div>
-                                    <div class="col-12 col-xl-4">
-                                        <div class=" d-flex row">
-                                            <form action="">
-                                                <div class="d-flex">
-                                                    <input type="search" class="form-control" name="search-box"
-                                                        placeholder="Input to search">
-                                                    <Button class="btn btn-info mx-3">Search</Button>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
+                                 
                                 </div>
                             </div>
                         </div>
 
 
-                        <div class="row">
-                            <div class="row col-md-12">
-                                <div class="col-12 my-3">
-                                    <a class="btn btn-success text-black" style="font-weight: bold;" href="manager-manage-event-create.html">
-                                        <i class="ti-plus"></i>
-                                        <span class="menu-title">Create New</span>
-                                    </a>
-                                </div>
+                        <div class="row justify-content-center" >
+                            <div class="row col-md-5">
+                               
 
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
+                                        <div class="card-header bg-dark">
+                                            <p class="card-title mb-3 bg-dark text-white">Create New Fund</p>
+                                        </div>
                                         <div class="card-body">
-                                            <p class="card-title mb-0">Top Events</p>
-                                            <div class="table-responsive mt-2">
-                                                <table class="table table-striped table-borderless">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Tên</th>
-                                                            <th>Ngày tạo</th>
-                                                            <th>Ngày bắt đầu</th>
-                                                            <th>Ngày kết thúc </th>
-                                                            <th>Địa điểm</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="view-detail-fund text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                Họp CLB MU</td>
-                                                            <td style="color: gray;">01/09/2022</td>
-                                                            <td>02/09/2022</td>
-                                                            <td>01/10/2022</td>
-                                                            <td class="font-weight-medium">Hang động</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-fund text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                Họp CLB MU</td>
-                                                            <td style="color: gray;">01/09/2022</td>
-                                                            <td>02/09/2022</td>
-                                                            <td>01/10/2022</td>
-                                                            <td class="font-weight-medium">Hang động</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-fund text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                Họp CLB MU</td>
-                                                            <td style="color: gray;">01/09/2022</td>
-                                                            <td>02/09/2022</td>
-                                                            <td>01/10/2022</td>
-                                                            <td class="font-weight-medium">Hang động</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-fund text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                Họp CLB MU</td>
-                                                            <td style="color: gray;">01/09/2022</td>
-                                                            <td>02/09/2022</td>
-                                                            <td>01/10/2022</td>
-                                                            <td class="font-weight-medium">Hang động</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-fund text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                Họp CLB MU</td>
-                                                            <td style="color: gray;">01/09/2022</td>
-                                                            <td>02/09/2022</td>
-                                                            <td>01/10/2022</td>
-                                                            <td class="font-weight-medium">Hang động</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-fund text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                Họp CLB MU</td>
-                                                            <td style="color: gray;">01/09/2022</td>
-                                                            <td>02/09/2022</td>
-                                                            <td>01/10/2022</td>
-                                                            <td class="font-weight-medium">Hang động</td>
-                                                        </tr>     
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            
+                                            <form action="">
+                                                <div class="form-group">
+                                                    <label class="col-12 p-0 font-weight-bold" for="new-fund-name"><h4>Name</h4></label>
+                                                    <input type="text" class="form-control form-control-sm col-12;" name="new-fund-name" id="new-fund-name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-12 p-0 font-weight-bold" for="new-fund-description"><h4>Description</h4></label>
+                                                    <input type="text" class="form-control form-control-sm col-12;" name="new-fund-description" id="new-fund-description">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-12 p-0 font-weight-bold" for="new-fund-amount"><h4>Amount/Person</h4></label>
+                                                    <input type="text" class="form-control form-control-sm col-12;" name="new-fund-amount" id=new-fund-amount">
+                                                </div>
+
+                                                <div class="justify-content-between">
+                                                    <button type="submit" class="btn btn-info">Create</button>
+                                                    <a href="./manager-manage-fund.html"  style="float:right;" class="btn btn-danger">Cancel</a>
+                                                </div>
+                                            
+                                               
+
+
+                                            </form>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -504,19 +435,7 @@
 
                         </div>
 
-                        <div class="row justify-content-center">
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#" class="active">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div>
-
+                      
                     </div>
 
 
@@ -561,11 +480,6 @@
                     confirm('Are you sure to delete this user?');
                     $('#detail-member-modal').modal('hide');
                 });
-
-                $('.font-weight-bold').click(function(event){
-                    event.preventDefault();
-                    window.location.pathname("./manager-manage-fund-create.html")
-                })
 
 
             });
