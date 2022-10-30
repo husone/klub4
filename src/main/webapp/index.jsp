@@ -748,7 +748,6 @@
             });
 
             $('#forgotBtn').click(function () {
-                window.alert('click me');
                 $('#loginModal').modal('hide');
                 $('#registerModal').modal('hide');
                 $('#forgotModal').modal('show');
@@ -854,9 +853,9 @@
             </div>
             <div class="modal-body">
                 <div class="form-row">
-                    <form action="./ForgotPWServlet">
+                    <form action="./ForgotPWServlet" method="post">
                         <div class="">o
-                            <input type="text" class="col-10" id="emailForgot" placeholder="Email address">
+                            <input type="text" class="col-10" id="" name="forgot-email" placeholder="Email address">
                             <button type="submit" class="col-10 btn btn-secondary"
                                 style="background-color: #699DEB">Submit</button>
                         </div>
