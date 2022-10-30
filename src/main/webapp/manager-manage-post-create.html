@@ -22,6 +22,7 @@
     <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
     <link rel="stylesheet" href="./assets/css/user-detail.css">
 
+
     <style>
         .pagination {
             display: inline-block;
@@ -46,16 +47,18 @@
         }
     </style>
 
-
-
-
 </head>
 
 <body>
     </head>
 
     <body>
+
         <div class="container-scroller">
+            <!-- Modal Create Event -->
+            <div class="modal fade">
+
+            </div>
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -63,6 +66,7 @@
                             alt="logo" /></a>
                     <a class="navbar-brand brand-logo-mini" href=""><img src="./assets/img/logo/loder.png"
                             alt="logo" /></a>
+
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
@@ -335,127 +339,45 @@
                 </div>
                 <!-- partial -->
                 <!-- partial:partials/_sidebar.html -->
-                <!-- Post Modal -->
-                <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" style="max-width: 50%;" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header border-0">
-                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i class="ti-close text-white"></i></span>
-                                </button>
-                            </div>
-                            <div class="modal-body p-0 pb-3">
-                                <div style="text-align: center;">
-                                    <img src="https://picsum.photos/700/400" style="border-radius:10px ;" alt="group-01" class="img-fluid">
-                                </div>
-
-                                <div class="col-md-5 mt-3">
-                                    <h3>Tiêu đề bài đăng</h3>
-                                </div>
-                                <div style="padding-left: 15px;">
-                                    <p style="text-align: left;">Tôi đã chọn bước ra khỏi một công việc ổn định nhưng tẻ
-                                        nhạt, chuyển sang một công việc theo đúng cái tên của nó, đó là mạo hiểm, với
-                                        nhiều điều không đoán trước được, nhưng chắc chắn là vui và ý nghĩa hơn.
-                                        Câu nói đó đã gợi lòng quyết tâm dấn thân với nghề đầu tư mạo hiểm của tôi.</p>
-                                </div>
-                                <div class="row" style="margin-left: 0;">
-                                    <div class="col-md-5">
-                                        <p>ID: 101</p>
-                                        <p>CLB: CLB Bóng đá</p>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <p>Ngày thành lập: 01/01/2020</p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <button id="returnBtn" type="button" class="btn btn-warning"
-                                        data-dismiss="modal">Quay lại</button>
-                                    <button id="deleteBtn" type="button" class="btn btn-danger">Xoá</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Delete Confirm Modal -->
-                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" style="max-width: 30%;" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4>Xoá bài đăng</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <h3 style="color:red;">Bạn có chắc muốn xoá bài đăng này ?</h3>
-                                </div>
-                                <div class="row d-flex justify-content-center mt-4">
-                                    <button id="returnBtn" type="button" class="btn btn-warning mr-1"
-                                        data-dismiss="modal">Huỷ</button>
-                                    <button id="deleteBtn" type="button" class="btn btn-danger">Xoá</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav" style="position: fixed ;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin-dashboard.html">
-                                <i class="ti-layout-grid2 menu-icon"></i>
-                                <span class="menu-title">Dashboard</span>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="manager-manage-member.html">
+                                <i class="ti-user  menu-icon"></i>
+                                <span class="menu-title">Manage Member</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admin-manage-user.html">
-                                <i class="icon-head  menu-icon"></i>
-                                <span class="menu-title">Manage User</span>
+                            <a class="nav-link" href="manager-manage-fund.html">
+                                <i class="ti-money menu-icon"></i>
+                                <span class="menu-title">Manage Fund</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admin-manage-club.html">
+                            <a class="nav-link" href="manager-manage-event.html">
                                 <i class="icon-grid menu-icon"></i>
-                                <span class="menu-title">Manage Club</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="ti-bell menu-icon"></i>
-                                <span class="menu-title">Manage Notification</span>
+                                <span class="menu-title">Manage Event</span>
                             </a>
                         </li>
 
                         <li class="nav-item active">
-                            <a class="nav-link" href="admin-manage-post.html">
+                            <a class="nav-link" href="manager-manage-post.html">
                                 <i class="ti-layout-cta-left icon-lg menu-icon"></i>
                                 <span class="menu-title">Manage Post</span>
                             </a>
                         </li>
+
+                        <li class="text-center mt-5">
+                            <img src="https://picsum.photos/200/100" class="imf-fluid rounded" alt="">
+                            <h2 style="position:absolute; top: 85%;
+                              left: 50%;
+                              transform: translate(-50%, -50%); ">
+                                FUCLUB
+                            </h2>
+                        </li>
                     </ul>
                 </nav>
                 <!-- partial -->
-                <!-- Detail Club Modal -->
-                <div class="modal fade" id="detailModal" style="display:none" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="content">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="card">
-                                    <div class="card-body justify-content-around">
-                                        <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
-                                        <div class="text-md-center mt-1">
-                                            <h3>Group 1</h3>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="row">
@@ -463,198 +385,82 @@
                                 <div class="row">
                                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                                         <h3 class="font-weight-bold">Manage Posts</h3>
-                                        <h6 class="font-weight-normal mb-0"><span class="text-primary">3 unread
-                                                alerts!</span></h6>
-                                    </div>
-                                    <div class="col-12 col-xl-4">
-                                        <div class=" d-flex row">
-                                            <form action="">
-                                                <div class="d-flex">
-                                                    <input type="search" class="form-control" name="search-box"
-                                                        placeholder="Input to search">
-                                                    <Button class="btn btn-info mx-3">Search</Button>
-                                                </div>
-                                            </form>
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Form Create Event -->
+                        <div class="row row content">
+                            <div class="col-md-12 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body form">
+                                        <p class="card-title mb-4">Create New Post</p>
+                                        <form>
+                                            <div class="form-group row">
+                                                <label for="imgPost"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Image</label>
+                                                <input type="file" class="form-input col-sm-9" alt="img-post" id="imgPost"
+                                                    placeholder="">
 
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="namePost"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Name</label>
 
-                        <div class="row">
-                            <div class="col-md-4 stretch-card grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="https://picsum.photos/600/400" style="border-radius:10px ;"
-                                            alt="group-01" class="img-fluid">
-                                        <div class="text-md-left mt-1">
-                                            <h2>Tieu de</h2>
-                                            <p>Type something in here</p>
-                                            <h5>Ten CLB: </h5>
-                                            <h5>Tao ngay: </h5>
-                                        </div>
-                                        <div class="row d-flex justify-content-center">
-                                            <div>
-                                                <button type="button" class="btn btn-danger btn-sm deleteBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-trash"></i>Delete</button>
-                                                <button type="button" class="btn btn-info btn-sm detailBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-info"></i>Detail</button>
+                                                <input type="text" class="form-control col-sm-9" id="namePost"
+                                                    placeholder="Post Name">
+
                                             </div>
-                                        </div>
+                                            <div class="form-group row">
+                                                <label for="desPost"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Desciptions</label>
+
+                                                <input type="text" class="form-control col-sm-9" id="desPost"
+                                                    placeholder="Description">
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="contentPost"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Content</label>
+
+                                                <input type="text" class="form-control col-sm-9" id="contentPost"
+                                                    placeholder="Content">
+
+                                            </div>
+                                            <div class="col-sm-4 offset-8">
+                                                <button class="btn btn-success" type="submit">Create</button>
+                                                <button class="btn btn-danger" type="reset">Cancel</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 stretch-card grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="https://picsum.photos/600/400" style="border-radius:10px ;"
-                                            alt="group-01" class="img-fluid">
-                                        <div class="text-md-left mt-1">
-                                            <h2>Tieu de</h2>
-                                            <p>Type something in here</p>
-                                            <h5>Ten CLB: </h5>
-                                            <h5>Tao ngay: </h5>
-                                        </div>
-                                        <div class="row d-flex justify-content-center">
-                                            <div>
-                                                <button type="button" class="btn btn-danger btn-sm deleteBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-trash"></i>Delete</button>
-                                                <button type="button" class="btn btn-info btn-sm detailBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-info"></i>Detail</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 stretch-card grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="https://picsum.photos/600/400" style="border-radius:10px ;"
-                                            alt="group-01" class="img-fluid">
-                                        <div class="text-md-left mt-1">
-                                            <h2>Tieu de</h2>
-                                            <p>Type something in here</p>
-                                            <h5>Ten CLB: </h5>
-                                            <h5>Tao ngay: </h5>
-                                        </div>
-                                        <div class="row d-flex justify-content-center">
-                                            <div>
-                                                <button type="button" class="btn btn-danger btn-sm deleteBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-trash"></i>Delete</button>
-                                                <button type="button" class="btn btn-info btn-sm detailBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-info"></i>Detail</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 stretch-card grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="https://picsum.photos/600/400" style="border-radius:10px ;"
-                                            alt="group-01" class="img-fluid">
-                                        <div class="text-md-left mt-1">
-                                            <h2>Tieu de</h2>
-                                            <p>Type something in here</p>
-                                            <h5>Ten CLB: </h5>
-                                            <h5>Tao ngay: </h5>
-                                        </div>
-                                        <div class="row d-flex justify-content-center">
-                                            <div>
-                                                <button type="button" class="btn btn-danger btn-sm deleteBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-trash"></i>Delete</button>
-                                                <button type="button" class="btn btn-info btn-sm detailBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-info"></i>Detail</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 stretch-card grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="https://picsum.photos/600/400" style="border-radius:10px ;"
-                                            alt="group-01" class="img-fluid">
-                                        <div class="text-md-left mt-1">
-                                            <h2>Tieu de</h2>
-                                            <p>Type something in here</p>
-                                            <h5>Ten CLB: </h5>
-                                            <h5>Tao ngay: </h5>
-                                        </div>
-                                        <div class="row d-flex justify-content-center">
-                                            <div>
-                                                <button type="button" class="btn btn-danger btn-sm deleteBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-trash"></i>Delete</button>
-                                                <button type="button" class="btn btn-info btn-sm detailBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-info"></i>Detail</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 stretch-card grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="https://picsum.photos/600/400" style="border-radius:10px ;"
-                                            alt="group-01" class="img-fluid">
-                                        <div class="text-md-left mt-1">
-                                            <h2>Tieu de</h2>
-                                            <p>Type something in here</p>
-                                            <h5>Ten CLB: </h5>
-                                            <h5>Tao ngay: </h5>
-                                        </div>
-                                        <div class="row d-flex justify-content-center">
-                                            <div>
-                                                <button type="button" class="btn btn-danger btn-sm deleteBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-trash"></i>Delete</button>
-                                                <button type="button" class="btn btn-info btn-sm detailBtn"
-                                                    style="height: 40px; width:auto"><i
-                                                        class="ti-info"></i>Detail</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                        
+
+                        <div class="row justify-content-center">
+                            <div class="pagination">
+                                <a href="#">&laquo;</a>
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">&raquo;</a>
                             </div>
                         </div>
 
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#" class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a>
-                        </div>
-                    </div>
 
+
+                    <!-- content-wrapper ends -->
+                    <!-- partial:partials/_footer.html -->
+
+                    <!-- partial -->
                 </div>
-
-
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-
-                <!-- partial -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
+            <!-- page-body-wrapper ends -->
         </div>
         <!-- container-scroller -->
 
@@ -678,8 +484,102 @@
         <!-- Custom js for this page-->
         <script src="./assets/js/dashboard.js"></script>
         <script src="./assets/js/Chart.roundedBarCharts.js"></script>
-        <script src="script.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.view-detail-fund').click(function () {
+                    $('#detail-fund-modal').modal('show');
+                });
 
+                $('.delete-user-btn').click(function () {
+                    confirm('Are you sure to delete this user?');
+                    $('#detail-member-modal').modal('hide');
+                });
+
+                $('.font-weight-bold').click(function (event) {
+                    event.preventDefault();
+                    window.location.pathname("./manager-manage-fund-create.html")
+                })
+
+
+            });
+        </script>
     </body>
 
 </html>
+
+<div class="modal fade" id="detail-fund-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width:600px ;">
+            <div class="detail-user container d-flex justify-content-center align-items-center p-0">
+                <div class="card text-black">
+                    <div class="modal-header border-0 m-0">
+                        <h3>Detail Amount Contribution</h3>
+                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i
+                                    class="ti-close text-white"></i></span>
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body p-0 pb-3">
+                        <table class="table mx-auto" style="width: 80% ;">
+                            <tr>
+                                <td class="text-info">
+                                    <h4>Id</h4>
+                                </td>
+                                <td>
+                                    <h4>101</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-info">
+                                    <h4>Name</h4>
+                                </td>
+                                <td>
+                                    <h4>Fund for september</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-info">
+                                    <h4>Description</h4>
+                                </td>
+                                <td>
+                                    <h4>Fund for maintaining club in september</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-info">
+                                    <h4>Amount/Person</h4>
+                                </td>
+                                <td>
+                                    <h4>15k</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-info">
+                                    <h4>Total Amount</h4>
+                                </td>
+                                <td>
+                                    <h4>1.500k (15k x 100 members)</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-info">
+                                    <h4>Day Create</h4>
+                                </td>
+                                <td>
+                                    <h4>01/09/2022</h4>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="text-center">
+                            <button class="btn btn-success">Mark as completed</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

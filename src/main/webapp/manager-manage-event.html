@@ -433,7 +433,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td class="view-detail-fund text-primary"
+                                                            <td class="view-detail-event text-primary"
                                                                 style="cursor:pointer;" data-toggle="tooltip"
                                                                 data-placement="top" title="Click to view detail">
                                                                 Họp CLB MU</td>
@@ -443,7 +443,7 @@
                                                             <td class="font-weight-medium">Hang động</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="view-detail-fund text-primary"
+                                                            <td class="view-detail-event text-primary"
                                                                 style="cursor:pointer;" data-toggle="tooltip"
                                                                 data-placement="top" title="Click to view detail">
                                                                 Họp CLB MU</td>
@@ -453,7 +453,7 @@
                                                             <td class="font-weight-medium">Hang động</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="view-detail-fund text-primary"
+                                                            <td class="view-detail-event text-primary"
                                                                 style="cursor:pointer;" data-toggle="tooltip"
                                                                 data-placement="top" title="Click to view detail">
                                                                 Họp CLB MU</td>
@@ -463,7 +463,7 @@
                                                             <td class="font-weight-medium">Hang động</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="view-detail-fund text-primary"
+                                                            <td class="view-detail-event text-primary"
                                                                 style="cursor:pointer;" data-toggle="tooltip"
                                                                 data-placement="top" title="Click to view detail">
                                                                 Họp CLB MU</td>
@@ -473,17 +473,7 @@
                                                             <td class="font-weight-medium">Hang động</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="view-detail-fund text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                Họp CLB MU</td>
-                                                            <td style="color: gray;">01/09/2022</td>
-                                                            <td>02/09/2022</td>
-                                                            <td>01/10/2022</td>
-                                                            <td class="font-weight-medium">Hang động</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-fund text-primary"
+                                                            <td class="view-detail-event text-primary"
                                                                 style="cursor:pointer;" data-toggle="tooltip"
                                                                 data-placement="top" title="Click to view detail">
                                                                 Họp CLB MU</td>
@@ -553,8 +543,8 @@
         <script src="./assets/js/Chart.roundedBarCharts.js"></script>
         <script>
             $(document).ready(function () {
-                $('.view-detail-fund').click(function () {
-                    $('#detail-fund-modal').modal('show');
+                $('.view-detail-event').click(function () {
+                    $('#detail-event-modal').modal('show');
                 });
 
                 $('.delete-user-btn').click(function () {
@@ -566,7 +556,9 @@
                     event.preventDefault();
                     window.location.pathname("./manager-manage-fund-create.html")
                 })
-
+                $('#conDelete').click(function(){
+                    confirm('Are you sure to delete this user?');
+                })
 
             });
         </script>
@@ -574,13 +566,13 @@
 
 </html>
 
-<div class="modal fade" id="detail-fund-modal" tabindex="-1" role="dialog" aria-hidden="true" >
+<div class="modal fade" id="detail-event-modal" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width:600px ;">
             <div class="detail-user container d-flex justify-content-center align-items-center p-0">
                 <div class="card text-black">
                     <div class="modal-header border-0 m-0">
-                        <h3>Detail Amount Contribution</h3>
+                        <h3>Event Details</h3>
                         <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i
                                     class="ti-close text-white"></i></span>
@@ -596,28 +588,29 @@
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Name</h4></td>
-                                <td><h4>Fund for september</h4></td>
+                                <td><h4>CLB MU</h4></td>
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Description</h4></td>
-                                <td><h4>Fund for maintaining club in september</h4></td>
+                                <td><h4>Event for maintaining club in september</h4></td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Amount/Person</h4></td>
-                                <td><h4>15k</h4></td>
+                                <td class="text-info"><h4>Date Start</h4></td>
+                                <td><h4>19/10/22</h4></td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Total Amount</h4></td>
-                                <td><h4>1.500k (15k x 100 members)</h4></td>
+                                <td class="text-info"><h4>Date End</h4></td>
+                                <td><h4>20/10/22</h4></td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Day Create</h4></td>
-                                <td><h4>01/09/2022</h4></td>
+                                <td class="text-info"><h4>Place</h4></td>
+                                <td><h4>In the cave</h4></td>
                             </tr>
                         </table>
 
                         <div class="text-center">
-                            <button class="btn btn-success">Mark as completed</button>
+                            <button class="btn btn-success">Edit</button>
+                            <button id="conDelete"class="btn btn-danger">Delete</button>
                         </div>
 
                     </div>
