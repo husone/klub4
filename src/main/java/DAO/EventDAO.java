@@ -1,130 +1,236 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
-import entity.Event;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import database.ConnectDB;
+import entity.Event;
 
 /**
  *
- * @author ASUS
+ * @author quangpao
+ * @version 1.0
  */
+
+
 public class EventDAO {
+    
+    static ConnectDB db = ConnectDB.getInstance();
+    static Connection con = db.openConnection();
+    static PreparedStatement statement = null;
+    static ResultSet rs = null;
 
-    public List<Event> getListEvent() {
-        List<Event> list = new ArrayList<>();
-        ConnectDB db = ConnectDB.getInstance();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String query = "SELECT TOP (1000) [eventID]\n"
-                + "      ,[clubID]\n"
-                + "      ,[eventName]\n"
-                + "      ,[location]\n"
-                + "      ,[userID]\n"
-                + "      ,[dateFrom]\n"
-                + "      ,[dateTo]\n"
-                + "  FROM [ClubDB].[dbo].[EVENTS]";
-
+    /**
+     * Get all events
+     * @return ArrayList<Event>
+     */
+    public static ArrayList<Event> getAllEvents() {
+        ArrayList<Event> events = new ArrayList<>();
         try {
-            conn = db.openConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+            String sql = "SELECT * FROM event";
+            statement = con.prepareStatement(sql);
+            rs = statement.executeQuery();
             while (rs.next()) {
-                int eventID = rs.getInt(1);
-                int clubID = rs.getInt(2);
-                String eventName = rs.getString(3);
-                String location = rs.getString(4);
-                int userID = rs.getInt(5);
-                Date dateFrom = rs.getDate(6);
-                Date dateTo = rs.getDate(7);
-                list.add(new Event(eventID, clubID, eventName, location, userID, dateFrom, dateTo));
+                int eventID = rs.getInt("eventID");
+                int clubID = rs.getInt("clubID");
+                String eventName = rs.getString("eventName");
+                String description = rs.getString("description");
+                String location = rs.getString("location");
+                Date dateFrom = rs.getDate("dateFrom");
+                Date dateTo = rs.getDate("dateTo");
+                Event event = new Event(eventID, clubID, eventName, description, location, dateFrom, dateTo);
+                events.add(event);
             }
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return list;
-
+        return events;
     }
 
-    public void createEvent(Event event) {
-        ConnectDB db = ConnectDB.getInstance();
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        String query = "INSERT [dbo].[EVENTS] ([eventID], [clubID], [eventName], [location], [userID], [dateFrom], [dateTo]) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    /**
+     * Get all events by clubID
+     * @param clubID
+     * @return ArrayList<Event>
+     */
+    public static ArrayList<Event> getAllEventsByClubID(int clubID) {
+        ArrayList<Event> events = new ArrayList<>();
         try {
-            conn = db.openConnection();
-            ps = conn.prepareStatement(query);
-
-            ps.setInt(1, event.getEventID());
-            ps.setInt(2, event.getClubID());
-            ps.setString(3, event.getEventName());
-            ps.setString(4, event.getLocation());
-            ps.setInt(5, event.getUserID());
-            ps.setDate(6, event.getDateFrom());
-            ps.setDate(7, event.getDateTo());
-
-            ps.execute();
-
-        } catch (SQLException e) {
-            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, e);
+            String sql = "SELECT * FROM event WHERE clubID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, clubID);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                int eventID = rs.getInt("eventID");
+                String eventName = rs.getString("eventName");
+                String description = rs.getString("description");
+                String location = rs.getString("location");
+                Date dateFrom = rs.getDate("dateFrom");
+                Date dateTo = rs.getDate("dateTo");
+                Event event = new Event(eventID, clubID, eventName, description, location, dateFrom, dateTo);
+                events.add(event);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return events;
     }
 
-    public void updateEvent(Event event) {
-        ConnectDB db = ConnectDB.getInstance();
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        String query = "UPDATE EVENTS\n"
-                + "SET eventID =?, clubID=?, eventName=?, location=? , userID=?, dateFrom=?, dateTo=?\n"
-                + "WHERE eventID = ?;";
+    /**
+     * Get event by eventID
+     * @param eventID
+     * @return Event
+     */
+    public static Event getEventByEventID(int eventID) {
+        Event event = null;
         try {
-            conn = db.openConnection();
-            ps = conn.prepareStatement(query);
-            ps.setInt(1, event.getEventID());
-            ps.setInt(2, event.getClubID());
-            ps.setString(3, event.getEventName());
-            ps.setString(4, event.getLocation());
-            ps.setInt(5, event.getUserID());
-            ps.setDate(6, event.getDateFrom());
-            ps.setDate(7, event.getDateTo());
-            ps.setInt(8, event.getEventID());
-
-            ps.execute();
-
-        } catch (SQLException e) {
-            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, e);
+            String sql = "SELECT * FROM event WHERE eventID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, eventID);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                int clubID = rs.getInt("clubID");
+                String eventName = rs.getString("eventName");
+                String description = rs.getString("description");
+                String location = rs.getString("location");
+                Date dateFrom = rs.getDate("dateFrom");
+                Date dateTo = rs.getDate("dateTo");
+                event = new Event(eventID, clubID, eventName, description, location, dateFrom, dateTo);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return event;
     }
 
-    public void deleteEvent(Event event) {
-        ConnectDB db = ConnectDB.getInstance();
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        String query = "DELETE FROM EVENTS WHERE eventID= ?";
+    /**
+     * Add new event
+     * @param event
+     * @return boolean
+     */
+    public static boolean addEvent(Event event) {
         try {
-            conn = db.openConnection();
-            ps = conn.prepareStatement(query);
-
-            ps.setInt(1, event.getEventID());
-
-            ps.execute();
-        } catch (Exception e) {
-            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, e);
+            String sql = "INSERT INTO event(clubID, eventName, description, location, dateFrom, dateTo) VALUES(?, ?, ?, ?, ?, ?)";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, event.getClubID());
+            statement.setString(2, event.getEventName());
+            statement.setString(3, event.getDescription());
+            statement.setString(4, event.getLocation());
+            statement.setDate(5, event.getDateFrom());
+            statement.setDate(6, event.getDateTo());
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
+    }
+
+    /**
+     * Update event
+     * @param event
+     * @return boolean
+     */
+    public static boolean updateEvent(Event event) {
+        try {
+            String sql = "UPDATE event SET clubID = ?, eventName = ?, description = ?, location = ?, dateFrom = ?, dateTo = ? WHERE eventID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, event.getClubID());
+            statement.setString(2, event.getEventName());
+            statement.setString(3, event.getDescription());
+            statement.setString(4, event.getLocation());
+            statement.setDate(5, event.getDateFrom());
+            statement.setDate(6, event.getDateTo());
+            statement.setInt(7, event.getEventID());
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    /**
+     * Delete event
+     * @param eventID
+     * @return boolean
+     */
+    public static boolean deleteEvent(int eventID) {
+        try {
+            String sql = "DELETE FROM event WHERE eventID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, eventID);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    /**
+     * Get all events by clubID and date
+     * @param clubID
+     * @param date
+     * @return ArrayList<Event>
+     */
+    public static ArrayList<Event> getAllEventsByClubIDAndDate(int clubID, Date date) {
+        ArrayList<Event> events = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM event WHERE clubID = ? AND dateFrom <= ? AND dateTo >= ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, clubID);
+            statement.setDate(2, date);
+            statement.setDate(3, date);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                int eventID = rs.getInt("eventID");
+                String eventName = rs.getString("eventName");
+                String description = rs.getString("description");
+                String location = rs.getString("location");
+                Date dateFrom = rs.getDate("dateFrom");
+                Date dateTo = rs.getDate("dateTo");
+                Event event = new Event(eventID, clubID, eventName, description, location, dateFrom, dateTo);
+                events.add(event);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return events;
+    }
+
+    /**
+     * Get all events by date
+     * @param date
+     * @return ArrayList<Event>
+     */
+    public static ArrayList<Event> getAllEventsByDate(Date date) {
+        ArrayList<Event> events = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM event WHERE dateFrom <= ? AND dateTo >= ?";
+            statement = con.prepareStatement(sql);
+            statement.setDate(1, date);
+            statement.setDate(2, date);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                int eventID = rs.getInt("eventID");
+                int clubID = rs.getInt("clubID");
+                String eventName = rs.getString("eventName");
+                String description = rs.getString("description");
+                String location = rs.getString("location");
+                Date dateFrom = rs.getDate("dateFrom");
+                Date dateTo = rs.getDate("dateTo");
+                Event event = new Event(eventID, clubID, eventName, description, location, dateFrom, dateTo);
+                events.add(event);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return events;
     }
 }

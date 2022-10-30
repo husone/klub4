@@ -14,17 +14,26 @@ public class Event {
     private int eventID;
     private int clubID;
     private String eventName;
+    private String description;
     private String location; 
-    private int userID;
     private Date dateFrom ;
     private Date dateTo;
 
-    public Event(int eventID, int clubID, String eventName, String location, int userID, Date dateFrom, Date dateTo) {
+    public Event(int eventID, int clubID, String eventName, String description, String location, Date dateFrom, Date dateTo) {
         this.eventID = eventID;
         this.clubID = clubID;
         this.eventName = eventName;
         this.location = location;
-        this.userID = userID;
+        this.description = description;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+    }
+
+    public Event(int clubID, String eventName, String description, String location, Date dateFrom, Date dateTo) {
+        this.clubID = clubID;
+        this.eventName = eventName;
+        this.location = location;
+        this.description = description;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
     }
@@ -61,12 +70,12 @@ public class Event {
         this.location = location;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getDateFrom() {
@@ -87,7 +96,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" + "eventID=" + eventID + ", clubID=" + clubID + ", eventName=" + eventName + ", location=" + location + ", userID=" + userID + ", dateFrom=" + dateFrom + ", dateTo=" + dateTo + '}';
+        return "Event{" + "eventID=" + eventID + ", clubID=" + clubID + ", eventName=" + eventName + ", location=" + location + ", description=" + description + ", dateFrom=" + dateFrom + ", dateTo=" + dateTo + '}';
     }
     
     
