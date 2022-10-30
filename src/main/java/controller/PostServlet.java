@@ -81,13 +81,13 @@ public class PostServlet extends HttpServlet {
         String typeOfRequest = request.getParameter("typeOfRequest");
 
         switch (typeOfRequest) {
-            case "create":
+            case "createPost":
                 processCreateRequest(request, response);
                 break;
-            case "update":
+            case "updatePost":
                 processUpdateRequest(request, response);
                 break;
-            case "delete":
+            case "deletePost":
                 processDeleteRequest(request, response);
                 break;
             default:
