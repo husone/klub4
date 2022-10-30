@@ -9,6 +9,7 @@ import java.sql.Date;
 /**
  *
  * @author ASUS
+ * @contributor quangpao
  */
 public class Event {
     private int eventID;
@@ -31,6 +32,23 @@ public class Event {
 
     public Event(int clubID, String eventName, String description, String location, Date dateFrom, Date dateTo) {
         this.clubID = clubID;
+        this.eventName = eventName;
+        this.location = location;
+        this.description = description;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+    }
+
+    public Event(String eventName, String description, String location, Date dateFrom, Date dateTo) {
+        this.eventName = eventName;
+        this.location = location;
+        this.description = description;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+    }
+
+    public Event(String eventName, String description, String location, Date dateFrom, Date dateTo, int eventID) {
+        this.eventID = eventID;
         this.eventName = eventName;
         this.location = location;
         this.description = description;

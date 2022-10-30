@@ -138,15 +138,14 @@ public class EventDAO {
      */
     public static boolean updateEvent(Event event) {
         try {
-            String sql = "UPDATE event SET clubID = ?, eventName = ?, description = ?, location = ?, dateFrom = ?, dateTo = ? WHERE eventID = ?";
+            String sql = "UPDATE event SET eventName = ?, description = ?, location = ?, dateFrom = ?, dateTo = ? WHERE eventID = ?";
             statement = con.prepareStatement(sql);
-            statement.setInt(1, event.getClubID());
-            statement.setString(2, event.getEventName());
-            statement.setString(3, event.getDescription());
-            statement.setString(4, event.getLocation());
-            statement.setDate(5, event.getDateFrom());
-            statement.setDate(6, event.getDateTo());
-            statement.setInt(7, event.getEventID());
+            statement.setString(1, event.getEventName());
+            statement.setString(2, event.getDescription());
+            statement.setString(3, event.getLocation());
+            statement.setDate(4, event.getDateFrom());
+            statement.setDate(5, event.getDateTo());
+            statement.setInt(6, event.getEventID());
             statement.executeUpdate();
             return true;
         } catch (SQLException ex) {

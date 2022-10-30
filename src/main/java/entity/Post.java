@@ -11,6 +11,7 @@ import java.sql.Date;
  *
  * @author quangpao
  */
+
 public class Post {
     
     private int postID;
