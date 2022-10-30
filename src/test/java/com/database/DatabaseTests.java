@@ -1,11 +1,11 @@
 package com.database;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.sql.Date;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mindrot.jbcrypt.BCrypt;
 
 import DAO.UserDAO;
 
@@ -24,7 +24,7 @@ public class DatabaseTests {
     @DisplayName("Insert user")
     void testInsertUser() {
         String password = "1292131232";
-        assertEquals(true, UserDAO.registerUser("Thử Database", "database@gmail.com", password));
+        assertEquals(true, UserDAO.registerUser("testdatabase", "Thử Database", "database@gmail.com", password, Date.valueOf("1999-12-12"), "Hà Nội"));
     }
     @Test
     @DisplayName("Test BCrypt")

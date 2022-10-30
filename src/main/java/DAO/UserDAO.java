@@ -146,7 +146,7 @@ public class UserDAO {
     /**
      * Check Login
      * @param email
-     * @param password
+     * @param password Didn't hashing password
      * @return true if email and password is correct |
      *         false if email and password is incorrect
      */
@@ -154,15 +154,17 @@ public class UserDAO {
         System.out.println("email: " + email);
         System.out.println("password: " + password);
         boolean checkLogin = false;
-        String sql = "SELECT * FROM USERS WHERE email = ? AND password = ?;";
+        String sql = "SELECT password FROM USERS WHERE email = ?;";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, email);
-            statement.setString(2, password);
             rs = statement.executeQuery();
             if(rs.next()) {
-                checkLogin = true;
+                String hashed = rs.getString(1);
+                if(BCrypt.checkpw(password, hashed.trim())) {
+                    checkLogin = true;
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -226,15 +228,18 @@ public class UserDAO {
      * @return: true if register success |
      *       false if register fail
      */
-    public static boolean registerUser(String name, String email, String password) {
+    public static boolean registerUser(String username, String name, String email, String password, Date dob, String address) {
         boolean checkRegister = false;
-        String sql = "INSERT INTO USERS (name, email, password) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO USERS (username ,name, email, password, dOB, address) VALUES (?, ?, ?, ?, ?, ?);";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
-            statement.setString(1, name);
-            statement.setString(2, email);
-            statement.setString(3, password);
+            statement.setString(1, username);
+            statement.setString(2, name);
+            statement.setString(3, email);
+            statement.setString(4, BCrypt.hashpw(password, BCrypt.gensalt(12)));
+            statement.setDate(5, dob);
+            statement.setString(6, address);
             if (statement.executeUpdate() != 0) {
                 checkRegister = true;
             }

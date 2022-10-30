@@ -52,7 +52,7 @@ public class EventDAO {
                 Date dateTo = rs.getDate(7);
                 list.add(new Event(eventID, clubID, eventName, location, userID, dateFrom, dateTo));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return list;
 
@@ -78,14 +78,8 @@ public class EventDAO {
 
             ps.execute();
 
-        } catch (Exception e) {
-        } finally {
-            try {
-                ps.close();
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (SQLException e) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -111,14 +105,8 @@ public class EventDAO {
 
             ps.execute();
 
-        } catch (Exception e) {
-        } finally {
-            try {
-                ps.close();
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (SQLException e) {
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -136,13 +124,7 @@ public class EventDAO {
 
             ps.execute();
         } catch (Exception e) {
-        } finally {
-            try {
-                ps.close();
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }

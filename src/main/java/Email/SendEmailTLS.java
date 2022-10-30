@@ -11,16 +11,15 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import database.readENV;
 
 import java.util.Properties;
 
 public class SendEmailTLS {
 
     static Session loginGetSession(){
-        Dotenv dotenv = Dotenv.load();
-        final String username = dotenv.get("EMAIL_USERNAME");
-        final String password = dotenv.get("EMAIL_PASSWORD");
+        final String username = readENV.get("EMAIL_USERNAME");
+        final String password = readENV.get("EMAIL_PASSWORD");
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
