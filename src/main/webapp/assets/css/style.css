@@ -211,16 +211,8 @@ a {
     color: #635c5c
 }
 
-a:hover {
-    color: #fff
-}
 
-a:focus,
-a:hover,
-.portfolio-cat a:hover,
-.footer -menu li a:hover {
-    text-decoration: none
-}
+
 
 a,
 button {
@@ -2856,9 +2848,9 @@ hr {
 }
 
 .main-header .main-menu ul ul.submenu>li>a:hover {
-    color: #C86FFF;
+    /* color: #C86FFF;
     background: none;
-    padding-left: 13px !important
+    padding-left: 13px !important */
 }
 
 .button-header.margin-left {
@@ -2977,8 +2969,8 @@ hr {
 }
 
 .mobile_menu .slicknav_menu .slicknav_nav a:hover {
-    background: transparent;
-    color: #C86FFF
+    /* background: transparent;
+    color: #C86FFF */
 }
 
 .mobile_menu .slicknav_menu .slicknav_nav a {
@@ -4123,8 +4115,8 @@ hr {
 }
 
 .courses-area .properties__caption h3 a:hover {
-    text-decoration: underline;
-    color: #4255A4
+    /* text-decoration: underline;
+    color: #4255A4 */
 }
 
 .courses-area .properties__caption P {
@@ -4447,8 +4439,8 @@ hr {
 }
 
 .footer-area .footer-tittle ul li a:hover {
-    color: #fff;
-    text-decoration: underline
+    /* color: #fff;
+    text-decoration: underline */
 }
 
 .footer-area .footer-tittle p {
@@ -4517,8 +4509,8 @@ hr {
 }
 
 .footer-social a:hover {
-    color: #fff;
-    background: #C86FFF
+    /* color: #fff;
+    background: #C86FFF */
 }
 
 .footer-social a i {
@@ -4785,7 +4777,7 @@ hr {
 }
 
 .home-blog-area .home-blog-single .blog-img-cap .blog-cap h3 a:hover {
-    color: #C86FFF
+    /* color: #C86FFF */
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -4844,11 +4836,11 @@ hr {
 
 .blog_area a:hover,
 .blog_area a :hover {
-    background: -webkit-linear-gradient(131deg, #C86FFF 0%, #C86FFF 99%);
+    /* background: -webkit-linear-gradient(131deg, #C86FFF 0%, #C86FFF 99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
-    transition: .4s
+    transition: .4s */
 }
 
 .single-blog {
@@ -5515,7 +5507,7 @@ hr {
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body a:hover {
-    color: #fff
+    /* color: #fff */
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body p {
@@ -5545,12 +5537,12 @@ hr {
 }
 
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-    background: #C86FFF;
+    /* background: #C86FFF;
     color: #fff !important;
     -webkit-text-fill-color: #fff;
     text-decoration: none;
     -webkit-transition: 0.5s;
-    transition: 0.5s
+    transition: 0.5s */
 }
 
 .blog_right_sidebar .instagram_feeds .instagram_row {
@@ -5756,7 +5748,7 @@ hr {
 }
 
 .single-post-area .blog-author a:hover {
-    color: #FF9F67
+    /* color: #FF9F67 */
 }
 
 .single-post-area .blog-author p {
@@ -6058,7 +6050,7 @@ hr {
 }
 
 .contact-info .media-body h3 a:hover {
-    color: #1f2b7b
+    /* color: #1f2b7b */
 }
 
 .contact-info .media-body p {
@@ -7334,4 +7326,8 @@ del {
 
 .switch-wrap {
     margin-bottom: 10px
+}
+
+.club-joined li:hover {
+    background: #bababd
 }

@@ -71,8 +71,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
-                                                <!-- Button --><a href="#" class="btn">Join</a></li>
-                                                <li class="button-header"><a class="btn btn3" id="loginBtn">Log in</a>
+                                                <li class="button-header"><a class="btn btn3" id="loginBtn">Log in</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -372,7 +371,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/type-club-bg/football-scene-stadium-with-close-up-soccer-shoe-kicking-ball_207634-5556.jpg "
+                                <img src="https://picsum.photos/1920/1080" style=" border-radius:10px"
                                     alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
@@ -385,7 +384,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/type-club-bg/media.jpeg" alt="">
+                                <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Media & Publication</a></h3>
@@ -397,7 +396,7 @@
                     <div class=" col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/type-club-bg/community.png" alt="">
+                                <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Community & Services</a></h3>
@@ -409,7 +408,7 @@
                     <div class=" col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/type-club-bg/student.jpg" alt="">
+                                <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Academic & Education</a></h3>
@@ -421,8 +420,8 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/type-club-bg/studentGoverment.png" alt=""
-                                    style="width: 100%; height:100%">
+                                <img src="https://picsum.photos/1920/1080" alt=""
+                                    style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Student Government & Council</a></h3>
@@ -434,7 +433,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/type-club-bg/cutural.png" alt="" class="img-fluid">
+                                <img src="https://picsum.photos/1920/1080" alt="" class="img-fluid" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">MultiCutural & Religious</a></h3>
@@ -746,7 +745,6 @@
             });
 
             $('#forgotBtn').click(function () {
-                window.alert('click me');
                 $('#loginModal').modal('hide');
                 $('#registerModal').modal('hide');
                 $('#forgotModal').modal('show');
@@ -765,33 +763,6 @@
 
 </html>
 
-<!-- <div id="loginModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg" role="content">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Login </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-row">
-                        <form action="#">
-                            <input type="text" id="email" placeholder="Email address">
-                            <input type="password" id="password" placeholder="Password">
-                            <button type="submit">Log In</button>
-                            <a ID="forgot">Forgotten Password</a>
-                        </form>
-                    </div>
-                    <div class="form-row">
-                        <button type="button" class="btn btn-secondary btn-sm ml-auto"
-                            data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
 <style>
     form input {
         width: 100%;
@@ -819,10 +790,10 @@
             </div>
             <div class="modal-body">
                 <div class="form-row">
-                    <form action="#">
+                    <form action="./LoginServlet" method="post">
                         <div class="">
-                            <input type="text" class="col-10" id="emailLogin" placeholder="Email address">
-                            <input type="password" class="col-10" id="passwordLogin" placeholder="Password">
+                            <input type="text" class="col-10" id="emailLogin" name="login-email" placeholder="Email address">
+                            <input type="password" class="col-10" id="passwordLogin" name="login-password" placeholder="Password">
                             <button type="submit" class="col-10 btn btn-secondary" style="background-color: #699DEB">Log
                                 In</button>
                         </div>
@@ -849,13 +820,15 @@
             </div>
             <div class="modal-body">
                 <div class="form-row">
-                    <form action="#">
+                    <form action="./RegisterServlet">
                         <div class="">
-                            <input type="text" class="col-10" id="emailRegister" placeholder="Email address">
-                            <input type="text" class="col-10" id="nameRegister" placeholder="Full name">
-                            <input type="text" class="col-10" id="DOBRegister" placeholder="Date of birth"
+                            <input type="text" class="col-10" id="email-register" name="email-register" placeholder="Email">
+                            <input type="text" class="col-10" id="name-register" name="name-register" placeholder="Name">
+                            <input type="text" class="col-10" id="dob-register" name="Date of birth" placeholder="Date of birth"
                                 onfocus="(this.type='date')">
-                            <input type="password" class="col-10" id="passwordRegister" placeholder="Password">
+                            <input type="password" class="col-10" id="password-register" placeholder="Password" name="password-register">
+                            <input type="password" class="col-10" id="passwordConfirm-register" name="passwordConfirm-register" placeholder="Confirm password">
+                            <input type="text" class="col-10" id="username-register" name="username-register" placeholder="Username">
                             <button type="submit" class="col-10 btn btn-secondary"
                                 style="background-color: #699DEB">Register</button>
                         </div>
@@ -877,9 +850,9 @@
             </div>
             <div class="modal-body">
                 <div class="form-row">
-                    <form action="#">
+                    <form action="./ForgotPWServlet" method="post">
                         <div class="">o
-                            <input type="text" class="col-10" id="emailForgot" placeholder="Email address">
+                            <input type="text" class="col-10" id="" name="forgot-email" placeholder="Email address">
                             <button type="submit" class="col-10 btn btn-secondary"
                                 style="background-color: #699DEB">Submit</button>
                         </div>
