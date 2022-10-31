@@ -11,6 +11,7 @@ import java.sql.Date;
  *
  * @author quangpao
  */
+
 public class Post {
     
     private int postID;
@@ -18,18 +19,15 @@ public class Post {
     private String content;
     private Date time;
     private int clubID;
-    private int userID;
     private String image;
     private ArrayList<Comment> comments;
     
     // constructor with postID, title, description, content, time, clubID, userID
-    public Post(int postID, String title, String content, Date time, int clubID, int userID) {
+    public Post(int postID, String title, String content, Date time, int clubID) {
         this.postID = postID;
-        this.title = title;
         this.content = content;
         this.time = time;
         this.clubID = clubID;
-        this.userID = userID;
     }
 
     public Post(String title, String content, Date time, int clubID, int userID, String image) {
@@ -37,18 +35,16 @@ public class Post {
         this.content = content;
         this.time = time;
         this.clubID = clubID;
-        this.userID = userID;
         this.image = image;
     }
 
     // constructor with postID, title, content, time, clubID, userID, image
-    public Post(int postID, String title, String content, Date time, int clubID, int userID, String image) {
+    public Post(int postID, String title, String content, Date time, int clubID, String image) {
         this.postID = postID;
         this.title = title;
         this.content = content;
         this.time = time;
         this.clubID = clubID;
-        this.userID = userID;
         this.image = image;
     }
 
@@ -59,7 +55,6 @@ public class Post {
         this.content = content;
         this.time = time;
         this.clubID = clubID;
-        this.userID = userID;
         this.image = image;
         this.comments = comments;
     }
@@ -82,10 +77,6 @@ public class Post {
 
     public void setClubID(int clubID) {
         this.clubID = clubID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
     }
 
     public void setImage(String image) {
@@ -114,10 +105,6 @@ public class Post {
 
     public int getClubID() {
         return clubID;
-    }
-
-    public int getUserID() {
-        return userID;
     }
 
     public String getImage() {
