@@ -25,6 +25,13 @@ public class Fund {
         this.amount = amount;
     }
 
+    public Fund(int clubID, String fundName, Date dateCreated, int amount) {
+        this.clubID = clubID;
+        this.fundName = fundName;
+        this.dateCreated = dateCreated;
+        this.amount = amount;
+    }
+
     public int getFundId() {
         return fundId;
     }

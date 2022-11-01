@@ -21,7 +21,7 @@ import entity.ContributeFund;
 public class ContributeFundDAO {
     
     static ConnectDB db = ConnectDB.getInstance();
-    static Connection con = db.openConnection();
+    static Connection con = null;
     static PreparedStatement statement = null;
     static ResultSet rs = null;
 

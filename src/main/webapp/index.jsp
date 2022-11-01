@@ -823,7 +823,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-row">
-                    <form action="./RegisterServlet">
+                    <form action="./RegisterServlet" method="post">
                         <div class="">
                             <input type="text" class="col-10" id="email-register" name="email-register" placeholder="Email">
                             <input type="text" class="col-10" id="name-register" name="name-register" placeholder="Name">

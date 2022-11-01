@@ -16,7 +16,7 @@ public class DatabaseTests {
     @DisplayName("Test database connection")
     void testDatabaseConnection() {
 
-        assertEquals(true, UserDAO.checkRegister("bao@gmail.com"));
+        assertEquals(true, UserDAO.checkRegister("database@gmail.com"));
 
     }
 
