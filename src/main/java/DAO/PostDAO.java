@@ -40,11 +40,10 @@ public class PostDAO {
                 int postID = Integer.parseInt(rs.getString(1).trim());
                 String title = rs.getString(2);
                 String content = rs.getString(3).trim();
-                Date time = rs.getDate(4);
-                int clubID = Integer.parseInt(rs.getString(5).trim());
-                int userID = Integer.parseInt(rs.getString(6).trim());
-                String image = rs.getString(7);
-                list.add(new Post(postID, title, content, time, clubID, userID, image));
+                Date time = rs.getDate(5);
+                int clubID = Integer.parseInt(rs.getString(4).trim());
+                String image = rs.getString(6);
+                list.add(new Post(postID, title, content, time, clubID, image));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsMethod", ex);
@@ -75,11 +74,10 @@ public class PostDAO {
             while (rs.next()) {
                 String title = rs.getString(2);
                 String content = rs.getString(3).trim();
-                Date time = rs.getDate(4);
-                int clubID = Integer.parseInt(rs.getString(5).trim());
-                int userID = Integer.parseInt(rs.getString(6).trim());
-                String image = rs.getString(7);
-                post = new Post(postID, title, content, time, clubID, userID, image);
+                Date time = rs.getDate(5);
+                int clubID = Integer.parseInt(rs.getString(4).trim());
+                String image = rs.getString(6);
+                post = new Post(postID, title, content, time, clubID, image);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostByIDMethod", ex);
@@ -111,10 +109,9 @@ public class PostDAO {
                 int postID = Integer.parseInt(rs.getString(1).trim());
                 String title = rs.getString(2);
                 String content = rs.getString(3).trim();
-                Date time = rs.getDate(4);
-                int userID = Integer.parseInt(rs.getString(6).trim());
-                String image = rs.getString(7);
-                list.add(new Post(postID, title, content, time, clubID, userID, image));
+                Date time = rs.getDate(5);
+                String image = rs.getString(6);
+                list.add(new Post(postID, title, content, time, clubID, image));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByClubIDMethod", ex);
@@ -125,77 +122,6 @@ public class PostDAO {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByClubIDMethod", ex);
-        }
-        return list;
-    }
-
-    /**
-     * Get post by userID
-     * @param userID
-     * @return: ArrayList<Post>
-     */
-    public static ArrayList<Post> getPostsByUserID(int userID) {
-        ArrayList<Post> list = new ArrayList<>();
-        try {
-            con = db.openConnection();
-            String sql = "SELECT * FROM [POSTS] WHERE userID = ? order by postID";
-            statement = con.prepareStatement(sql);
-            statement.setInt(1, userID);
-            rs = statement.executeQuery();
-            while (rs.next()) {
-                int postID = Integer.parseInt(rs.getString(1).trim());
-                String title = rs.getString(2);
-                String content = rs.getString(3).trim();
-                Date time = rs.getDate(4);
-                int clubID = Integer.parseInt(rs.getString(5).trim());
-                String image = rs.getString(7);
-                list.add(new Post(postID, title, content, time, clubID, userID, image));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByUserIDMethod", ex);
-        }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByUserIDMethod", ex);
-        }
-        return list;
-    }
-
-    /**
-     * Get post by userID and clubID
-     * @param userID
-     * @param clubID
-     * @return: ArrayList<Post>
-     */
-    public static ArrayList<Post> getPostsByUserIDAndClubID(int userID, int clubID) {
-        ArrayList<Post> list = new ArrayList<>();
-        try {
-            con = db.openConnection();
-            String sql = "SELECT * FROM [POSTS] WHERE userID = ? AND clubID = ? order by postID";
-            statement = con.prepareStatement(sql);
-            statement.setInt(1, userID);
-            statement.setInt(2, clubID);
-            rs = statement.executeQuery();
-            while (rs.next()) {
-                int postID = Integer.parseInt(rs.getString(1).trim());
-                String title = rs.getString(2);
-                String content = rs.getString(3).trim();
-                Date time = rs.getDate(4);
-                String image = rs.getString(7);
-                list.add(new Post(postID, title, content, time, clubID, userID, image));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByUserIDAndClubIDMethod", ex);
-        }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByUserIDAndClubIDMethod", ex);
         }
         return list;
     }
@@ -207,15 +133,13 @@ public class PostDAO {
     public static boolean createPost(Post post) {
         try {
             con = db.openConnection();
-            String sql = "INSERT INTO [POSTS] VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO [POSTS] VALUES(?,?,?,?,?)";
             statement = con.prepareStatement(sql);
-            statement.setInt(1, post.getPostID());
-            statement.setString(2, post.getTitle());
-            statement.setString(3, post.getContent());
+            statement.setString(1, post.getTitle());
+            statement.setString(2, post.getContent());
             statement.setDate(4, post.getTime());
-            statement.setInt(5, post.getClubID());
-            statement.setInt(6, post.getUserID());
-            statement.setString(7, post.getImage());
+            statement.setInt(3, post.getClubID());
+            statement.setString(5, post.getImage());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO createPostMethod", ex);
@@ -237,15 +161,14 @@ public class PostDAO {
     public static boolean updatePost(Post post) {
         try {
             con = db.openConnection();
-            String sql = "UPDATE [POSTS] SET title = ?, content = ?, time = ?, clubID = ?, userID = ?, image = ? WHERE postID = ?";
+            String sql = "UPDATE [POSTS] SET title = ?, content = ?, time = ?, clubID = ?, image = ? WHERE postID = ?";
             statement = con.prepareStatement(sql);
             statement.setString(1, post.getTitle());
             statement.setString(2, post.getContent());
             statement.setDate(3, post.getTime());
             statement.setInt(4, post.getClubID());
-            statement.setInt(5, post.getUserID());
-            statement.setString(6, post.getImage());
-            statement.setInt(7, post.getPostID());
+            statement.setString(5, post.getImage());
+            statement.setInt(6, post.getPostID());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO updatePostMethod", ex);
