@@ -124,4 +124,30 @@ public class ClubDAO {
         }
         return clubs;
     }
+    
+    public static Club getClubByID(int clubID){
+        ConnectDB db = ConnectDB.getInstance();
+        Connection con = null;
+        Club club = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+//        String check = null;
+        try {
+            con = db.openConnection();
+            String sql = "SELECT * FROM CLUBS";
+            statement = con.prepareStatement(sql);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
+                club = new Club(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),date,rs.getString(6),rs.getString(7));
+            }
+            rs.close();
+            statement.close();
+            con.close();
+
+        } catch (Exception e) {
+            return null;
+        }
+        return club;
+    }
 }

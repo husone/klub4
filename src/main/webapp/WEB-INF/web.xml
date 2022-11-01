@@ -1,47 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-  version="2.5"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>controller.LoginServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>controller.RegisterServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>PostServlet</servlet-name>
-    <servlet-class>controller.PostServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ClubServlet</servlet-name>
-    <servlet-class>controller.ClubServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/LoginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/RegisterServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>PostServlet</servlet-name>
-    <url-pattern>/PostServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ClubServlet</servlet-name>
-    <url-pattern>/ClubServlet</url-pattern>
-  </servlet-mapping>
-  <session-config>
-    <session-timeout>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManagePost</servlet-name>
+        <servlet-class>controller.AdminManagePost</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManagePost</servlet-name>
+        <url-pattern>/AdminManagePost</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
         30
     </session-timeout>
-  </session-config>
+    </session-config>
 </web-app>

@@ -78,7 +78,7 @@
                                             </ul>
                                         </nav>
                                     </div>
-                                </div>
+                                </div>  
                             </div>
                             <!-- Mobile Menu -->
                             <div class="col-12">

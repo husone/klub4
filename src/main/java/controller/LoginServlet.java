@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest    request, HttpServletResponse response)
     throws ServletException, IOException {
         String email = request.getParameter("login-email");
         String password = request.getParameter("login-password");
@@ -45,7 +45,12 @@ public class LoginServlet extends HttpServlet {
         if (isValid) {
             HttpSession session = request.getSession();
             session.setAttribute("userData", UserDAO.getUserByEmail(email));
-            response.sendRedirect("/blog.html");
+            if (email.equals("admin")){
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-dashboard.html");
+            dispatcher.forward(request, response);
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/club_home.html");
+            dispatcher.forward(request, response);
         } else {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
