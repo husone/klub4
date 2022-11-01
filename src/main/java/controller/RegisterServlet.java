@@ -35,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
             String passwordConfirm = request.getParameter("passwordConfirm-register");
             String address = request.getParameter("address-register");
             String dob = request.getParameter("dob-register");
-            String username = request.getParameter("username-register");
+            // String username = request.getParameter("username-register");
 
             //change to Date
             Date sqlDate = Date.valueOf(dob);
@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
             boolean isValid = !UserDAO.checkRegister(email);
             boolean isPassword = password.equals(passwordConfirm);
             if (isValid && isPassword) {
-                if (UserDAO.registerUser(username, name, email, password, sqlDate, address)) {
+                if (UserDAO.registerUser(name, email, password, sqlDate, address)) {
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("login.jsp");
                     dispatcher.forward(request, response);
                 } else {
