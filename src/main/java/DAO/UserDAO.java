@@ -44,14 +44,14 @@ public class UserDAO {
             rs = statement.executeQuery();
             while (rs.next()) {
                 int userID = Integer.parseInt(rs.getString(1).trim());
-                String username = rs.getString(2);
-                String name = rs.getString(3).trim();
-                String email = rs.getString(4).trim();
-                String password = rs.getString(5).trim();
-                Date dOB = rs.getDate(6);
-                String address = rs.getString(7);
+                String name = rs.getString(2).trim();
+                String email = rs.getString(3).trim();
+                String password = rs.getString(4).trim();
+                Date dOB = rs.getDate(5);
+                String address = rs.getString(6);
+                String PIN = rs.getString(7);
                 String avatar = rs.getString(8);
-                list.add(new User(userID, username, name, email, password, dOB, address, avatar));
+                list.add(new User(userID, name, email, password, dOB, address, PIN, avatar));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, "UserDAO getUsersMethod", ex);
@@ -121,14 +121,13 @@ public class UserDAO {
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getName());
-            statement.setString(3, user.getEmail());
-            statement.setString(4, user.getPassword());
-            statement.setDate(5, user.getdOB());
-            statement.setString(6, user.getAddress());
-            statement.setInt(7, user.getUserID());
-            statement.setString(8, user.getAvatar());
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setDate(4, user.getdOB());
+            statement.setString(5, user.getAddress());
+            statement.setInt(6, user.getUserID());
+            statement.setString(7, user.getAvatar());
             checkUpdate = statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -212,7 +211,7 @@ public class UserDAO {
             statement.setString(1, email);
             rs = statement.executeQuery();
             if (rs.next()) {
-                user = new User(rs.getInt("userID"), rs.getString("username"), rs.getString("name"), rs.getString("email"), rs.getString("password"), rs.getDate("dOB"), rs.getString("address"), rs.getString("avatar"));
+                user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getString(6), rs.getString(7), rs.getString(8));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,18 +227,17 @@ public class UserDAO {
      * @return: true if register success |
      *       false if register fail
      */
-    public static boolean registerUser(String username, String name, String email, String password, Date dob, String address) {
+    public static boolean registerUser(String name, String email, String password, Date dob, String address) {
         boolean checkRegister = false;
-        String sql = "INSERT INTO USERS (username ,name, email, password, dOB, address) VALUES (?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO USERS (name, email, password, dOB, address) VALUES (?, ?, ?, ?, ?);";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
-            statement.setString(1, username);
-            statement.setString(2, name);
-            statement.setString(3, email);
-            statement.setString(4, BCrypt.hashpw(password, BCrypt.gensalt(12)));
-            statement.setDate(5, dob);
-            statement.setString(6, address);
+            statement.setString(1, name);
+            statement.setString(2, email);
+            statement.setString(3, BCrypt.hashpw(password, BCrypt.gensalt(12)));
+            statement.setDate(4, dob);
+            statement.setString(5, address);
             if (statement.executeUpdate() != 0) {
                 checkRegister = true;
             }
@@ -247,5 +245,39 @@ public class UserDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return checkRegister;
+    }
+    
+    public static boolean setPIN(String email, String PIN){
+        if (getUserByEmail(email)==null) {
+            return false;
+        }
+        String sql = "INSERT INTO USERS (PIN) VALUES (?) WHERE EMAIL = ? ;";
+        try {
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1,PIN);
+            statement.setString(2,email);
+        }
+         catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
+    public static boolean deletePIN(String email, String PIN){
+        if (getUserByEmail(email)==null) {
+            return false;
+        }
+        String sql = "INSERT INTO USERS (PIN) VALUES (?) WHERE EMAIL = ? ;";
+        try {
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1,PIN);
+            statement.setString(2,email);
+        }
+         catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
     }
 }

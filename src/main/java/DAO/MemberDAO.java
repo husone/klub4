@@ -27,14 +27,11 @@ public class MemberDAO {
         java.sql.Date sqlDate = new java.sql.Date(member.getDayJoined().getTime());
         try {
             con = db.openConnection();
-            String sql = "insert into member values (?,?,?,?,?,?) ";
+            String sql = "insert into member (userID, clubID)values (?,?) ";
             statement = con.prepareStatement(sql);
-            statement.setInt(1, member.getMemberID());
-            statement.setInt(2, member.getUserID());
-            statement.setInt(3, member.getRole());
-            statement.setInt(4, member.getPoint());
-            statement.setDate(5, sqlDate);
-            statement.setInt(6, member.getMembership());
+            statement.setInt(1, member.getUserID());
+            statement.setInt(2, member.getClubID());
+            statement.execute();
             con.close();
         } catch (Exception e) {
             return;
@@ -57,7 +54,7 @@ public class MemberDAO {
         }
     }
     
-    public static List<Member> getAllClubs() throws Exception {
+    public static List<Member> getAllMembers() throws Exception {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         List<Member> members = new ArrayList<>();
@@ -71,7 +68,7 @@ public class MemberDAO {
             rs = statement.executeQuery();
             while (rs.next()) {
                 java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
-                members.add(new Member(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),date,rs.getInt(6)));
+                members.add(new Member(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4),date));
             }
             rs.close();
             statement.close();

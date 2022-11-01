@@ -24,18 +24,16 @@ public class ClubDAO {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
-        java.sql.Date sqlDate = new java.sql.Date(club.getDatedCreated().getTime());
         try {
             con = db.openConnection();
-            String sql = "insert into clubs values (?,?,?,?,?,?,?) ";
+            String sql = "insert into clubs (clubId, clubName, clubType, managerID, description, logo) values (?,?,?,?,?,?,?) ";
             statement = con.prepareStatement(sql);
             statement.setInt(1, club.getClubID());
             statement.setString(2, club.getClubName());
-            statement.setInt(3, club.getManagerID());
-            statement.setDate(4, sqlDate);
-            statement.setString(5, club.getLocation());
-            statement.setString(6, club.getDescription());
-            statement.setString(7, club.getLogo());
+            statement.setString(3, club.getClubType());
+            statement.setInt(4, club.getManagerID());
+            statement.setString(5, club.getDescription());
+            statement.setString(6, club.getLogo());
             con.close();
         } catch (Exception e) {
             return;
@@ -67,17 +65,15 @@ public class ClubDAO {
             con = db.openConnection();
             String sql = "UPDATE Clubs SET "
                     + "clubName = ?,"
-                    + "location = ?,"
                     + "description = ?,"
                     + "logo = ?,"
                     + "where clubID = ?;";
             statement = con.prepareStatement(sql);
             statement.setString(1, club.getClubName());
 //            statement.setInt(2, club.getManagerID());
-            statement.setString(2, club.getLocation());
-            statement.setString(3, club.getDescription());
-            statement.setString(4, club.getLogo());
-            statement.setInt(5, club.getClubID());
+            statement.setString(2, club.getDescription());
+            statement.setString(3, club.getLogo());
+            statement.setInt(4, club.getClubID());
             con.close();
         } catch (Exception e) {
             return;
@@ -116,8 +112,8 @@ public class ClubDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date  date = new java.util.Date(rs.getDate(4).getTime());
-                clubs.add(new Club(rs.getInt(1),rs.getString(2),rs.getInt(3),date,rs.getString(5),rs.getString(6),rs.getString(7)));
+                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
+                clubs.add(new Club(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),date,rs.getString(6),rs.getString(7)));
             }
             rs.close();
             statement.close();

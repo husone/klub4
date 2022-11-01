@@ -57,16 +57,14 @@ public class CommentDAO {
 
     public void addComment(Comment cmt) {
         java.sql.Date timeCmt = new java.sql.Date(cmt.getTime().getTime());
-        String sql = "INSERT INTO [COMMENTS] (commentID, userID, postID, time, content)\n" +
-                "VALUES (?,?,?,?,?);";
+        String sql = "INSERT INTO [COMMENTS] (userID, postID, content)\n" +
+                "VALUES (?,?,?);";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
-            statement.setInt(1, cmt.getCommentID());
-            statement.setInt(2, cmt.getUserID());
-            statement.setInt(3, cmt.getPostID());
-            statement.setDate(4, timeCmt);
-            statement.setString(5, cmt.getContent());
+            statement.setInt(1, cmt.getMemberID());
+            statement.setInt(2, cmt.getPostID());
+            statement.setString(3, cmt.getContent());
             statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
