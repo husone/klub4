@@ -12,19 +12,19 @@ import java.sql.Date;
  */
 public class Comment {
     private int commentID;
-    private int userID;
+    private int memberID;
     private int postID;
     private Date time;
     private String content;
 
-    public Comment(int commentID, int userID, int postID, Date time, String content) {
+    public Comment(int commentID, int memberID, int postID, Date time, String content) {
         this.commentID = commentID;
-        this.userID = userID;
+        this.memberID = memberID;
         this.postID = postID;
         this.time = time;
         this.content = content;
     }
-
+    
     public int getCommentID() {
         return commentID;
     }
@@ -33,12 +33,12 @@ public class Comment {
         this.commentID = commentID;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getMemberID() {
+        return memberID;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setMemberID(int memberID) {
+        this.memberID = memberID;
     }
 
     public int getPostID() {
@@ -65,10 +65,6 @@ public class Comment {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "Comment{" + "commentID=" + commentID + ", userID=" + userID + ", postID=" + postID + ", time=" + time + ", content=" + content + '}';
-    }
     
     
 }

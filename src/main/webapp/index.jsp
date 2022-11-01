@@ -854,7 +854,7 @@
             <div class="modal-body">
                 <div class="form-row">
                     <form action="./ForgotPWServlet" method="post">
-                        <div class="">o
+                        <div class="">
                             <input type="text" class="col-10" id="" name="forgot-email" placeholder="Email address">
                             <button type="submit" class="col-10 btn btn-secondary"
                                 style="background-color: #699DEB">Submit</button>

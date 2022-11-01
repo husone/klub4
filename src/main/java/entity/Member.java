@@ -14,21 +14,16 @@ import java.util.Date;
 public class Member {
     private int memberID;
     private int userID;
-    private int role;
+    private int clubID;
     private int point;
     private Date dayJoined;
-    private int membership;
-    
-    public Member() {
-    }
 
-    public Member(int memberID, int userID, int role, int point, Date dayJoined, int membership) {
+    public Member(int memberID, int userID, int clubID, int point, Date dayJoined) {
         this.memberID = memberID;
         this.userID = userID;
-        this.role = role;
+        this.clubID = clubID;
         this.point = point;
         this.dayJoined = dayJoined;
-        this.membership = membership;
     }
 
     public int getMemberID() {
@@ -47,12 +42,12 @@ public class Member {
         this.userID = userID;
     }
 
-    public int getRole() {
-        return role;
+    public int getClubID() {
+        return clubID;
     }
 
-    public void setRole(int role) {
-        this.role = role;
+    public void setClubID(int clubID) {
+        this.clubID = clubID;
     }
 
     public int getPoint() {
@@ -70,16 +65,6 @@ public class Member {
     public void setDayJoined(Date dayJoined) {
         this.dayJoined = dayJoined;
     }
-
-    public int getMembership() {
-        return membership;
-    }
-
-    public void setMembership(int membership) {
-        this.membership = membership;
-    }
     
-    
-
     
 }

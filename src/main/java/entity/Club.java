@@ -14,39 +14,29 @@ import java.util.Date;
 public class Club {
     private int clubID;
     private String clubName;
+    private String clubType;
     private int managerID;
     private Date datedCreated;
-    private String location;
     private String description;
     private String logo;
 
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public Club() {
-    }
-
-    public Club(int clubID, String clubName, int managerID, Date datedCreated, String location, String description, String logo) {
+    public Club(int clubID, String clubName, String clubType, int managerID, String description, String logo) {
         this.clubID = clubID;
         this.clubName = clubName;
+        this.clubType = clubType;
         this.managerID = managerID;
-        this.datedCreated = datedCreated;
-        this.location = location;
         this.description = description;
         this.logo = logo;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public Club(int clubID, String clubName, String clubType, int managerID, Date datedCreated, String description, String logo) {
+        this.clubID = clubID;
+        this.clubName = clubName;
+        this.clubType = clubType;
+        this.managerID = managerID;
+        this.datedCreated = datedCreated;
+        this.description = description;
+        this.logo = logo;
     }
 
     public int getClubID() {
@@ -63,6 +53,14 @@ public class Club {
 
     public void setClubName(String clubName) {
         this.clubName = clubName;
+    }
+
+    public String getClubType() {
+        return clubType;
+    }
+
+    public void setClubType(String clubType) {
+        this.clubType = clubType;
     }
 
     public int getManagerID() {
@@ -89,4 +87,12 @@ public class Club {
         this.description = description;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+    
 }

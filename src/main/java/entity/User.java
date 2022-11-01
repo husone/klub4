@@ -12,33 +12,24 @@ import java.sql.Date;
  */
 public class User {
     private int userID;
-    private String username;
     private String name;
     private String email;
     private String password;
     private Date dOB;
     private String address;
+    private String OTP;
     private String avatar;
 
-    public User(int userID, String username, String name, String email, String password, Date dOB, String address, String avatar) {
+    public User(int userID, String name, String email, String password, Date dOB, String address, String OTP, String avatar) {
         this.userID = userID;
-        this.username = username;
         this.name = name;
         this.email = email;
         this.password = password;
         this.dOB = dOB;
         this.address = address;
+        this.OTP = OTP;
         this.avatar = avatar;
-    }
-
-    
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
+    } 
 
     public int getUserID() {
         return userID;
@@ -46,14 +37,6 @@ public class User {
 
     public void setUserID(int userID) {
         this.userID = userID;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getName() {
@@ -96,10 +79,19 @@ public class User {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + "userID=" + userID + ", username=" + username + ", name=" + name + ", email=" + email + ", password=" + password + ", dOB=" + dOB + ", address=" + address + ", avatar=" + avatar + '}';
+    public String getOTP() {
+        return OTP;
     }
-    
-    
+
+    public void setOTP(String OTP) {
+        this.OTP = OTP;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }
