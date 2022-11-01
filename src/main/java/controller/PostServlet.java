@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -98,8 +99,8 @@ public class PostServlet extends HttpServlet {
             default:
                 break;
         }
-
-        response.sendRedirect("/blog.html");
+        RequestDispatcher rd = request.getRequestDispatcher("club.jsp");
+        rd.forward(request, response);
     }
 
     @Override
@@ -121,6 +122,8 @@ public class PostServlet extends HttpServlet {
             default:
                 break;
         }
+        RequestDispatcher rd = request.getRequestDispatcher("club.jsp");
+        rd.forward(request, response);
     }
 
     @Override

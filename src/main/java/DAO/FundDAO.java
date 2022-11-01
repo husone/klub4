@@ -21,7 +21,7 @@ import entity.Fund;
 public class FundDAO {
     
     static ConnectDB db = ConnectDB.getInstance();
-    static Connection con = db.openConnection();
+    static Connection con = null;
     static PreparedStatement statement = null;
     static ResultSet rs = null;
 

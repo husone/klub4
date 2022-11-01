@@ -15,24 +15,22 @@ import entity.Post;
 /**
  *
  * @author quangpao
- * @version 1.2
+ * @version 1.3
  */
 
 public class PostDAO {
-    
-    static ConnectDB db = ConnectDB.getInstance();
-    static Connection con = db.openConnection();
-    static PreparedStatement statement = null;
-    static ResultSet rs = null;
 
     /**
      * Get all post
      * @return: ArrayList<Post>
      */
     public static ArrayList<Post> getPosts() {
+        ConnectDB db = ConnectDB.getInstance();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
         ArrayList<Post> list = new ArrayList<>();
         try {
-            con = db.openConnection();
+            Connection con = db.openConnection();
             String sql = "SELECT * FROM [POSTS] order by postID";
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
@@ -48,13 +46,6 @@ public class PostDAO {
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsMethod", ex);
         }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsMethod", ex);
-        }
         return list;
     }
 
@@ -64,9 +55,12 @@ public class PostDAO {
      * @return: Post
      */
     public static Post getPostByID(int postID) {
+        ConnectDB db = ConnectDB.getInstance();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
         Post post = null;
         try {
-            con = db.openConnection();
+            Connection con = db.openConnection();
             String sql = "SELECT * FROM [POSTS] WHERE postID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, postID);
@@ -82,13 +76,6 @@ public class PostDAO {
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostByIDMethod", ex);
         }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostByIDMethod", ex);
-        }
         return post;
     }
 
@@ -98,9 +85,12 @@ public class PostDAO {
      * @return: ArrayList<Post>
      */
     public static ArrayList<Post> getPostsByClubID(int clubID) {
+        ConnectDB db = ConnectDB.getInstance();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
         ArrayList<Post> list = new ArrayList<>();
         try {
-            con = db.openConnection();
+            Connection con = db.openConnection();
             String sql = "SELECT * FROM [POSTS] WHERE clubID = ? order by postID";
             statement = con.prepareStatement(sql);
             statement.setInt(1, clubID);
@@ -116,13 +106,6 @@ public class PostDAO {
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByClubIDMethod", ex);
         }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO getPostsByClubIDMethod", ex);
-        }
         return list;
     }
 
@@ -131,8 +114,10 @@ public class PostDAO {
      * @return: boolean
      */
     public static boolean createPost(Post post) {
+        ConnectDB db = ConnectDB.getInstance();
+        PreparedStatement statement = null;
         try {
-            con = db.openConnection();
+            Connection con = db.openConnection();
             String sql = "INSERT INTO [POSTS] VALUES(?,?,?,?,?)";
             statement = con.prepareStatement(sql);
             statement.setString(1, post.getTitle());
@@ -145,12 +130,6 @@ public class PostDAO {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO createPostMethod", ex);
             return false;
         }
-        try {
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO createPostMethod", ex);
-        }
         return true;
     }
 
@@ -159,8 +138,10 @@ public class PostDAO {
      * @return: boolean
      */
     public static boolean updatePost(Post post) {
+        ConnectDB db = ConnectDB.getInstance();
+        PreparedStatement statement = null;
         try {
-            con = db.openConnection();
+            Connection con = db.openConnection();
             String sql = "UPDATE [POSTS] SET title = ?, content = ?, time = ?, clubID = ?, image = ? WHERE postID = ?";
             statement = con.prepareStatement(sql);
             statement.setString(1, post.getTitle());
@@ -174,12 +155,6 @@ public class PostDAO {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO updatePostMethod", ex);
             return false;
         }
-        try {
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO updatePostMethod", ex);
-        }
         return true;
     }
 
@@ -188,8 +163,10 @@ public class PostDAO {
      * @return: boolean
      */
     public static boolean deletePost(int postID) {
+        ConnectDB db = ConnectDB.getInstance();
+        PreparedStatement statement = null;
         try {
-            con = db.openConnection();
+            Connection con = db.openConnection();
             String sql = "DELETE FROM [POSTS] WHERE postID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, postID);
@@ -197,12 +174,6 @@ public class PostDAO {
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO deletePostMethod", ex);
             return false;
-        }
-        try {
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO deletePostMethod", ex);
         }
         return true;
     }

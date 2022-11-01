@@ -16,6 +16,14 @@
         <servlet-name>AdminManagePost</servlet-name>
         <servlet-class>controller.AdminManagePost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EventServlet</servlet-name>
+        <servlet-class>controller.EventServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FundManagerServlet</servlet-name>
+        <servlet-class>controller.FundManagerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -27,6 +35,14 @@
     <servlet-mapping>
         <servlet-name>AdminManagePost</servlet-name>
         <url-pattern>/AdminManagePost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventServlet</servlet-name>
+        <url-pattern>/EventServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FundManagerServlet</servlet-name>
+        <url-pattern>/FundManagerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
