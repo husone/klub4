@@ -24,7 +24,7 @@ public class DatabaseTests {
     @DisplayName("Insert user")
     void testInsertUser() {
         String password = "1292131232";
-        assertEquals(true, UserDAO.registerUser("testdatabase", "Thử Database", "database@gmail.com", password, Date.valueOf("1999-12-12"), "Hà Nội"));
+        assertEquals(true, UserDAO.registerUser("Thử Database", "database@gmail.com", password, Date.valueOf("1999-12-12"), "Hà Nội"));
     }
     @Test
     @DisplayName("Test BCrypt")

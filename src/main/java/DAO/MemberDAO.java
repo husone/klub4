@@ -24,7 +24,7 @@ public class MemberDAO {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
-        java.sql.Date sqlDate = new java.sql.Date(member.getDayJoined().getTime());
+        // java.sql.Date sqlDate = new java.sql.Date(member.getDayJoined().getTime());
         try {
             con = db.openConnection();
             String sql = "insert into member (userID, clubID)values (?,?) ";
