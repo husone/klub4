@@ -56,7 +56,7 @@ public class CommentDAO {
     }
 
     public void addComment(Comment cmt) {
-        java.sql.Date timeCmt = new java.sql.Date(cmt.getTime().getTime());
+        // java.sql.Date timeCmt = new java.sql.Date(cmt.getTime().getTime());
         String sql = "INSERT INTO [COMMENTS] (userID, postID, content)\n" +
                 "VALUES (?,?,?);";
         try {
