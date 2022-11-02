@@ -16,7 +16,7 @@ public class Club {
     private String clubName;
     private String clubType;
     private int managerID;
-    private Date datedCreated;
+    private Date dateCreated;
     private String description;
     private String logo;
 
@@ -29,12 +29,12 @@ public class Club {
         this.logo = logo;
     }
 
-    public Club(int clubID, String clubName, String clubType, int managerID, Date datedCreated, String description, String logo) {
+    public Club(int clubID, String clubName, String clubType, int managerID, Date dateCreated, String description, String logo) {
         this.clubID = clubID;
         this.clubName = clubName;
         this.clubType = clubType;
         this.managerID = managerID;
-        this.datedCreated = datedCreated;
+        this.dateCreated = dateCreated;
         this.description = description;
         this.logo = logo;
     }
@@ -71,12 +71,12 @@ public class Club {
         this.managerID = managerID;
     }
 
-    public Date getDatedCreated() {
-        return datedCreated;
+    public Date getdateCreated() {
+        return dateCreated;
     }
 
-    public void setDatedCreated(Date datedCreated) {
-        this.datedCreated = datedCreated;
+    public void setdateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public String getDescription() {

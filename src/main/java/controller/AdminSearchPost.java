@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sonsi
  */
-public class AdminManagePost extends HttpServlet {
+public class AdminSearchPost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class AdminManagePost extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminManagePost</title>");
+            out.println("<title>Servlet AdminSearchPost</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminManagePost at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminSearchPost at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,13 +59,18 @@ public class AdminManagePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
+        String data = request.getParameter("searchData");
         List<Post> postList = PostDAO.getPosts();
-        if (postList.isEmpty()) {
-        request.setAttribute("noContent", "Không có bài viết nào");
+        List<Post> pl = new ArrayList<Post>();
+        for (Post post : postList) {
+            if (post.getTitle().contains(data) || post.getContent().contains(data)) {
+                pl.add(post);
+            }
         }
-        request.setAttribute("content", postList);
-
+        if (pl.isEmpty()) {
+            request.setAttribute("noContent", "Không tìm thấy bài viết nào");
+        }
+        request.setAttribute("content", pl);
         request.getRequestDispatcher("/admin-manage-post.jsp").forward(request, response);
     }
 

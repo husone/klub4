@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("userData", UserDAO.getUserByEmail(email));
             if (email.equals("admin")){
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-dashboard.html");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminDashboard");
             dispatcher.forward(request, response);
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/club_home.html");

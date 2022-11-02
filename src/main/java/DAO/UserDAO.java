@@ -30,9 +30,9 @@ public class UserDAO {
     static PreparedStatement statement = null;
     static ResultSet rs = null;
 
-
     /**
      * Get all user
+     *
      * @return: ArrayList<User>
      */
     public static ArrayList<User> getUsers() {
@@ -66,11 +66,42 @@ public class UserDAO {
         return list;
     }
 
+    public static ArrayList<User> get10LatestUsers() {
+        ArrayList<User> list = new ArrayList<>();
+        try {
+            con = db.openConnection();
+            String sql = "SELECT TOP 10 * FROM [USERS] order by userID DESC ";
+            statement = con.prepareStatement(sql);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                int userID = Integer.parseInt(rs.getString(1).trim());
+                String name = rs.getString(2).trim();
+                String email = rs.getString(3).trim();
+                String password = rs.getString(4).trim();
+                Date dOB = rs.getDate(5);
+                String address = rs.getString(6);
+                String PIN = rs.getString(7);
+                String avatar = rs.getString(8);
+                list.add(new User(userID, name, email, password, dOB, address, PIN, avatar));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, "UserDAO getUsersMethod", ex);
+        }
+        try {
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
     /**
      * Delete User by userID
+     *
      * @param userID
-     * @return: true if delete success |
-     *        false if delete fail
+     * @return: true if delete success | false if delete fail
      */
     public static boolean deleteUser(int userID) {
         ArrayList<User> list = getUsers();
@@ -107,9 +138,9 @@ public class UserDAO {
 
     /**
      * Update User
+     *
      * @param user
-     * @return: true if update success |
-     *        false if update fail
+     * @return: true if update success | false if update fail
      */
     public static boolean updateUser(User user) {
 
@@ -144,10 +175,11 @@ public class UserDAO {
 
     /**
      * Check Login
+     *
      * @param email
      * @param password Didn't hashing password
-     * @return true if email and password is correct |
-     *         false if email and password is incorrect
+     * @return true if email and password is correct | false if email and
+     * password is incorrect
      */
     public static boolean checkLogin(String email, String password) {
         System.out.println("email: " + email);
@@ -159,9 +191,9 @@ public class UserDAO {
             statement = con.prepareStatement(sql);
             statement.setString(1, email);
             rs = statement.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 String hashed = rs.getString(1);
-                if(BCrypt.checkpw(password, hashed.trim())) {
+                if (BCrypt.checkpw(password, hashed.trim())) {
                     checkLogin = true;
                 }
             }
@@ -174,9 +206,9 @@ public class UserDAO {
 
     /**
      * Check if email is existed in the database
+     *
      * @param email
-     * @return true if email is existed |
-     *       false if email is not existed
+     * @return true if email is existed | false if email is not existed
      */
     public static boolean checkRegister(String email) {
 
@@ -199,6 +231,7 @@ public class UserDAO {
 
     /**
      * Get User by email
+     *
      * @param email
      * @return User
      */
@@ -221,11 +254,11 @@ public class UserDAO {
 
     /**
      * Register User
+     *
      * @param name
      * @param email
      * @param password
-     * @return: true if register success |
-     *       false if register fail
+     * @return: true if register success | false if register fail
      */
     public static boolean registerUser(String name, String email, String password, Date dob, String address) {
         boolean checkRegister = false;
@@ -246,36 +279,34 @@ public class UserDAO {
         }
         return checkRegister;
     }
-    
-    public static boolean setPIN(String email, String PIN){
-        if (getUserByEmail(email)==null) {
+
+    public static boolean setPIN(String email, String PIN) {
+        if (getUserByEmail(email) == null) {
             return false;
         }
         String sql = "INSERT INTO USERS (PIN) VALUES (?) WHERE EMAIL = ? ;";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
-            statement.setString(1,PIN);
-            statement.setString(2,email);
-        }
-         catch (SQLException ex) {
+            statement.setString(1, PIN);
+            statement.setString(2, email);
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
-    
-    public static boolean deletePIN(String email, String PIN){
-        if (getUserByEmail(email)==null) {
+
+    public static boolean deletePIN(String email, String PIN) {
+        if (getUserByEmail(email) == null) {
             return false;
         }
         String sql = "INSERT INTO USERS (PIN) VALUES (?) WHERE EMAIL = ? ;";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
-            statement.setString(1,PIN);
-            statement.setString(2,email);
-        }
-         catch (SQLException ex) {
+            statement.setString(1, PIN);
+            statement.setString(2, email);
+        } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;

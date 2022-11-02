@@ -1,7 +1,7 @@
 
-$('.detailBtn').click(function() {
+$('#detailBtn').click(function() {
     $('#detailModal').modal('show');
 })
-$(".deleteBtn").click( function() {
+$("#deleteBtn").click( function() {
     $('#deleteModal').modal('show'); 
 });

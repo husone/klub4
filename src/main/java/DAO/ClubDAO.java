@@ -20,7 +20,7 @@ import database.ConnectDB;
  */
 public class ClubDAO {
 
-    public static void createClub(Club club) throws Exception {
+    public static void createClub(Club club) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -40,7 +40,7 @@ public class ClubDAO {
         }
     }
 
-    public static void delete(Club club) throws Exception {
+    public static void delete(Club club) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -56,7 +56,7 @@ public class ClubDAO {
         }
     }
 
-    public static void updateClub(Club club) throws Exception {
+    public static void updateClub(Club club)  {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -80,7 +80,7 @@ public class ClubDAO {
         }
     }
 
-    public static void updateManagerClub(Club club) throws Exception {
+    public static void updateManagerClub(Club club){
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -99,7 +99,7 @@ public class ClubDAO {
         }
     }
     
-    public static List<Club> getAllClubs() throws Exception {
+    public static List<Club> getAllClubs() {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         List<Club> clubs = new ArrayList<>();
@@ -121,6 +121,36 @@ public class ClubDAO {
 
         } catch (Exception e) {
             return null;
+        }
+        return clubs;
+    }
+    
+    public static List<Club> get10LatestClubs() {
+        ConnectDB db = ConnectDB.getInstance();
+        Connection con = null;
+        List<Club> clubs = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        try {
+            con = db.openConnection();
+            String sql = "SELECT TOP 10 * FROM CLUBS order by DateCreated DESC";
+            statement = con.prepareStatement(sql);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
+                clubs.add(new Club(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),date,rs.getString(6),rs.getString(7)));
+            }
+            rs.close();
+            statement.close();
+            con.close();
+
+        } catch (Exception e) {
+            return null;
+        }
+        if (clubs.isEmpty()) System.out.println("emtpy");
+        else System.out.println("not");
+        for (Club club : clubs) {
+            System.out.println(""+ club.toString());
         }
         return clubs;
     }

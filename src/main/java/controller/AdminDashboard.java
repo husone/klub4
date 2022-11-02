@@ -1,14 +1,16 @@
+package controller;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
 
-import DAO.PostDAO;
-import entity.Post;
+import DAO.ClubDAO;
+import DAO.UserDAO;
+import entity.Club;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sonsi
  */
-public class AdminManagePost extends HttpServlet {
+public class AdminDashboard extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +40,10 @@ public class AdminManagePost extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminManagePost</title>");
+            out.println("<title>Servlet AdminDashboard</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminManagePost at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminDashboard at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,14 +61,12 @@ public class AdminManagePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        List<Post> postList = PostDAO.getPosts();
-        if (postList.isEmpty()) {
-        request.setAttribute("noContent", "Không có bài viết nào");
-        }
-        request.setAttribute("content", postList);
-
-        request.getRequestDispatcher("/admin-manage-post.jsp").forward(request, response);
+        List<Club> clubList = ClubDAO.get10LatestClubs();
+        List<User> userList = UserDAO.get10LatestUsers();
+        request.setAttribute("clubList", clubList);
+        request.setAttribute("userList", userList);
+        request.getRequestDispatcher("/admin-dashboard.jsp").forward(request, response);
+        
     }
 
     /**
@@ -80,7 +80,7 @@ public class AdminManagePost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doGet(request, response);
     }
 
     /**
