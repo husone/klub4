@@ -22,7 +22,7 @@ import entity.Event;
 public class EventDAO {
     
     static ConnectDB db = ConnectDB.getInstance();
-    static Connection con = db.openConnection();
+    static Connection con = null;
     static PreparedStatement statement = null;
     static ResultSet rs = null;
 
@@ -33,6 +33,7 @@ public class EventDAO {
     public static ArrayList<Event> getAllEvents() {
         ArrayList<Event> events = new ArrayList<>();
         try {
+            con = db.openConnection();
             String sql = "SELECT * FROM event";
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
@@ -61,6 +62,7 @@ public class EventDAO {
     public static ArrayList<Event> getAllEventsByClubID(int clubID) {
         ArrayList<Event> events = new ArrayList<>();
         try {
+            con = db.openConnection();
             String sql = "SELECT * FROM event WHERE clubID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, clubID);
@@ -89,6 +91,7 @@ public class EventDAO {
     public static Event getEventByEventID(int eventID) {
         Event event = null;
         try {
+            con = db.openConnection();
             String sql = "SELECT * FROM event WHERE eventID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, eventID);
@@ -115,6 +118,7 @@ public class EventDAO {
      */
     public static boolean addEvent(Event event) {
         try {
+            con = db.openConnection();
             String sql = "INSERT INTO event(clubID, eventName, description, location, dateFrom, dateTo) VALUES(?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
             statement.setInt(1, event.getClubID());
@@ -138,6 +142,7 @@ public class EventDAO {
      */
     public static boolean updateEvent(Event event) {
         try {
+            con = db.openConnection();
             String sql = "UPDATE event SET eventName = ?, description = ?, location = ?, dateFrom = ?, dateTo = ? WHERE eventID = ?";
             statement = con.prepareStatement(sql);
             statement.setString(1, event.getEventName());
@@ -161,6 +166,7 @@ public class EventDAO {
      */
     public static boolean deleteEvent(int eventID) {
         try {
+            con = db.openConnection();
             String sql = "DELETE FROM event WHERE eventID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, eventID);
@@ -181,6 +187,7 @@ public class EventDAO {
     public static ArrayList<Event> getAllEventsByClubIDAndDate(int clubID, Date date) {
         ArrayList<Event> events = new ArrayList<>();
         try {
+            con = db.openConnection();
             String sql = "SELECT * FROM event WHERE clubID = ? AND dateFrom <= ? AND dateTo >= ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, clubID);
@@ -211,6 +218,7 @@ public class EventDAO {
     public static ArrayList<Event> getAllEventsByDate(Date date) {
         ArrayList<Event> events = new ArrayList<>();
         try {
+            con = db.openConnection();
             String sql = "SELECT * FROM event WHERE dateFrom <= ? AND dateTo >= ?";
             statement = con.prepareStatement(sql);
             statement.setDate(1, date);
