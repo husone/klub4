@@ -80,7 +80,7 @@ public class MemberDAO {
         return members;
     }
 
-    public static List<Member> getMembersInClub(int clubID) throws Exception {
+    public static List<Member> getMembersInClub(int clubID){
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         List<Member> members = new ArrayList<>();
