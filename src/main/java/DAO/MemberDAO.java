@@ -20,7 +20,7 @@ import database.ConnectDB;
  */
 public class MemberDAO {
 
-    public static void addMember(Member member) throws Exception {
+    public static void addMember(Member member) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -38,7 +38,7 @@ public class MemberDAO {
         }
     }
 
-    public static void delete(Member member) throws Exception {
+    public static void delete(Member member) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -54,7 +54,7 @@ public class MemberDAO {
         }
     }
     
-    public static List<Member> getAllMembers() throws Exception {
+    public static List<Member> getAllMembers() {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         List<Member> members = new ArrayList<>();
@@ -80,7 +80,7 @@ public class MemberDAO {
         return members;
     }
 
-    public static List<Member> getMembersInClub(int clubID){
+    public static List<Member> getMembersInClub(int clubID) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         List<Member> members = new ArrayList<>();
