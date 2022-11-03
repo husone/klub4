@@ -1,4 +1,3 @@
-<%-- This is from fragment --%>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav" style="position: fixed ;">
         <li class="nav-item">
