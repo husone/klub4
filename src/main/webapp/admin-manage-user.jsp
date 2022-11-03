@@ -72,8 +72,6 @@
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                                     <h3 class="font-weight-bold">Manage Users</h3>
-                                    <h6 class="font-weight-normal mb-0"><span class="text-primary">3 unread
-                                            alerts!</span></h6>
                                 </div>
                                 <div class="col-12 col-xl-4">
                                     <div class=" d-flex row">
@@ -128,20 +126,6 @@
 
 
                     </div>
-
-                    <div class="row justify-content-center">
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#" class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a>
-                        </div>
-                    </div>
-
                 </div>
 
 

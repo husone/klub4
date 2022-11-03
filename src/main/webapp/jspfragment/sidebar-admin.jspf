@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav" style="position: fixed ;">
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="./AdminDashboard">
                 <i class="ti-layout-grid2 menu-icon active"></i>
                 <span class="menu-title">Dashboard</span>

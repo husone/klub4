@@ -60,7 +60,7 @@ public class AdminManageClub extends HttpServlet {
             throws ServletException, IOException {
         List<Club> clubList = ClubDAO.getAllClubs();
         request.setAttribute("content", clubList);
-                System.out.println(clubList.isEmpty());
+        System.out.println(""+clubList.get(0).getDescription());
         if (clubList.isEmpty()) {
         request.setAttribute("noContent", "Not found");
         
