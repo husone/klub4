@@ -8,3 +8,4 @@ src/main/application.properties
 /database/
 src/main/java/database/DatabaseInfor.java
 nb-configuration.xml
+src/main/webapp/test.jsp
