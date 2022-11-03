@@ -1,12 +1,15 @@
-package controller;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package controller;
 
+import DAO.ClubDAO;
+import entity.Club;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sonsi
  */
-public class LogoutServlet extends HttpServlet {
+public class AdminSearchClub extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +38,10 @@ public class LogoutServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LogoutServlet</title>");            
+            out.println("<title>Servlet AdminSearchClub</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LogoutServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminSearchClub at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,8 +59,19 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().invalidate();
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        String data = request.getParameter("searchData");
+        List<Club> clubList = ClubDAO.getAllClubs();
+        List<Club> cl = new ArrayList<Club>();
+        for (Club club : clubList) {
+            if (club.getClubName().toLowerCase().contains(data.toLowerCase()) || club.getDescription().toLowerCase().contains(data.toLowerCase())) {
+                cl.add(club);
+            }
+        }
+        if (cl.isEmpty()) {
+            request.setAttribute("noContent", "Not found");
+        }
+        request.setAttribute("content", cl);
+        request.getRequestDispatcher("/admin-manage-club.jsp").forward(request, response);
     }
 
     /**

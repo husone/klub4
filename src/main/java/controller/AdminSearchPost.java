@@ -63,17 +63,16 @@ public class AdminSearchPost extends HttpServlet {
         List<Post> postList = PostDAO.getPosts();
         List<Post> pl = new ArrayList<Post>();
         for (Post post : postList) {
-            if (post.getTitle().contains(data) || post.getContent().contains(data)) {
+            if (post.getTitle().toLowerCase().contains(data.toLowerCase()) || post.getContent().toLowerCase().contains(data.toLowerCase())) {
                 pl.add(post);
             }
         }
         if (pl.isEmpty()) {
-            request.setAttribute("noContent", "Không tìm thấy bài viết nào");
+            request.setAttribute("noContent", "Not found");
         }
         request.setAttribute("content", pl);
         request.getRequestDispatcher("/admin-manage-post.jsp").forward(request, response);
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *

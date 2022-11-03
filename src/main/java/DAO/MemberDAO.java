@@ -20,7 +20,7 @@ import database.ConnectDB;
  */
 public class MemberDAO {
 
-    public static void addMember(Member member) throws Exception {
+    public static void addMember(Member member) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -38,7 +38,7 @@ public class MemberDAO {
         }
     }
 
-    public static void delete(Member member) throws Exception {
+    public static void delete(Member member) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -54,7 +54,7 @@ public class MemberDAO {
         }
     }
     
-    public static List<Member> getAllMembers() throws Exception {
+    public static List<Member> getAllMembers() {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         List<Member> members = new ArrayList<>();
@@ -79,4 +79,32 @@ public class MemberDAO {
         }
         return members;
     }
+
+    public static List<Member> getMembersInClub(int clubID) {
+        ConnectDB db = ConnectDB.getInstance();
+        Connection con = null;
+        List<Member> members = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+//        String check = null;
+        try {
+            con = db.openConnection();
+            String sql = "SELECT * FROM MEMBERS WHERE clubID = ? ";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, clubID);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
+                members.add(new Member(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4),date));
+            }
+            rs.close();
+            statement.close();
+            con.close();
+
+        } catch (Exception e) {
+            return null;
+        }
+        return members;
+    }
+    
 }
