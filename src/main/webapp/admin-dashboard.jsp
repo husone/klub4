@@ -1,6 +1,5 @@
 <%@page import="entity.Club"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
 <%@page import="DAO.ClubDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"

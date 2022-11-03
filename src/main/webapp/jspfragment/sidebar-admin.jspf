@@ -1,8 +1,9 @@
+<%-- This is from fragment --%>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav" style="position: fixed ;">
         <li class="nav-item">
             <a class="nav-link" href="./AdminDashboard">
-                <i class="ti-layout-grid2 menu-icon active"></i>
+                <i class="ti-layout-grid2 menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
