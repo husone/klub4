@@ -40,23 +40,27 @@ public class ClubDAO {
         }
     }
 
-    public static void delete(Club club) {
+    public static void deleteClub(int clubID) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
 //        java.sql.Date sqlDate = new java.sql.Date(club.getDatedCreated().getTime());
         try {
             con = db.openConnection();
-            String sql = "delete clubs where clubID = ? ";
+            String sql = "delete clubs where clubID = ? ;\n"
+                    + "delete posts where clubID = ? ;\n"
+                    + "delete members where clubID = ? ;";
             statement = con.prepareStatement(sql);
-            statement.setInt(1, club.getClubID());
+            statement.setInt(1, clubID);
+            statement.setInt(2, clubID);
+            statement.setInt(3, clubID);
             con.close();
         } catch (Exception e) {
             return;
         }
     }
 
-    public static void updateClub(Club club)  {
+    public static void updateClub(Club club) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -80,7 +84,7 @@ public class ClubDAO {
         }
     }
 
-    public static void updateManagerClub(Club club){
+    public static void updateManagerClub(Club club) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -98,7 +102,7 @@ public class ClubDAO {
             return;
         }
     }
-    
+
     public static List<Club> getAllClubs() {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
@@ -112,8 +116,8 @@ public class ClubDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
-                clubs.add(new Club(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),date,rs.getString(6),rs.getString(7)));
+                java.util.Date date = new java.util.Date(rs.getDate(5).getTime());
+                clubs.add(new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), date, rs.getString(6), rs.getString(7)));
             }
             rs.close();
             statement.close();
@@ -124,7 +128,7 @@ public class ClubDAO {
         }
         return clubs;
     }
-    
+
     public static List<Club> get10LatestClubs() {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
@@ -137,8 +141,8 @@ public class ClubDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
-                clubs.add(new Club(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),date,rs.getString(6),rs.getString(7)));
+                java.util.Date date = new java.util.Date(rs.getDate(5).getTime());
+                clubs.add(new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), date, rs.getString(6), rs.getString(7)));
             }
             rs.close();
             statement.close();
@@ -147,15 +151,18 @@ public class ClubDAO {
         } catch (Exception e) {
             return null;
         }
-        if (clubs.isEmpty()) System.out.println("emtpy");
-        else System.out.println("not");
+        if (clubs.isEmpty()) {
+            System.out.println("emtpy");
+        } else {
+            System.out.println("not");
+        }
         for (Club club : clubs) {
-            System.out.println(""+ club.toString());
+            System.out.println("" + club.toString());
         }
         return clubs;
     }
-    
-    public static Club getClubByID(int clubID){
+
+    public static Club getClubByID(int clubID) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         Club club = null;
@@ -167,8 +174,8 @@ public class ClubDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
-                club = new Club(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),date,rs.getString(6),rs.getString(7));
+                java.util.Date date = new java.util.Date(rs.getDate(5).getTime());
+                club = new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), date, rs.getString(6), rs.getString(7));
             }
             rs.close();
             statement.close();

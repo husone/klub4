@@ -62,6 +62,14 @@
         <servlet-class>controller.ManagePost</servlet-class>
     </servlet>
     <!-- Servlet Mapping -->
+    <servlet>
+        <servlet-name>AdminDeleteClub</servlet-name>
+        <servlet-class>controller.AdminDeleteClub</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSearchClub</servlet-name>
+        <servlet-class>controller.AdminSearchClub</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -120,6 +128,14 @@
     </servlet-mapping>
 
 
+    <servlet-mapping>
+        <servlet-name>AdminDeleteClub</servlet-name>
+        <url-pattern>/AdminDeleteClub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSearchClub</servlet-name>
+        <url-pattern>/AdminSearchClub</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
         30

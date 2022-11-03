@@ -1,6 +1,7 @@
 <%@page import="DAO.ClubDAO"%>
 <%@page import="DAO.MemberDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -116,11 +117,12 @@
                                 </div>
                                 <div class="col-12 col-xl-4">
                                     <div class=" d-flex row">
-                                        <form action="">
+                                        <form action="./AdminSearchClub">
                                             <div class="d-flex">
-                                                <input type="search" class="form-control" name="search-box"
-                                                       placeholder="Input to search">
-                                                <Button class="btn btn-info mx-3">Search</Button>
+
+                                                <input  type="search" class="form-control" name="searchData"
+                                                        placeholder="Input to search">
+                                                <Button  class="btn btn-info mx-3">Search</Button>
                                             </div>
                                         </form>
 
@@ -135,93 +137,91 @@
                         <c:if test="${not empty noContent}"> 
                             <h3 style="margin: auto">${noContent}</h3>
                         </c:if>
-                        <c:if test="${empty noContent}"> 
-                            <c:forEach var="i" items="${content}">
-                                <div class="col-md-3 stretch-card grid-margin">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="https://picsum.photos/600/400" style="border-radius: 10px ;" alt="group-01" class="img-fluid">
-                                            <div class="text-md-center mt-1">
-                                                <h3>${i.clubName}</h3>
-                                                <h2></h2>
-                                            </div>
-                                            <div class="row d-flex justify-content-center">
-                                                <div>
-                                                    <button type="button" class="btn btn-danger btn-sm deleteBtn${i.clubID}" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
-                                                    <button type="button" class="btn btn-success btn-sm detailBtn${i.clubID}" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
-                                                </div>                                
-                                            </div>           
+                        <c:forEach var="i" items="${content}">
+                            <div class="col-md-3 stretch-card grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="${i.logo}" style="border-radius: 10px ;" alt="group-01" class="img-fluid">
+                                        <div class="text-md-center mt-1">
+                                            <h3>${i.clubName}</h3>
+                                            <h2></h2>
                                         </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>
+                                                <button type="button" class="btn btn-danger btn-sm deleteBtn${i.clubID}" style="height: 40px; width:auto"><i class="ti-trash"></i>Delete</button>
+                                                <button type="button" class="btn btn-success btn-sm detailBtn${i.clubID}" style="height: 40px; width:auto"><i class="ti-info"></i>Detail</button>     
+                                            </div>                                
+                                        </div>           
                                     </div>
                                 </div>
+                            </div>
+                            <script>
 
-                                <script>
-
-                                    $('.detailBtn${i.clubID}').click(function () {
-                                        $('#detailModal${i.clubID}').modal('show');
-                                    })
-                                    $(".deleteBtn${i.clubID}").click(function () {
-                                        $('#deleteModal${i.clubID}').modal('show');
-                                    });
-                                </script>
-                                <div class="modal fade"  id="detailModal" tabindex="-1" role="dialog" aria-hidden="true" >
-                                    <div class="modal-dialog" style="max-width: 50%;" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header border-0">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                                $('.detailBtn${i.clubID}').click(function () {
+                                    $('#detailModal${i.clubID}').modal('show');
+                                })
+                                $(".deleteBtn${i.clubID}").click(function () {
+                                    $('#deleteModal${i.clubID}').modal('show');
+                                });
+                            </script>
+                            <div class="modal fade"  id="detailModal${i.clubID}" tabindex="-1" role="dialog" aria-hidden="true" >
+                                <div class="modal-dialog" style="max-width: 50%;" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header border-0">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="text-align: center;">
+                                                <img src="${i.logo}" alt="group-01" class="img-fluid">
                                             </div>
-                                            <div class="modal-body">
-                                                <div style="text-align: center;">
-                                                    <img src="${i.logo}" alt="group-01" class="img-fluid">
-                                                </div>
 
-                                                <div class="col-md-5 mt-3">
-                                                    <h3>Name: ${i.clubName}</h3>
-                                                    <p>Description: ${i.description}</p>
-                                                    <p>Member: ${MemberDAO.getMembersinClub(i.clubID).size()}</p>
-                                                </div>
-                                                <div class="row" style="margin-left: 0;">
-                                                    <div class="col-md-5">
-                                                        <p>ID: ${i.clubID}</p>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <p>Date Created: ${i.dateCreated} </p>
-                                                    </div>
+                                            <div class="col-md-5 mt-3">
+                                                <h3>Name: ${i.clubName}</h3>
+                                                <p>Description: ${i.description}</p>
+                                                <p>Member: ${MemberDAO.getMembersInClub(i.clubID).size()}</p>
+                                            </div>
+                                            <div class="row" style="margin-left: 0;">
+                                                <div class="col-md-5">
+                                                    <p>ID: ${i.clubID}</p>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <button id="returnBtn" type="button" class="btn btn-warning" data-dismiss="modal">Back</button>
-                                                    <button id="./AdminDeleteClub?clubID=${i.clubID}" type="button" class="btn btn-danger">Delete</button>
+                                                    <p>Date Created: <fmt:formatDate value="${i.dateCreated}" pattern="yyyy-MM-dd" /> </p>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <button id="returnBtn" type="button" class="btn btn-warning" data-dismiss="modal">Back</button>
+                                                <button id="./AdminDeleteClub?clubID=${i.clubID}" type="button" class="btn btn-danger">Delete</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="deleteModal${i.clubID}" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog" style="max-width: 30%;" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4>Xoá câu lạc bộ</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                            </div>
+                            <div class="modal fade" id="deleteModal${i.clubID}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" style="max-width: 30%;" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4>Xoá câu lạc bộ</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <h3 style="color:red;">Bạn có chắc muốn xoá câu lạc bộ này?</h3>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="text-center">
-                                                    <h3 style="color:red;">Bạn có chắc muốn xoá câu lạc bộ này?</h3>
-                                                </div>
-                                                <div class="row d-flex justify-content-center mt-4">
-                                                    <button id="returnBtn" type="button" class="btn btn-warning mr-1"
-                                                            data-dismiss="modal">Huỷ</button>
-                                                    <a href="./AdminDeleteClub?clubID=${i.clubID}" type="button" class="btn btn-danger">Xoá</a>
-                                                </div>
+                                            <div class="row d-flex justify-content-center mt-4">
+                                                <button id="returnBtn" type="button" class="btn btn-warning mr-1"
+                                                        data-dismiss="modal">Huỷ</button>
+                                                <a href="./AdminDeleteClub?clubID=${i.clubID}" type="button" class="btn btn-danger">Xoá</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </c:forEach>
-                        </c:if>
+                            </div>
+
+                        </c:forEach>
                     </div>
 
 
