@@ -168,7 +168,6 @@ public class ClubDAO {
         Club club = null;
         PreparedStatement statement = null;
         ResultSet rs = null;
-//        String check = null;
         try {
             con = db.openConnection();
             String sql = "SELECT * FROM CLUBS";
@@ -186,5 +185,31 @@ public class ClubDAO {
             return null;
         }
         return club;
+    }
+
+    //get clubid by userid
+    public static int getClubIDByUserID(int userID){
+        ConnectDB db = ConnectDB.getInstance();
+        Connection con = null;
+        int clubID = -1;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        try {
+            con = db.openConnection();
+            String sql = "SELECT clubID FROM CLUBS WHERE managerID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, userID);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                clubID = rs.getInt(1);
+            }
+            rs.close();
+            statement.close();
+            con.close();
+
+        } catch (Exception e) {
+            return -1;
+        }
+        return clubID;
     }
 }

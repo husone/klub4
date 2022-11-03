@@ -4,6 +4,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <display-name>Archetype Created Web Application</display-name>
+    <!-- Servlet Definition -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controller.LoginServlet</servlet-class>
@@ -44,6 +45,23 @@
         <servlet-name>FundManagerServlet</servlet-name>
         <servlet-class>controller.FundManagerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageEvent</servlet-name>
+        <servlet-class>controller.ManageEvent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageFund</servlet-name>
+        <servlet-class>controller.ManageFund</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageMember</servlet-name>
+        <servlet-class>controller.ManageMember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagePost</servlet-name>
+        <servlet-class>controller.ManagePost</servlet-class>
+    </servlet>
+    <!-- Servlet Mapping -->
     <servlet>
         <servlet-name>AdminDeleteClub</servlet-name>
         <servlet-class>controller.AdminDeleteClub</servlet-class>
@@ -92,6 +110,24 @@
         <servlet-name>FundManagerServlet</servlet-name>
         <url-pattern>/FundManagerServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageEvent</servlet-name>
+        <url-pattern>/ManageEvent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageFund</servlet-name>
+        <url-pattern>/ManageFund</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageMember</servlet-name>
+        <url-pattern>/ManageMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagePost</servlet-name>
+        <url-pattern>/ManagePost</url-pattern>
+    </servlet-mapping>
+
+
     <servlet-mapping>
         <servlet-name>AdminDeleteClub</servlet-name>
         <url-pattern>/AdminDeleteClub</url-pattern>
