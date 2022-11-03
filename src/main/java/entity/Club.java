@@ -5,7 +5,7 @@
  */
 package entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -31,6 +31,15 @@ public class Club {
 
     public Club(int clubID, String clubName, String clubType, int managerID, Date dateCreated, String description, String logo) {
         this.clubID = clubID;
+        this.clubName = clubName;
+        this.clubType = clubType;
+        this.managerID = managerID;
+        this.dateCreated = dateCreated;
+        this.description = description;
+        this.logo = logo;
+    }
+
+    public Club(String clubName, String clubType, int managerID, Date dateCreated, String description, String logo) {
         this.clubName = clubName;
         this.clubType = clubType;
         this.managerID = managerID;

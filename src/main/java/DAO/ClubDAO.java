@@ -26,14 +26,13 @@ public class ClubDAO {
         PreparedStatement statement = null;
         try {
             con = db.openConnection();
-            String sql = "insert into clubs (clubId, clubName, clubType, managerID, description, logo) values (?,?,?,?,?,?,?) ";
+            String sql = "insert into clubs (clubName, clubType, managerID, description, logo) values (?,?,?,?,?,?) ";
             statement = con.prepareStatement(sql);
-            statement.setInt(1, club.getClubID());
-            statement.setString(2, club.getClubName());
-            statement.setString(3, club.getClubType());
-            statement.setInt(4, club.getManagerID());
-            statement.setString(5, club.getDescription());
-            statement.setString(6, club.getLogo());
+            statement.setString(1, club.getClubName());
+            statement.setString(2, club.getClubType());
+            statement.setInt(3, club.getManagerID());
+            statement.setString(4, club.getDescription());
+            statement.setString(5, club.getLogo());
             con.close();
         } catch (Exception e) {
             return;
@@ -116,7 +115,7 @@ public class ClubDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date date = new java.util.Date(rs.getDate(5).getTime());
+                java.sql.Date date = new java.sql.Date(rs.getDate(5).getTime());
                 clubs.add(new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), date, rs.getString(6), rs.getString(7)));
             }
             rs.close();
@@ -141,7 +140,7 @@ public class ClubDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date date = new java.util.Date(rs.getDate(5).getTime());
+                java.sql.Date date = new java.sql.Date(rs.getDate(5).getTime());
                 clubs.add(new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), date, rs.getString(6), rs.getString(7)));
             }
             rs.close();
@@ -174,7 +173,7 @@ public class ClubDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date date = new java.util.Date(rs.getDate(5).getTime());
+                java.sql.Date date = new java.sql.Date(rs.getDate(5).getTime());
                 club = new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), date, rs.getString(6), rs.getString(7));
             }
             rs.close();
