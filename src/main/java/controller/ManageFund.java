@@ -1,29 +1,26 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import DAO.FundDAO;
+import entity.Fund;
 
 public class ManageFund extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManageFund</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManageFund at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        HttpSession session = request.getSession();
+        int clubID = (int) session.getAttribute("clubID");
+        List<Fund> funds = FundDAO.getFundByClubID(clubID);
+        request.setAttribute("fundList", funds);
+        request.getRequestDispatcher("/manager-manage-fund.jsp").forward(request, response);
     }
 
     @Override

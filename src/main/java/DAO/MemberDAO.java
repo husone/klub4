@@ -7,6 +7,7 @@ package DAO;
 
 import entity.Member;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class MemberDAO {
         }
     }
 
-    public static void delete(Member member) {
+    public static void delete(int memberID) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
@@ -47,7 +48,7 @@ public class MemberDAO {
             con = db.openConnection();
             String sql = "delete member where memberID = ? ";
             statement = con.prepareStatement(sql);
-            statement.setInt(1, member.getMemberID());
+            statement.setInt(1, memberID);
             con.close();
         } catch (Exception e) {
             return;
@@ -67,7 +68,7 @@ public class MemberDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
+                Date  date = rs.getDate(5);
                 members.add(new Member(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4),date));
             }
             rs.close();

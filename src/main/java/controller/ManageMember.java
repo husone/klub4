@@ -1,29 +1,29 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import DAO.ClubDAO;
+import DAO.MemberDAO;
+import entity.Member;
+import entity.User;
 
 public class ManageMember extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManageMember</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManageMember at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("userData");
+        int clubID = ClubDAO.getClubIDByUserID(user.getUserID());
+        List<Member> members = MemberDAO.getMembersInClub(clubID);
+        request.setAttribute("memberList", members);
+        request.getRequestDispatcher("/manager-manage-member.jsp").forward(request, response);
     }
 
     @Override
@@ -35,11 +35,11 @@ public class ManageMember extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String typeOfRequest = request.getParameter("typeOfRequest");
+        if (typeOfRequest.equals("delete")) {
+            int memberID = Integer.parseInt(request.getParameter("memberID"));
+            MemberDAO.delete(memberID);
+        }
         processRequest(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 }

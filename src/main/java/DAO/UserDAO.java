@@ -26,7 +26,7 @@ import entity.User;
 public class UserDAO {
 
     static ConnectDB db = ConnectDB.getInstance();
-    static Connection con = db.openConnection();
+    static Connection con = null;
     static PreparedStatement statement = null;
     static ResultSet rs = null;
 
@@ -36,13 +36,10 @@ public class UserDAO {
      * @return: ArrayList<User>
      */
     public static ArrayList<User> getUsers() {
-        ConnectDB db = ConnectDB.getInstance();
-        PreparedStatement statement = null;
-        ResultSet rs = null;
         ArrayList<User> list = new ArrayList<>();
         try {
 
-            Connection con = db.openConnection();
+            con = db.openConnection();
             String sql = "SELECT * FROM [USERS] order by userID";
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
@@ -61,6 +58,36 @@ public class UserDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, "UserDAO getUsersMethod", ex);
         }
         return list;
+    }
+
+    /**
+     * Get user by userID
+     *
+     * @param userID
+     * @return: User
+     */
+    public static User getUserByID(int userID) {
+        User user = null;
+        try {
+            con = db.openConnection();
+            String sql = "SELECT * FROM [USERS] WHERE userID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, userID);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString(2).trim();
+                String email = rs.getString(3).trim();
+                String password = rs.getString(4).trim();
+                Date dOB = rs.getDate(5);
+                String address = rs.getString(6);
+                String PIN = rs.getString(7);
+                String avatar = rs.getString(8);
+                user = new User(userID, name, email, password, dOB, address, PIN, avatar);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, "UserDAO getUserByIDMethod", ex);
+        }
+        return user;
     }
 
     public static ArrayList<User> get10LatestUsers() {
@@ -101,8 +128,6 @@ public class UserDAO {
      * @return: true if delete success | false if delete fail
      */
     public static boolean deleteUser(int userID) {
-        ConnectDB db = ConnectDB.getInstance();
-        PreparedStatement statement = null;
         ArrayList<User> list = getUsers();
         boolean checkUser = false;
 
@@ -117,7 +142,7 @@ public class UserDAO {
             String sql = "DELETE FROM USERS WHERE userID=?;";
             try {
 
-                Connection con = db.openConnection();
+                con = db.openConnection();
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, userID);
                 if (statement.executeUpdate() != 0) {
@@ -137,8 +162,6 @@ public class UserDAO {
      * @return: true if update success | false if update fail
      */
     public static boolean updateUser(User user) {
-        ConnectDB db = ConnectDB.getInstance();
-        PreparedStatement statement = null;
         boolean checkUpdate = false;
 
         String sql = "UPDATE USERS\n"
@@ -146,7 +169,7 @@ public class UserDAO {
                 + "WHERE userID = ?;";
         try {
 
-            Connection con = db.openConnection();
+            con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
@@ -171,16 +194,13 @@ public class UserDAO {
      * password is incorrect
      */
     public static boolean checkLogin(String email, String password) {
-        ConnectDB db = ConnectDB.getInstance();
-        PreparedStatement statement = null;
-        ResultSet rs = null;
         System.out.println("email: " + email);
         System.out.println("password: " + password);
         boolean checkLogin = false;
         String sql = "SELECT password FROM USERS WHERE email = ?;";
         try {
 
-            Connection con = db.openConnection();
+            con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, email);
             rs = statement.executeQuery();
@@ -204,14 +224,11 @@ public class UserDAO {
      * @return true if email is existed | false if email is not existed
      */
     public static boolean checkRegister(String email) {
-        ConnectDB db = ConnectDB.getInstance();
-        PreparedStatement statement = null;
-        ResultSet rs = null;
         boolean checkRegister = false;
         String sql = "SELECT * FROM USERS WHERE email = ?;";
         try {
 
-            Connection con = db.openConnection();
+            con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, email);
             rs = statement.executeQuery();
@@ -262,12 +279,10 @@ public class UserDAO {
      * @return: true if register success | false if register fail
      */
     public static boolean registerUser(String name, String email, String password, Date dob, String address) {
-        ConnectDB db = ConnectDB.getInstance();
-        PreparedStatement statement = null;
         boolean checkRegister = false;
         String sql = "INSERT INTO USERS (name, email, password, dOB, address) VALUES (?, ?, ?, ?, ?);";
         try {
-            Connection con = db.openConnection();
+            con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, email);

@@ -71,6 +71,11 @@ public class User {
         this.dOB = dOB;
     }
 
+    //Get Date of Birth in String format (dd/MM/yyyy)
+    public String getdOBString() {
+        return dOB.toString();
+    }
+
     public String getAddress() {
         return address;
     }

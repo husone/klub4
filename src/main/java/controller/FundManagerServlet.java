@@ -39,15 +39,7 @@ public class FundManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String typeOfRequest = request.getParameter("typeOfRequest");
-        switch (typeOfRequest) {
-            case "createFund":
-                processCreateRequest(request, response);
-                break;
-            default:
-                break;
-        }
-        RequestDispatcher rd = request.getRequestDispatcher("club.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("manager-create-fund.jsp");
         rd.forward(request, response);
     }
 
@@ -62,7 +54,7 @@ public class FundManagerServlet extends HttpServlet {
             default:
                 break;
         }
-        RequestDispatcher rd = request.getRequestDispatcher("club.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("manager-manage-fund.jsp");
         rd.forward(request, response);
     }
 

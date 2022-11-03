@@ -26,6 +26,13 @@ public class Member {
         this.dayJoined = dayJoined;
     }
 
+    public Member(int userID, int clubID, int point, Date dayJoined) {
+        this.userID = userID;
+        this.clubID = clubID;
+        this.point = point;
+        this.dayJoined = dayJoined;
+    }
+
     public int getMemberID() {
         return memberID;
     }
