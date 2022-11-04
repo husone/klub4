@@ -63,6 +63,9 @@ public class Fund {
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
+    public String getDateCreatedString() {
+        return dateCreated.toString();
+    }
 
     public int getAmount() {
         return amount;

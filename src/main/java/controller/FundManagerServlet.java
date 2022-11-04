@@ -26,7 +26,6 @@ public class FundManagerServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-
             int clubID = (int) session.getAttribute("clubID");
             String fundName = request.getParameter("fundName");
             Date dateCreated = new Date(System.currentTimeMillis());
@@ -34,12 +33,14 @@ public class FundManagerServlet extends HttpServlet {
             Fund fund = new Fund(clubID, fundName, dateCreated, amount);
             FundDAO.createFund(fund);
         }
+        response.sendRedirect("ManageFund");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("manager-create-fund.jsp");
+        System.out.println("Current Club ID: " + request.getSession().getAttribute("clubID"));
         rd.forward(request, response);
     }
 
@@ -54,8 +55,8 @@ public class FundManagerServlet extends HttpServlet {
             default:
                 break;
         }
-        RequestDispatcher rd = request.getRequestDispatcher("manager-manage-fund.jsp");
-        rd.forward(request, response);
+        // RequestDispatcher rd = request.getRequestDispatcher("ManageFund");
+        // response.sendRedirect("ManageFund");
     }
 
     @Override

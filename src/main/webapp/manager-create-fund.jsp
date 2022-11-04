@@ -1,5 +1,4 @@
-<%@page import="entity.Club"%>
-<%@page import="java.util.List"%>
+<%@page import="entity.Fund"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.ClubDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
@@ -101,24 +100,20 @@
                                         </div>
                                         <div class="card-body">
                                             
-                                            <form action="./FundManagerServlet" method="post">
+                                            <form action="./ManageFund" method="post">
                                                 <div class="form-group">
                                                     <label class="col-12 p-0 font-weight-bold" for="new-fund-name"><h4>Name</h4></label>
                                                     <input type="text" class="form-control form-control-sm col-12;" name="fundName" id="new-fund-name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-12 p-0 font-weight-bold" for="new-fund-amount"><h4>Amount/Person</h4></label>
-                                                    <input type="text" class="form-control form-control-sm col-12;" name="new-fund-amount" id=new-fund-amount">
+                                                    <input type="text" class="form-control form-control-sm col-12;" name="amount" id="new-fund-amount">
                                                 </div>
-
+                                                <input type="hidden"  name="typeOfRequest" value="createFund" />
                                                 <div class="justify-content-between">
                                                     <button type="submit" class="btn btn-info">Create</button>
-                                                    <a href="./manager-manage-fund.jsp"  style="float:right;" class="btn btn-danger">Cancel</a>
+                                                    <a href="./ManageFund"  style="float:right;" class="btn btn-danger">Cancel</a>
                                                 </div>
-                                            
-                                               
-
-
                                             </form>
                                            
                                         </div>
@@ -183,55 +178,8 @@
 
 </html>
 
-<div class="modal fade" id="detail-fund-modal" tabindex="-1" role="dialog" aria-hidden="true" >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width:600px ;">
-            <div class="detail-user container d-flex justify-content-center align-items-center p-0">
-                <div class="card text-black">
-                    <div class="modal-header border-0 m-0">
-                        <h3>Detail Amount Contribution</h3>
-                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i
-                                    class="ti-close text-white"></i></span>
-                        </button>
-
-                    </div>
-
-                    <div class="modal-body p-0 pb-3">
-                        <table class="table mx-auto" style="width: 80% ;">
-                            <tr>
-                                <td class="text-info"><h4>Id</h4></td>
-                                <td><h4>101</h4></td>
-                            </tr>
-                            <tr>
-                                <td class="text-info"><h4>Name</h4></td>
-                                <td><h4>Fund for september</h4></td>
-                            </tr>
-                            <tr>
-                                <td class="text-info"><h4>Description</h4></td>
-                                <td><h4>Fund for maintaining club in september</h4></td>
-                            </tr>
-                            <tr>
-                                <td class="text-info"><h4>Amount/Person</h4></td>
-                                <td><h4>15k</h4></td>
-                            </tr>
-                            <tr>
-                                <td class="text-info"><h4>Total Amount</h4></td>
-                                <td><h4>1.500k (15k x 100 members)</h4></td>
-                            </tr>
-                            <tr>
-                                <td class="text-info"><h4>Day Create</h4></td>
-                                <td><h4>01/09/2022</h4></td>
-                            </tr>
-                        </table>
-
-                        <div class="text-center">
-                            <button class="btn btn-success">Mark as completed</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%-- <c:forEach items="${fundList}" var="fund">
+    <jsp:include page="./jspfragment/fund-detail-modal.jsp">
+        <jsp:param name="fund" value="${fund}" />
+    </jsp:include>
+</c:forEach> --%>

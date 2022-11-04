@@ -33,7 +33,7 @@ public class FundDAO {
         ArrayList<Fund> list = new ArrayList<>();
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM [FUND] order by fundID";
+            String sql = "SELECT * FROM [FUNDS] order by fundID";
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
@@ -44,13 +44,6 @@ public class FundDAO {
                 int amount = Integer.parseInt(rs.getString(5).trim());
                 list.add(new Fund(fundID, clubID, fundName, dateCreated, amount));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO getFundsMethod", ex);
-        }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO getFundsMethod", ex);
         }
@@ -66,7 +59,7 @@ public class FundDAO {
         Fund fund = null;
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM [FUND] WHERE fundID = ?";
+            String sql = "SELECT * FROM [FUNDS] WHERE fundID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, fundID);
             rs = statement.executeQuery();
@@ -77,13 +70,6 @@ public class FundDAO {
                 int amount = Integer.parseInt(rs.getString(5).trim());
                 fund = new Fund(fundID, clubID, fundName, dateCreated, amount);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO getFundByIDMethod", ex);
-        }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO getFundByIDMethod", ex);
         }
@@ -99,7 +85,7 @@ public class FundDAO {
         ArrayList<Fund> list = new ArrayList<>();
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM [FUND] WHERE clubID = ?";
+            String sql = "SELECT * FROM [FUNDS] WHERE clubID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, clubID);
             rs = statement.executeQuery();
@@ -110,13 +96,6 @@ public class FundDAO {
                 int amount = Integer.parseInt(rs.getString(5).trim());
                 list.add(new Fund(fundID, clubID, fundName, dateCreated, amount));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO getFundByClubIDMethod", ex);
-        }
-        try {
-            rs.close();
-            statement.close();
-            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO getFundByClubIDMethod", ex);
         }
@@ -131,7 +110,7 @@ public class FundDAO {
     public static boolean createFund(Fund fund) {
         try {
             con = db.openConnection();
-            String sql = "INSERT INTO [FUND] VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO [FUNDS] VALUES(?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
             statement.setInt(1, fund.getClubID());
             statement.setString(2, fund.getFundName());
@@ -139,12 +118,6 @@ public class FundDAO {
             statement.setInt(4, fund.getAmount());
             statement.executeUpdate();
             return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO createFundMethod", ex);
-        }
-        try {
-            statement.close();
-            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO createFundMethod", ex);
         }
@@ -159,7 +132,7 @@ public class FundDAO {
     public static boolean updateFund(Fund fund) {
         try {
             con = db.openConnection();
-            String sql = "UPDATE [FUND] SET clubID = ?, fundName = ?, dateCreated = ?, amount = ? WHERE fundID = ?";
+            String sql = "UPDATE [FUNDS] SET clubID = ?, fundName = ?, dateCreated = ?, amount = ? WHERE fundID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, fund.getClubID());
             statement.setString(2, fund.getFundName());
@@ -168,12 +141,6 @@ public class FundDAO {
             statement.setInt(5, fund.getFundId());
             statement.executeUpdate();
             return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO updateFundMethod", ex);
-        }
-        try {
-            statement.close();
-            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO updateFundMethod", ex);
         }
@@ -188,17 +155,11 @@ public class FundDAO {
     public static boolean deleteFund(int fundID) {
         try {
             con = db.openConnection();
-            String sql = "DELETE FROM [FUND] WHERE fundID = ?";
+            String sql = "DELETE FROM [FUNDS] WHERE fundID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, fundID);
             statement.executeUpdate();
             return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO deleteFundMethod", ex);
-        }
-        try {
-            statement.close();
-            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FundDAO.class.getName()).log(Level.SEVERE, "FundDAO deleteFundMethod", ex);
         }

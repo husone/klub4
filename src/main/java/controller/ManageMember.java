@@ -26,6 +26,7 @@ public class ManageMember extends HttpServlet {
         List<User> users = UserDAO.getUserList(members);
         request.setAttribute("memberList", users);
         request.setAttribute("clubID", clubID);
+        session.setAttribute("clubID", clubID);
         request.getRequestDispatcher("/manager-manage-member.jsp").forward(request, response);
     }
 
