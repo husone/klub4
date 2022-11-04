@@ -4,8 +4,8 @@
  */
 package controller;
 
-import DAO.PostDAO;
-import entity.Post;
+import DAO.UserDAO;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sonsi
  */
-public class AdminManagePost extends HttpServlet {
+public class AdminSearchUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class AdminManagePost extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminManagePost</title>");
+            out.println("<title>Servlet AdminSearchUser</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminManagePost at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminSearchUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,14 +59,19 @@ public class AdminManagePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        List<Post> postList = PostDAO.getPosts();
-        if (postList.isEmpty()) {
-        request.setAttribute("noContent", "Not found");
+        String data = request.getParameter("searchData");
+        List<User> clubList = UserDAO.getUsers();
+        List<User> cl = new ArrayList<User>();
+        for (User u : clubList) {
+            if (u.getName().toLowerCase().contains(data.toLowerCase()) || u.getAddress().toLowerCase().contains(data.toLowerCase()) || u.getEmail().toLowerCase().contains(data.toLowerCase())) {
+                cl.add(u);
+            }
         }
-        request.setAttribute("content", postList);
-
-        request.getRequestDispatcher("/admin-manage-post.jsp").forward(request, response);
+        if (cl.isEmpty()) {
+            request.setAttribute("noContent", "Not found");
+        }
+        request.setAttribute("content", cl);
+        request.getRequestDispatcher("/admin-manage-user.jsp").forward(request, response);
     }
 
     /**
@@ -80,7 +85,7 @@ public class AdminManagePost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**

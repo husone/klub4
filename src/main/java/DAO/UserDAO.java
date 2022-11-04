@@ -139,12 +139,16 @@ public class UserDAO {
             }
         }
         if (checkUser) {
-            String sql = "DELETE FROM USERS WHERE userID=?;";
+            String sql =  "delete comments from comments inner join members on comments.memberID = members.memberID where members.memberID = ?;"
+                    + "delete from members where userID = ?;"
+                    + "DELETE FROM USERS WHERE userID=?;";
             try {
 
                 con = db.openConnection();
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, userID);
+                statement.setInt(2, userID);
+                statement.setInt(3, userID);
                 if (statement.executeUpdate() != 0) {
                     checkDelete = true;
                 }
