@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminDashboard");
             dispatcher.forward(request, response);
             }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/club_home.html");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/club_home.jsp");
             dispatcher.forward(request, response);
         } else {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("index.jsp");

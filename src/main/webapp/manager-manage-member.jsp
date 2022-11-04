@@ -1,7 +1,7 @@
-<%@page import="entity.Club"%>
+<%@page import="entity.User"%>
+<%@page import="entity.Member"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
-<%@page import="DAO.ClubDAO"%>
+<%@page import="DAO.UserDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -111,32 +111,26 @@
                                                     style="background-color:#4B49AC; border-radius:50px; color: aliceblue;">
                                                     <tr>
                                                         <th>Name</th>
-                                                       
                                                         <th>Email</th>
                                                         <th>Day join</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="view-detail-user font-weight-bold text-primary"
-                                                            data-toggle="tooltip" data-placement="left"
-                                                            title="Click to view detail" style="cursor:pointer;">Hoang
-                                                            Nghia</td>
-                                                        <td class="font-weight-bold">nghia@gmail.com</td>
-                                                        <td>21-02-2022</td>
-                                                    </tr>
-
-                                                  
-
-
+                                                    <c:forEach items="${memberList}" var="i">
+                                                        <tr>
+                                                            <td class="view-detail-user font-weight-bold text-primary"
+                                                                data-toggle="tooltip" data-placement="left"
+                                                                title="Click to view detail" style="cursor:pointer;">${i.getName()}</td>
+                                                            <td class="font-weight-bold">${i.getEmail()}</td>
+                                                            <td>${i.getdOBString()}</td>
+                                                        </tr>
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
 
                         <div class="row justify-content-center">
@@ -206,69 +200,13 @@
 
 </html>
 
-<div class="modal fade" id="detail-member-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="detail-user container d-flex justify-content-center align-items-center p-0"
-                style="border-radius:10px;">
-                <div class="card text-black">
-                    <div class="modal-header border-0 m-0">
-                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i
-                                    class="ti-close text-white"></i></span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body p-0 pb-3">
-                        <div>
-                            <div class="upper pt-4">
-                                <img src="https://picsum.photos/400/150" class="img-fluid">
-                            </div>
-                            <div class="user ">
-                                <img src="./assets/img/blog/avatar.png" class="rounded-circle" width="80">
-
-                            </div>
-
-                            <div class="user-infor container ">
-                                <h4 class="ml-3">NghiaDz</h4>
-                                <span class="text-muted d-block mb-2">nghia@gmail.com</span>
-
-                                <div class="d-flex justify-content-center align-items-center my-4 px-4">
-                                    <table class="row text-left">
-                                        <tr class="my-2">
-                                            <td class="pr-3">ID: &nbsp; &nbsp; &nbsp;</td>
-                                            <td class="text-muted">101</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pr-3">Full Name: </td>
-                                            <td class="text-muted">Nguyen Dac Hoang Nghia</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pr-3">Day of birth: &nbsp; &nbsp; &nbsp;</td>
-                                            <td class="text-muted">24/02/2002</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pr-3">Adress: &nbsp; &nbsp; &nbsp;</td>
-                                            <td class="text-muted">Quang Nam</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pr-3">Full Name: &nbsp; &nbsp; &nbsp;</td>
-                                            <td class="text-muted">Nguyen Dac Hoang Nghia</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class=" text-center">
-                                    <button class="delete-user-btn btn btn-danger "><i class="ti-trash"></i> Delete
-                                        User</button>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<c:forEach items="${memberList}" var="i">
+    <jsp:include page="./jspfragment/user-modal.jsp">
+        <jsp:param name="name" value="${i.name}" />
+        <jsp:param name="userID" value="${i.userID}" />
+        <jsp:param name="email" value="${i.email}" />
+        <jsp:param name="doB" value="${i.getdOBString()}" />
+        <jsp:param name="address" value="${i.address}" />
+        <jsp:param name="clubID" value="${clubID}" />
+    </jsp:include>
+</c:forEach>

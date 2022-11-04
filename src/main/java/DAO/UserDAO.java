@@ -10,12 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.mindrot.jbcrypt.BCrypt;
 
 import database.ConnectDB;
+import entity.Member;
 import entity.User;
 
 /**
@@ -328,5 +330,18 @@ public class UserDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
+    }
+
+    /**
+     * Get User List from members table
+     * @param Array<Member> members
+     * @return List of User
+     */
+    public static ArrayList<User> getUserList(List<Member> members) {
+        ArrayList<User> users = new ArrayList<>();
+        for (Member member : members) {
+            users.add(getUserByID(member.getUserID()));
+        }
+        return users;
     }
 }

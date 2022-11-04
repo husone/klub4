@@ -28,7 +28,7 @@ public class MemberDAO {
         // java.sql.Date sqlDate = new java.sql.Date(member.getDayJoined().getTime());
         try {
             con = db.openConnection();
-            String sql = "insert into member (userID, clubID)values (?,?) ";
+            String sql = "insert into members (userID, clubID)values (?,?) ";
             statement = con.prepareStatement(sql);
             statement.setInt(1, member.getUserID());
             statement.setInt(2, member.getClubID());
@@ -39,16 +39,18 @@ public class MemberDAO {
         }
     }
 
-    public static void delete(int memberID) {
+    public static void delete(int memberID, int clubID) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
 //        java.sql.Date sqlDate = new java.sql.Date(club.getDatedCreated().getTime());
         try {
             con = db.openConnection();
-            String sql = "delete member where memberID = ? ";
+            String sql = "DELETE FROM MEMBERS where userID = ? AND clubID = ? ;";
             statement = con.prepareStatement(sql);
             statement.setInt(1, memberID);
+            statement.setInt(2, clubID);
+            statement.execute();
             con.close();
         } catch (Exception e) {
             return;

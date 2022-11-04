@@ -21,30 +21,15 @@ public class DatabaseTests {
     @DisplayName("Test database connection")
     void testDatabaseConnection() {
 
-        assertEquals(true, UserDAO.checkRegister("database@gmail.com"));
+        assertEquals(true, UserDAO.checkRegister("quangbao@gmail.com"));
 
-    }
-
-    @Test
-    @DisplayName("Insert user")
-    void testInsertUser() {
-        String password = "1292131232";
-        assertEquals(true, UserDAO.registerUser("Thử Database", "database@gmail.com", password, Date.valueOf("1999-12-12"), "Hà Nội"));
     }
     @Test
     @DisplayName("Test BCrypt")
     void testBCrypt() {
-        String password = "1292131232";
-        assertEquals(true, UserDAO.checkLogin("database@gmail.com", password));
+        String password = "123456";
+        assertEquals(true, UserDAO.checkLogin("quangbao@gmail.com", password));
         
-    }
-
-    @Test
-    @DisplayName("Delete user")
-    void testDeleteUser() {
-        assertEquals(true, UserDAO.deleteUser(
-                UserDAO.getUserByEmail("database@gmail.com").getUserID()));
-
     }
 
     @Test
@@ -85,11 +70,13 @@ public class DatabaseTests {
         int clubID = ClubDAO.getClubIDByUserID(manager.getUserID());
 
         int size = MemberDAO.getMembersInClub(clubID).size();
-
+        System.out.println("Size club = " + size);
         Member m1 = new Member(u.getUserID(), clubID, 0,  new Date(System.currentTimeMillis()));
         Member m2 = new Member(u2.getUserID(), clubID, 0,  new Date(System.currentTimeMillis()));
         if (clubID != -1 && size == 0) {
             MemberDAO.addMember(m1);
+        }
+        if (clubID != -1 && size == 1) {
             MemberDAO.addMember(m2);
         }
     }

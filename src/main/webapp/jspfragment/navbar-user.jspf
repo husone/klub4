@@ -31,7 +31,7 @@
                                 <i class="ti-id-badge text-primary"></i>
                                            Profile
                             </a>
-                            <a class="dropdown-item" href="./manager-manage-member.html">
+                            <a class="dropdown-item" href="./ManageMember">
                                 <i class="ti-layout-grid2-thumb text-primary"></i>
                                     Your own club
                             </a>

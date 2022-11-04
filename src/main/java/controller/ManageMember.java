@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ClubDAO;
 import DAO.MemberDAO;
+import DAO.UserDAO;
 import entity.Member;
 import entity.User;
 
@@ -22,7 +23,9 @@ public class ManageMember extends HttpServlet {
         User user = (User) session.getAttribute("userData");
         int clubID = ClubDAO.getClubIDByUserID(user.getUserID());
         List<Member> members = MemberDAO.getMembersInClub(clubID);
-        request.setAttribute("memberList", members);
+        List<User> users = UserDAO.getUserList(members);
+        request.setAttribute("memberList", users);
+        request.setAttribute("clubID", clubID);
         request.getRequestDispatcher("/manager-manage-member.jsp").forward(request, response);
     }
 
@@ -37,8 +40,11 @@ public class ManageMember extends HttpServlet {
             throws ServletException, IOException {
         String typeOfRequest = request.getParameter("typeOfRequest");
         if (typeOfRequest.equals("delete")) {
-            int memberID = Integer.parseInt(request.getParameter("memberID"));
-            MemberDAO.delete(memberID);
+            int userID = Integer.parseInt(request.getParameter("userID"));
+            int clubID = Integer.parseInt(request.getParameter("clubID"));
+            if (clubID != -1) {
+                MemberDAO.delete(userID, clubID);
+            }
         }
         processRequest(request, response);
     }
