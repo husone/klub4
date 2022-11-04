@@ -4,11 +4,10 @@
  */
 package controller;
 
-import DAO.PostDAO;
-import entity.Post;
+import DAO.UserDAO;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sonsi
  */
-public class AdminManagePost extends HttpServlet {
+public class AdminManageUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class AdminManagePost extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminManagePost</title>");
+            out.println("<title>Servlet AdminManageUser</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminManagePost at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminManageUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,14 +58,12 @@ public class AdminManagePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        List<Post> postList = PostDAO.getPosts();
-        if (postList.isEmpty()) {
+                List<User> userList = UserDAO.getUsers();
+        if (userList.isEmpty()) {
         request.setAttribute("noContent", "Not found");
         }
-        request.setAttribute("content", postList);
-
-        request.getRequestDispatcher("/admin-manage-post.jsp").forward(request, response);
+        request.setAttribute("content", userList);
+        request.getRequestDispatcher("/admin-manage-user.jsp").forward(request, response);
     }
 
     /**

@@ -70,6 +70,18 @@
         <servlet-name>AdminSearchClub</servlet-name>
         <servlet-class>controller.AdminSearchClub</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminManageUser</servlet-name>
+        <servlet-class>controller.AdminManageUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDeleteUser</servlet-name>
+        <servlet-class>controller.AdminDeleteUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSearchUser</servlet-name>
+        <servlet-class>controller.AdminSearchUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -126,8 +138,6 @@
         <servlet-name>ManagePost</servlet-name>
         <url-pattern>/ManagePost</url-pattern>
     </servlet-mapping>
-
-
     <servlet-mapping>
         <servlet-name>AdminDeleteClub</servlet-name>
         <url-pattern>/AdminDeleteClub</url-pattern>
@@ -135,6 +145,18 @@
     <servlet-mapping>
         <servlet-name>AdminSearchClub</servlet-name>
         <url-pattern>/AdminSearchClub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageUser</servlet-name>
+        <url-pattern>/AdminManageUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDeleteUser</servlet-name>
+        <url-pattern>/AdminDeleteUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSearchUser</servlet-name>
+        <url-pattern>/AdminSearchUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
