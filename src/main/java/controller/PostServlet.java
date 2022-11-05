@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.ClubDAO;
 import DAO.PostDAO;
 import entity.Post;
 import entity.User;
@@ -25,7 +25,6 @@ public class PostServlet extends HttpServlet {
     protected void processCreateRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
 
@@ -35,21 +34,19 @@ public class PostServlet extends HttpServlet {
 
             User user = (User) session.getAttribute("userData");
             int userID = user.getUserID();
-            int clubID = (int) session.getAttribute("clubID");
+            int clubID = ClubDAO.getClubIDByUserID(userID);
             // Get Date from system
             Date time = new Date(System.currentTimeMillis());
 
-            Post post = new Post(title, content, time, clubID, userID, image);
+            Post post = new Post(title, content, time, clubID, image);
 
             PostDAO.createPost(post);
 
-        }
     }
 
     protected void processUpdateRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
 
@@ -59,47 +56,30 @@ public class PostServlet extends HttpServlet {
 
             User user = (User) session.getAttribute("userData");
             int userID = user.getUserID();
-            int clubID = (int) session.getAttribute("clubID");
+            int clubID = ClubDAO.getClubIDByUserID(userID);
             // Get Date from system
             Date time = new Date(System.currentTimeMillis());
 
-            Post post = new Post(title, content, time, clubID, userID, image);
+            Post post = new Post(title, content, time, clubID, image);
 
             PostDAO.updatePost(post);
 
-        }
     }
 
     protected void processDeleteRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
 
             int postID = Integer.parseInt(request.getParameter("postID"));
             PostDAO.deletePost(postID);
 
-        }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String typeOfRequest = request.getParameter("typeOfRequest");
-
-        switch (typeOfRequest) {
-            case "createPost":
-                processCreateRequest(request, response);
-                break;
-            case "updatePost":
-                processUpdateRequest(request, response);
-                break;
-            case "deletePost":
-                processDeleteRequest(request, response);
-                break;
-            default:
-                break;
-        }
-        RequestDispatcher rd = request.getRequestDispatcher("club.jsp");
+        
+        RequestDispatcher rd = request.getRequestDispatcher("manager-manage-post-create.jsp");
         rd.forward(request, response);
     }
 
