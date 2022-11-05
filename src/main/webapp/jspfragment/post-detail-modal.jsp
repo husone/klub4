@@ -11,8 +11,47 @@
         <div class="modal fade" id="edit-modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style="width:600px">
-                    <div class="modal-header">
-                        <h1>Hello</h1>
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="car text-black">
+                            <div class="card-body form">
+                                <p class="card-title mb-4">Edit Post</p>
+                                <form>
+                                    <div class="form-group row">
+                                        <label for="imgPost"
+                                            class="col-sm-2 col-form-label ml-1 font-weight-bold">Image</label>
+                                        <input type="file" class="form-input col-sm-9" alt="img-post" id="imgPost"
+                                            placeholder="">
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="namePost"
+                                            class="col-sm-2 col-form-label ml-1 font-weight-bold">Name</label>
+
+                                        <input type="text" class="form-control col-sm-9" id="namePost"
+                                            placeholder="Post Name">
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="desPost"
+                                            class="col-sm-2 col-form-label ml-1 font-weight-bold">Desciptions</label>
+
+                                        <input type="text" class="form-control col-sm-9" id="desPost"
+                                            placeholder="Description">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="contentPost"
+                                            class="col-sm-2 col-form-label ml-1 font-weight-bold">Content</label>
+                                        <input type="text" class="form-control col-sm-9" id="contentPost"
+                                            placeholder="Content">
+
+                                    </div>
+                                    <div class="col-sm-4 offset-8">
+                                        <button class="btn btn-success" type="submit">Edit</button>
+                                        <button class="btn btn-danger" type="reset">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
