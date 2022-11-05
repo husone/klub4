@@ -93,40 +93,34 @@
                                 <div class="card">
                                     <div class="card-body form">
                                         <p class="card-title mb-4">Create New Post</p>
-                                        <form>
+                                        <form action="./PostServlet" method="POST">
                                             <div class="form-group row">
                                                 <label for="imgPost"
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Image</label>
                                                 <input type="file" class="form-input col-sm-9" alt="img-post" id="imgPost"
-                                                    placeholder="">
+                                                    placeholder="" name="image">
 
                                             </div>
                                             <div class="form-group row">
                                                 <label for="namePost"
-                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Name</label>
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Title</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="namePost"
-                                                    placeholder="Post Name">
+                                                    placeholder="Post Title" name="title">
 
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="desPost"
-                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Desciptions</label>
-
-                                                <input type="text" class="form-control col-sm-9" id="desPost"
-                                                    placeholder="Description">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="contentPost"
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Content</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="contentPost"
-                                                    placeholder="Content">
+                                                    placeholder="Content" name="content">
 
                                             </div>
+                                            <input type="hidden" name="typeOfRequest" value="createPost">
                                             <div class="col-sm-4 offset-8">
                                                 <button class="btn btn-success" type="submit">Create</button>
-                                                <button class="btn btn-danger" type="reset">Cancel</button>
+                                                <a href="./ManagePost" class="btn btn-danger">Cancel</button>
                                             </div>
                                         </form>
                                     </div>
@@ -177,7 +171,7 @@
 
                 $('.font-weight-bold').click(function (event) {
                     event.preventDefault();
-                    window.location.pathname("./manager-manage-fund-create.html")
+                    window.location.pathname("./manager-manage-fund-create.jsp")
                 })
 
 
