@@ -54,7 +54,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.jsp"><img src="assets/img/logo/logo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -827,8 +827,8 @@
                         <div class="">
                             <input type="text" class="col-10" id="email-register" name="email-register" placeholder="Email">
                             <input type="text" class="col-10" id="name-register" name="name-register" placeholder="Name">
-                            <input type="text" class="col-10" id="dob-register" name="Date of birth" placeholder="Date of birth"
-                                onfocus="(this.type='date')">
+                            <input type="text" class="col-10" id="address-register" name="address-register" placeholder="Address">
+                            <input type="date" class="col-10" id="dob-register" name="dob-register" placeholder="Date of birth">
                             <input type="password" class="col-10" id="password-register" placeholder="Password" name="password-register">
                             <input type="password" class="col-10" id="passwordConfirm-register" name="passwordConfirm-register" placeholder="Confirm password">
                             <button type="submit" class="col-10 btn btn-secondary"

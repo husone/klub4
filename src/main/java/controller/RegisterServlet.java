@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address-register");
         String dob = request.getParameter("dob-register");
         // String username = request.getParameter("username-register");
-
+        System.out.println("dob: " + dob);
         // change to Date
         Date sqlDate = Date.valueOf(dob);
 
@@ -41,13 +41,13 @@ public class RegisterServlet extends HttpServlet {
         boolean isPassword = password.equals(passwordConfirm);
         if (isValid && isPassword) {
             if (UserDAO.registerUser(name, email, password, sqlDate, address)) {
-                response.sendRedirect("");
+                response.sendRedirect("index.jsp");
             } else {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("register.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("index.jsp");
                 dispatcher.forward(request, response);
             }
         } else {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("register.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
     }
