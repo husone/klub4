@@ -56,8 +56,8 @@ public class DatabaseTests {
         System.out.println(ClubDAO.getClubIDByUserID(u.getUserID()));
         if(ClubDAO.getClubIDByUserID(u.getUserID()) == -1) {
             Date date = new Date(System.currentTimeMillis());
-            Club c = new Club("Club A", "Club Test", u.getUserID(), date, "Club này để test", null); 
-            ClubDAO.createClub(c);
+            // Club c = new Club(); 
+            ClubDAO.createClub("Club A", "Club Test", u.getUserID(), date.toString(), "Club này để test");
         }
     }
 
