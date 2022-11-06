@@ -225,6 +225,10 @@
                 $('#conDelete').click(function(){
                     confirm('Are you sure to delete this user?');
                 })
+                $('.editModalButton').click(function () {
+                    $('#edit-modal').modal('show');
+                    $('#detail-event-modal').modal('hide');
+                });
 
             });
         </script>
@@ -277,7 +281,10 @@
                         </table>
 
                         <div class="text-center">
-                            <button class="btn btn-success">Edit</button>
+                            <button data-toggle="tooltip"
+                                    data-placement="top" 
+                                    title="Click to view detail" 
+                                    class="editModalButton btn btn-success">Edit</button>
                             <form action="EventServlet" method="POST" style="display: inline-block">
                                 <input type="hidden" name="typeOfRequest" value="deleteEvent">
                                 <input type="hidden" name="eventID" value="${event.eventID}">
@@ -291,5 +298,68 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="edit-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="width:600px">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="car text-black">
+                            <div class="card-body form">
+                                <p class="card-title mb-4">Edit Event</p>
+                                        <form action="./EventServlet" method="POST">
+                                            <div class="form-group row">
+                                                <label for="name"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Event
+                                                    Name</label>
+
+                                                <input type="text" class="form-control col-sm-9" id="nameevent"
+                                                    value="${event.eventName}" name="eventName">
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="des"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Descriptions</label>
+
+                                                <input type="text" class="form-control col-sm-9" id="des"
+                                                    value="${event.description}" name="description">
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="startdate"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Start
+                                                    Date</label>
+
+                                                <input type="date" class="form-control col-sm-9" id="startdate" name="dateFrom" value="${event.getDateFromCreatedString()}">
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="enddate"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">End
+                                                    Date</label>
+
+                                                <input type="date" class="form-control col-sm-9" id="enddate" name="dateTo" value="${event.getDateToCreatedString()}">
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="placeevent"
+                                                    class="col-sm-2 col-form-label ml-1 font-weight-bold">Place</label>
+
+                                                <input type="text" class="form-control col-sm-9" id="placeevent"
+                                                    value="${event.location}" name="location">
+
+                                            </div>
+                                            <input type="hidden" name="eventID" value="${event.eventID}">
+                                            <input type="hidden" name="typeOfRequest" value="updateEvent">
+                                            <div class="col-sm-4 offset-8">
+                                                <button class="btn btn-success" type="submit">Edit</button>
+                                                <button class="btn btn-danger" type="reset">Cancel</button>
+                                            </div>
+                                        </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </c:forEach>
 </c:if>
