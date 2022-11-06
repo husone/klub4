@@ -68,7 +68,7 @@
 
             </div>
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->

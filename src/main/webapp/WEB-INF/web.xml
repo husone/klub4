@@ -82,6 +82,14 @@
         <servlet-name>AdminSearchUser</servlet-name>
         <servlet-class>controller.AdminSearchUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateClub</servlet-name>
+        <servlet-class>controller.CreateClub</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserCreateClub</servlet-name>
+        <servlet-class>controller.UserCreateClub</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -157,6 +165,14 @@
     <servlet-mapping>
         <servlet-name>AdminSearchUser</servlet-name>
         <url-pattern>/AdminSearchUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateClub</servlet-name>
+        <url-pattern>/CreateClub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserCreateClub</servlet-name>
+        <url-pattern>/UserCreateClub</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
