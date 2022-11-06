@@ -114,7 +114,10 @@
                                         <span class="menu-title">Create New</span>
                                     </a>
                                 </div>
-
+                                <c:if test="${empty postList}">
+                                    <h3 style="margin: auto">Empty</h3>
+                                </c:if>
+                                <c:if test="${not empty postList}">
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
@@ -129,7 +132,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <c:if test="${not empty postList}">
                                                         <c:forEach items="${postList}" var="post">
                                                             <tr>
                                                                 <td class="view-detail-post text-primary"
@@ -140,22 +142,17 @@
                                                                 <td class="font-weight-medium">${post.time}</td>
                                                             </tr>
                                                         </c:forEach>
-                                                    </c:if>
                                                     </tbody>
                                                 </table>
-                                                <c:if test="${empty postList}">
-                                                        <h3 style="margin: auto">Empty</h3>
-                                                    </c:if>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
+                                </c:if>
                             </div>
-
-
                         </div>
 
+                        <c:if test="${not empty postList}">
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -168,7 +165,7 @@
                                 <a href="#">&raquo;</a>
                             </div>
                         </div>
-
+                        </c:if>
                     </div>
 
 

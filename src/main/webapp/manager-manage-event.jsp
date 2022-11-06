@@ -113,7 +113,11 @@
                                         <span class="menu-title">Create New</span>
                                     </a>
                                 </div>
-
+                                <%-- <div class="row"> --%>
+                                <c:if test="${empty eventList}"> 
+                                    <h3 style="margin: auto">Empty List</h3>
+                                </c:if>
+                                <c:if test="${not empty eventList}"> 
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
@@ -130,8 +134,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    
-                                                    <c:if test="${not empty eventList}"> 
                                                         <c:forEach var="event" items="${eventList}">
                                                             <tr>
                                                                 <td class="view-detail-event text-primary"
@@ -143,23 +145,21 @@
                                                                 <td>${event.dateTo}</td>
                                                                 <td class="font-weight-medium">${event.location}</td>
                                                             </tr> 
-                                                        </c:forEach>   
-                                                    </c:if> 
+                                                        </c:forEach>
                                                     </tbody>
                                                 </table>
-                                                <c:if test="${empty eventList}"> 
-                                                        <h3 style="margin: auto">Empty</h3>
-                                                    </c:if>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                </c:if> 
+                                <%-- </div> --%>
 
                             </div>
 
 
                         </div>
-
+                        <c:if test="${not empty eventList}">
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -172,7 +172,7 @@
                                 <a href="#">&raquo;</a>
                             </div>
                         </div>
-
+                        </c:if>
                     </div>
 
 

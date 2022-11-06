@@ -105,7 +105,10 @@
                                         <i class="ti-plus"> </i>Create New
                                     </a>
                                 </div>
-
+                                <c:if test="${empty fundList}">
+                                    <h3 style="margin: auto">Empty</h3>
+                                </c:if>
+                                <c:if test="${not empty fundList}">
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
@@ -122,8 +125,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    
-                                                    <c:if test="${not empty fundList}">
                                                         <c:forEach items="${fundList}" var="fund">
                                                             <tr>
                                                                 <td class="view-detail-fund text-primary"
@@ -137,22 +138,19 @@
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>
-                                                    </c:if>
                                                     </tbody>
                                                 </table>
-                                                <c:if test="${empty fundList}">
-                                                        <h3 style="margin: auto">Empty</h3>
-                                                    </c:if>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                </c:if>
 
                             </div>
 
 
                         </div>
-
+                        <c:if test="${not empty fundList}">
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -165,7 +163,7 @@
                                 <a href="#">&raquo;</a>
                             </div>
                         </div>
-
+                        </c:if>
                     </div>
 
 
