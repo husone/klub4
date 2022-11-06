@@ -101,6 +101,10 @@
 
 
                         <div class="row">
+                            <c:if test="${empty memberList}">
+                                <h3 style="margin: auto">Empty</h3>
+                            </c:if>
+                            <c:if test="${not empty memberList}">
                             <div class="col-md grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
@@ -116,8 +120,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                
-                                                <c:if test="${not empty memberList}">
                                                     <c:forEach items="${memberList}" var="i">
                                                         <tr>
                                                             <td class="view-detail-user font-weight-bold text-primary"
@@ -127,18 +129,16 @@
                                                             <td>${i.getdOBString()}</td>
                                                         </tr>
                                                     </c:forEach>
-                                                </c:if>
                                                 </tbody>
                                             </table>
-                                            <c:if test="${empty memberList}">
-                                                    <h3 style="margin: auto">Empty</h3>
-                                                </c:if>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </c:if>
                         </div>
-
+                        <c:if test="${not empty memberList}">
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -151,6 +151,7 @@
                                 <a href="#">&raquo;</a>
                             </div>
                         </div>
+                        </c:if>
 
                     </div>
 

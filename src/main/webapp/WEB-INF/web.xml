@@ -61,6 +61,10 @@
         <servlet-name>ManagePost</servlet-name>
         <servlet-class>controller.ManagePost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PostServlet</servlet-name>
+        <servlet-class>controller.PostServlet</servlet-class>
+    </servlet>
     <!-- Servlet Mapping -->
     <servlet>
         <servlet-name>AdminDeleteClub</servlet-name>
@@ -201,6 +205,10 @@
     <servlet-mapping>
         <servlet-name>UserEditProfile</servlet-name>
         <url-pattern>/UserEditProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostServlet</servlet-name>
+        <url-pattern>/PostServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserChangePassword</servlet-name>
