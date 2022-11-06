@@ -79,7 +79,7 @@
                                     <div class="card-body mt-2">
                                         <h3>${userData.name}</h3>
                                         <form action="./UserChangePassword" method="post" class="col-12 row mt-5">
-                                            <div class="form-group col-12 row align-items-center">
+                                            <div class="form-group col-12 row align-it  ems-center">
                                                 <label class="col-md-4" for="user-oldPass"> <h5>Old Password</h5> </label>
                                                 <input type="text" name="user-oldPass" id="user-oldPass" placeholder="Enter your old password" class="form-control col-md-8">
                                             </div>
@@ -101,7 +101,9 @@
                                                 <button type="submit"class="btn btn-primary btn-sm btn-sm">Change password</button>
                                                 <button  class="btn btn-danger btn-sm"> <a href="">Cancel</a> </button>
                                               </div>
-                                            </div>                                                                                    
+                                            </div>
+                                            
+                                            
                                         </form>
 
                                     </div>

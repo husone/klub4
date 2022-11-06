@@ -69,10 +69,10 @@
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
-                <jsp:include page="./jspfragment/settings-user.jspf" />
+                <jsp:include page="./jspfragment/settings-user.jsp" />
                 <!-- partial -->
                 <!-- partial:partials/_sidebar.html -->
-                <jsp:include page="./jspfragment/sidebar-user.jspf" />
+                <jsp:include page="./jspfragment/sidebar-user.jsp" />
                 <!-- partial -->
                 <div class="main-panel">
                     <div class="content-wrapper">

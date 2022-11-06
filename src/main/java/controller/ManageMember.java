@@ -23,10 +23,8 @@ public class ManageMember extends HttpServlet {
         User user = (User) session.getAttribute("userData");
         int clubID = ClubDAO.getClubIDByUserID(user.getUserID());
         List<Member> members = MemberDAO.getMembersInClub(clubID);
-        if (!members.isEmpty()) {   
-            List<User> users = UserDAO.getUserList(members);
-            request.setAttribute("memberList", users);
-        }
+        List<User> users = UserDAO.getUserList(members);
+        request.setAttribute("memberList", users);
         request.setAttribute("clubID", clubID);
         session.setAttribute("clubID", clubID);
         request.getRequestDispatcher("/manager-manage-member.jsp").forward(request, response);
@@ -42,7 +40,7 @@ public class ManageMember extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String typeOfRequest = request.getParameter("typeOfRequest");
-        if (typeOfRequest != null && typeOfRequest.equals("delete")) {
+        if (typeOfRequest.equals("delete")) {
             int userID = Integer.parseInt(request.getParameter("userID"));
             int clubID = Integer.parseInt(request.getParameter("clubID"));
             if (clubID != -1) {

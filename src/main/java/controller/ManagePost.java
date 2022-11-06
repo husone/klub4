@@ -2,10 +2,16 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import DAO.PostDAO;
+import entity.Post;
 
 public class ManagePost extends HttpServlet {
 
@@ -29,7 +35,12 @@ public class ManagePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        int clubID = (int) session.getAttribute("clubID");
+        List<Post> posts = PostDAO.getPostsByClubID(clubID);
+        request.setAttribute("postList", posts);
+        request.setAttribute("clubID", clubID);
+        request.getRequestDispatcher("/manager-manage-post.jsp").forward(request, response);
     }
 
     @Override

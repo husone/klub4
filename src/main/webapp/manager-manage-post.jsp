@@ -74,10 +74,10 @@
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
-                <jsp:include page="./jspfragment/settings-user.jspf" />
+                <jsp:include page="./jspfragment/settings-user.jsp" />
                 <!-- partial -->
                 <!-- partial:partials/_sidebar.html -->
-                <jsp:include page="./jspfragment/sidebar-user.jspf" />
+                <jsp:include page="./jspfragment/sidebar-user.jsp" />
                 <!-- partial -->
                 <div class="main-panel">
                     <div class="content-wrapper">
@@ -109,7 +109,7 @@
                             <div class="row col-md-12">
                                 <div class="col-12 my-3">
                                     <a class="btn btn-success text-black" style="font-weight: bold;"
-                                        href="manager-manage-post-create.html">
+                                        href="./PostServlet">
                                         <i class="ti-plus"></i>
                                         <span class="menu-title">Create New</span>
                                     </a>
@@ -129,48 +129,23 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="view-detail-post text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                How MU can defect MC</td>
-                                                            <td style="color: gray;">That's a big question</td>
-                                                            <td class="font-weight-medium">19/10/22</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-post text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                How MU can defect MC</td>
-                                                            <td style="color: gray;">That's a big question</td>
-                                                            <td class="font-weight-medium">19/10/22</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-post text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                How MU can defect MC</td>
-                                                            <td style="color: gray;">That's a big question</td>
-                                                            <td class="font-weight-medium">19/10/22</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-post text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                How MU can defect MC</td>
-                                                            <td style="color: gray;">That's a big question</td>
-                                                            <td class="font-weight-medium">19/10/22</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="view-detail-post text-primary"
-                                                                style="cursor:pointer;" data-toggle="tooltip"
-                                                                data-placement="top" title="Click to view detail">
-                                                                How MU can defect MC</td>
-                                                            <td style="color: gray;">That's a big question</td>
-                                                            <td class="font-weight-medium">19/10/22</td>
-                                                        </tr>
+                                                    <c:if test="${not empty postList}">
+                                                        <c:forEach items="${postList}" var="post">
+                                                            <tr>
+                                                                <td class="view-detail-post text-primary"
+                                                                    style="cursor:pointer;" data-toggle="tooltip"
+                                                                    data-placement="top" title="Click to view detail">
+                                                                    ${post.title}</td>
+                                                                <td style="color: gray;">${post.content}</td>
+                                                                <td class="font-weight-medium">${post.time}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:if>
                                                     </tbody>
                                                 </table>
+                                                <c:if test="${empty postList}">
+                                                        <h3 style="margin: auto">Empty</h3>
+                                                    </c:if>
                                             </div>
                                         </div>
                                     </div>
@@ -254,63 +229,14 @@
 
 </html>
 
-<div class="modal fade" id="detail-post-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width:600px ;">
-            <div class="detail-user container d-flex justify-content-center align-items-center p-0">
-                <div class="card text-black">
-                    <div class="modal-header border-0 m-0">
-                        <h3>Post Detail</h3>
-                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i
-                                    class="ti-close text-white"></i></span>
-                        </button>
-
-                    </div>
-
-                    <div class="modal-body p-0 pb-3">
-                        <table class="table mx-auto" style="width: 80% ;">
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Id</h4>
-                                </td>
-                                <td>
-                                    <h4>101</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Title</h4>
-                                </td>
-                                <td>
-                                    <h4>Welcome New Member</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Description</h4>
-                                </td>
-                                <td>
-                                    <h4>Description here...</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Date Create</h4>
-                                </td>
-                                <td>
-                                    <h4>10/10/22</h4>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div class="col-7 offset-1">
-                            <button class="btn btn-success">Edit</button>
-                            <button class="btn btn-danger" id="conDelete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<c:if test="${not empty postList}">
+<c:forEach items="${postList}" var="post">
+    <jsp:include page="./jspfragment/post-detail-modal.jsp">
+        <jsp:param name="postID" value="${post.postID}" />
+        <jsp:param name="title" value="${post.title}" />
+        <jsp:param name="content" value="${post.content}" />
+        <jsp:param name="dateString" value="${post.getDateCreatedString()}" />
+        <jsp:param name="image" value="${post.image}" />
+    </jsp:include>
+</c:forEach>
+</c:if>

@@ -20,26 +20,20 @@ import database.ConnectDB;
  */
 public class ClubDAO {
 
-    public static void createClub(String clubName, String clubType, int managerID, String description, String logo) {
-        // System.out.println("Create Club");
+    public static void createClub(Club club) {
+        System.out.println("Create Club");
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
         PreparedStatement statement = null;
         try {
             con = db.openConnection();
-            String sql = "insert into clubs (clubName, clubType, managerID, description, logo) values (?,?,?,?,?);";
+            String sql = "insert into clubs (clubName, clubType, managerID, description, logo) values (?,?,?,?,?) ";
             statement = con.prepareStatement(sql);
-            statement.setString(1, clubName);
-            statement.setString(2, clubType);
-            statement.setInt(3, managerID);
-            statement.setString(4, description);
-            statement.setString(5, logo);
-            statement.executeUpdate();
-            sql = "insert into members (userID, clubID, point) values (?,?,0)";
-            statement = con.prepareStatement(sql);
-            int clubId = getClubIDByUserID(managerID);
-            statement.setInt(1, managerID);
-            statement.setInt(2, clubId);
+            statement.setString(1, club.getClubName());
+            statement.setString(2, club.getClubType());
+            statement.setInt(3, club.getManagerID());
+            statement.setString(4, club.getDescription());
+            statement.setString(5, club.getLogo());
             statement.executeUpdate();
             con.close();
         } catch (Exception e) {
