@@ -102,6 +102,10 @@
         <servlet-name>UserEditProfile</servlet-name>
         <servlet-class>controller.UserEditProfile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserChangePassword</servlet-name>
+        <servlet-class>controller.UserChangePassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -197,6 +201,10 @@
     <servlet-mapping>
         <servlet-name>UserEditProfile</servlet-name>
         <url-pattern>/UserEditProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserChangePassword</servlet-name>
+        <url-pattern>/UserChangePassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

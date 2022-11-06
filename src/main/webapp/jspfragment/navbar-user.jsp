@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+%@page import="java.util.List"%>
+<%@page import="DAO.ClubDAO"%>
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center col-md-3">
         <a href="./club_home.jsp" class="navbar-brand brand-logo mr-5" href=""><img src="./assets/img/logo/loder.png" class="mr-2"
@@ -13,16 +16,12 @@
                     <li class="nav-item nav-search">
                         <span><a href=""><i style="font-size:35px;;" class="fa fa-solid fa-globe "></i></a></span>
                     </li>  
-<<<<<<< HEAD
                     <li class="nav-item nav-search">
                         <span ><a href="./member-view-fund.html"><i style="font-size:35px;;" class="fa fa-money-bill-alt "></i></a></span>
                    </li>  
                     <li class="nav-item nav-search">
                         <span><a href="./member-view-event.html "><i style="font-size:35px;;" class="fa fa-calendar-alt "></i></a></span>
                    </li> 
-=======
-                    
->>>>>>> 74760c3913b533c5951d49fa228523dc3ac4fefb
                 </ul>
             </nav>
         </div>
@@ -32,19 +31,19 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                             id="profileDropdown">
-                            <img src="./assets/img/blog/avatar.png" alt="profile" />
+                            <img src="${userData.avatar}" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="./user-view-profile.html">
+                            <a class="dropdown-item" href="./user-view-profile.jsp">
                                 <i class="ti-id-badge text-primary"></i>
                                            Profile
                             </a>
+                            <c:if test="${ClubDAO.getClubIDByUserID(userData.userID)!=-1}">                         
                             <a class="dropdown-item" href="./ManageMember">
                                 <i class="ti-layout-grid2-thumb text-primary"></i>
-                                    Your own club
+                                Your own club
                             </a>
-<<<<<<< HEAD
                             </c:if>
                              <c:if test="${ClubDAO.getClubIDByUserID(userData.userID)==-1}">
                             <a class="dropdown-item" href="./user-create-club.jsp">
@@ -53,13 +52,10 @@
                             </a>
                             </c:if>
                             <a class="dropdown-item" href="./user-change-password.jsp">
-=======
-                            <a class="dropdown-item" href="./user-change-password.html">
->>>>>>> 74760c3913b533c5951d49fa228523dc3ac4fefb
                                 <i class="ti-shield text-primary"></i>
                                     Change password
                             </a>
-                            <a class="dropdown-item">
+                            <a class="dropdown-item" href="./LogoutServlet">
                                 <i class="ti-power-off text-primary"></i>
                                     Logout
                             </a>

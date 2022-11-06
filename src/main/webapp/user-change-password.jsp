@@ -81,20 +81,36 @@
                                         <form action="./UserChangePassword" method="post" class="col-12 row mt-5">
                                             <div class="form-group col-12 row align-it  ems-center">
                                                 <label class="col-md-4" for="user-oldPass"> <h5>Old Password</h5> </label>
-                                                <input type="text" name="user-oldPass" id="user-oldPass" placeholder="Enter your old password" class="form-control col-md-8">
+                                                <input type="password" name="user-oldPass" id="user-oldPass" placeholder="Enter your old password" class="form-control col-md-8">
                                             </div>
 
                                             <div class="form-group col-12 row align-items-center">
                                                 <label class="col-md-4" for="user-oldPass"> <h5>New Password</h5> </label>
-                                                <input type="text" placeholder="Enter your new password" name="user-oldPass" id="user-oldPass" class="form-control col-md-8">
+                                                <input type="password" placeholder="Enter your new password" name="user-newPass" id="user-newPass" class="form-control col-md-8" >
                                             </div>
 
                                             <div class="form-group col-12 row align-items-center">
                                                 <label class="col-md-4" for="user-oldPass"> <h5>Confirm Password</h5> </label>
-                                                <input type="text" placeholder="Enter your old password again" name="user-oldPass" id="user-oldPass" class="form-control col-md-8">
+                                                <input type="password" placeholder="Enter your old password again" name="user-newPassCon" id="user-newPassCon" class="form-control col-md-8" onchange="validatePW()">
                                             </div>
+                                            <h5 style="color:red" id="errorHere"></h5>
+                                            <script>
+                                                const pw1 = document.getElementById("user-newPass");
+                                                const pw2 = document.getElementById("user-newPassCon");
+                                                const e = document.getElementById("errorHere");
+                                                async function validatePW() {
+                                                    if (pw1.value === pw2.value){
+                                                        e.innerHTML = "";                                                              
+                                                    }
+                                                    else e.innerHTML = "Password does not match";
+                                                    console.log(pw1.value,pw2.value)
+                                                }
+                                            </script>
                                             <c:if test="${error!= null}">
                                                 <h5 style="color:red">${error}</h5>
+                                            </c:if>
+                                                <c:if test="${success!= null}">
+                                                <h5 style="color:green">${success}</h5>
                                             </c:if>
                                             <div class="form-group col-12 row justify-content-end  ">
                                               <div class="" >

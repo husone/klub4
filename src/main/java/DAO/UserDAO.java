@@ -171,7 +171,7 @@ public class UserDAO {
         boolean checkUpdate = false;
 
         String sql = "UPDATE USERS\n"
-                + " name = ?, dOB = ?, address = ?, avatar = ? \n"
+                + "SET name = ?, dOB = ?, address = ?, avatar = ? \n"
                 + "WHERE userID = ?;";
         try {
 
@@ -182,6 +182,27 @@ public class UserDAO {
             statement.setString(3, user.getAddress());
             statement.setString(4, user.getAvatar());
             statement.setInt(5, user.getUserID());
+            checkUpdate = statement.execute();
+            System.out.println("Done");
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("failed");
+        }
+        return checkUpdate;
+    }
+    
+     public static boolean updatePW(int userID, String pw) {
+        boolean checkUpdate = false;
+
+        String sql = "UPDATE USERS\n"
+                + "SET password = ? \n"
+                + "WHERE userID = ?;";
+        try {
+
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1, BCrypt.hashpw(pw, BCrypt.gensalt(12)));
+            statement.setInt(2, userID);
             checkUpdate = statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
