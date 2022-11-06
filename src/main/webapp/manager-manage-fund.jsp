@@ -64,7 +64,7 @@
     <body>
         <div class="container-scroller">
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -122,6 +122,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    
+                                                    <c:if test="${not empty fundList}">
                                                         <c:forEach items="${fundList}" var="fund">
                                                             <tr>
                                                                 <td class="view-detail-fund text-primary"
@@ -135,8 +137,12 @@
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>
+                                                    </c:if>
                                                     </tbody>
                                                 </table>
+                                                <c:if test="${empty fundList}">
+                                                        <h3 style="margin: auto">Empty</h3>
+                                                    </c:if>
                                             </div>
                                         </div>
                                     </div>
@@ -216,7 +222,7 @@
     </body>
 
 </html>
-
+<c:if test="${not empty fundList}"> 
 <c:forEach items="${fundList}" var="fund">
     <jsp:include page="./jspfragment/fund-detail-modal.jsp">
         <jsp:param name="fundId" value="${fund.fundId}" />
@@ -225,3 +231,4 @@
         <jsp:param name="amount" value="${fund.amount}" />
     </jsp:include>
 </c:forEach>
+</c:if>

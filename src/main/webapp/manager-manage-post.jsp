@@ -70,7 +70,7 @@
 
             </div>
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -129,6 +129,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    <c:if test="${not empty postList}">
                                                         <c:forEach items="${postList}" var="post">
                                                             <tr>
                                                                 <td class="view-detail-post text-primary"
@@ -139,8 +140,12 @@
                                                                 <td class="font-weight-medium">${post.time}</td>
                                                             </tr>
                                                         </c:forEach>
+                                                    </c:if>
                                                     </tbody>
                                                 </table>
+                                                <c:if test="${empty postList}">
+                                                        <h3 style="margin: auto">Empty</h3>
+                                                    </c:if>
                                             </div>
                                         </div>
                                     </div>
@@ -224,6 +229,7 @@
 
 </html>
 
+<c:if test="${not empty postList}">
 <c:forEach items="${postList}" var="post">
     <jsp:include page="./jspfragment/post-detail-modal.jsp">
         <jsp:param name="postID" value="${post.postID}" />
@@ -233,3 +239,4 @@
         <jsp:param name="image" value="${post.image}" />
     </jsp:include>
 </c:forEach>
+</c:if>

@@ -70,7 +70,7 @@
 
             </div>
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -130,7 +130,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <c:forEach var="event" items="${listEvent}">
+                                                    
+                                                    <c:if test="${not empty eventList}"> 
+                                                        <c:forEach var="event" items="${eventList}">
                                                             <tr>
                                                                 <td class="view-detail-event text-primary"
                                                                     style="cursor:pointer;" data-toggle="tooltip"
@@ -141,9 +143,13 @@
                                                                 <td>${event.dateTo}</td>
                                                                 <td class="font-weight-medium">${event.location}</td>
                                                             </tr> 
-                                                        </c:forEach>    
+                                                        </c:forEach>   
+                                                    </c:if> 
                                                     </tbody>
                                                 </table>
+                                                <c:if test="${empty eventList}"> 
+                                                        <h3 style="margin: auto">Empty</h3>
+                                                    </c:if>
                                             </div>
                                         </div>
                                     </div>
@@ -226,6 +232,8 @@
 
 </html>
 
+<c:if test="${not empty eventList}"> 
+<c:forEach var="event" items="${eventList}">
 <div class="modal fade" id="detail-event-modal" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width:600px ;">
@@ -244,27 +252,27 @@
                         <table class="table mx-auto" style="width: 80% ;">
                             <tr>
                                 <td class="text-info"><h4>Id</h4></td>
-                                <td><h4>101</h4></td>
+                                <td><h4>${event.eventID}</h4></td>
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Name</h4></td>
-                                <td><h4>CLB MU</h4></td>
+                                <td><h4>${event.eventName}</h4></td>
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Description</h4></td>
-                                <td><h4>Event for maintaining club in september</h4></td>
+                                <td><h4>${event.description}</h4></td>
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Date Start</h4></td>
-                                <td><h4>19/10/22</h4></td>
+                                <td><h4>${event.getDateFromCreatedString()}</h4></td>
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Date End</h4></td>
-                                <td><h4>20/10/22</h4></td>
+                                <td><h4>${event.getDateToCreatedString()}</h4></td>
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Place</h4></td>
-                                <td><h4>In the cave</h4></td>
+                                <td><h4>${event.location}</h4></td>
                             </tr>
                         </table>
 
@@ -279,3 +287,5 @@
         </div>
     </div>
 </div>
+</c:forEach>
+</c:if>

@@ -66,7 +66,7 @@
     <body>
         <div class="container-scroller">
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -116,6 +116,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                
+                                                <c:if test="${not empty memberList}">
                                                     <c:forEach items="${memberList}" var="i">
                                                         <tr>
                                                             <td class="view-detail-user font-weight-bold text-primary"
@@ -125,8 +127,12 @@
                                                             <td>${i.getdOBString()}</td>
                                                         </tr>
                                                     </c:forEach>
+                                                </c:if>
                                                 </tbody>
                                             </table>
+                                            <c:if test="${empty memberList}">
+                                                    <h3 style="margin: auto">Empty</h3>
+                                                </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -200,6 +206,7 @@
 
 </html>
 
+<c:if test="${not empty memberList}">
 <c:forEach items="${memberList}" var="i">
     <jsp:include page="./jspfragment/user-modal.jsp">
         <jsp:param name="name" value="${i.name}" />
@@ -210,3 +217,4 @@
         <jsp:param name="clubID" value="${clubID}" />
     </jsp:include>
 </c:forEach>
+</c:if>
