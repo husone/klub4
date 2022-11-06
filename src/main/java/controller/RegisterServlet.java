@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,37 +20,35 @@ import java.sql.Date;
 
 public class RegisterServlet extends HttpServlet {
 
-
     /*
      * Process register request
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String name = request.getParameter("name-register");
-            String email = request.getParameter("email-register");
-            String password = request.getParameter("password-register");
-            String passwordConfirm = request.getParameter("passwordConfirm-register");
-            String address = request.getParameter("address-register");
-            String dob = request.getParameter("dob-register");
-            // String username = request.getParameter("username-register");
 
-            //change to Date
-            Date sqlDate = Date.valueOf(dob);
+        String name = request.getParameter("name-register");
+        String email = request.getParameter("email-register");
+        String password = request.getParameter("password-register");
+        String passwordConfirm = request.getParameter("passwordConfirm-register");
+        String address = request.getParameter("address-register");
+        String dob = request.getParameter("dob-register");
+        // String username = request.getParameter("username-register");
 
+        // change to Date
+        Date sqlDate = Date.valueOf(dob);
 
-            boolean isValid = !UserDAO.checkRegister(email);
-            boolean isPassword = password.equals(passwordConfirm);
-            if (isValid && isPassword) {
-                if (UserDAO.registerUser(name, email, password, sqlDate, address)) {
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("login.jsp");
-                    dispatcher.forward(request, response);
-                } else {
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("register.jsp");
-                    dispatcher.forward(request, response);
-                }
+        boolean isValid = !UserDAO.checkRegister(email);
+        boolean isPassword = password.equals(passwordConfirm);
+        if (isValid && isPassword) {
+            if (UserDAO.registerUser(name, email, password, sqlDate, address)) {
+                response.sendRedirect("");
+            } else {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("register.jsp");
+                dispatcher.forward(request, response);
             }
+        } else {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("register.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
