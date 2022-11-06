@@ -54,7 +54,7 @@
 
 <body>
     <header>
-        <jsp:include page="./jspfragment/navbar-member.jsp" />
+        <jsp:include page="./jspfragment/navbar-user.jspf" />
     </header>
 
     <main>
