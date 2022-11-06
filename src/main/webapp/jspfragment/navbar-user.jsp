@@ -3,9 +3,8 @@
 <%@page import="DAO.ClubDAO"%>
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center col-md-3">
-        <a class="navbar-brand brand-logo mr-5" href=""><img src="./assets/img/logo/loder.png" class="mr-2"
+        <a href="./club_home.jsp" class="navbar-brand brand-logo mr-5" href=""><img src="./assets/img/logo/loder.png" class="mr-2"
             alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href=""><img src="./assets/img/logo/loder.png" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center col-md-9 row">
         <div class="col-md-7 d-flex justify-content-center col-12 fixed-botton">
@@ -18,10 +17,10 @@
                         <span><a href=""><i style="font-size:35px;;" class="fa fa-solid fa-globe "></i></a></span>
                     </li>  
                     <li class="nav-item nav-search">
-                        <span ><a href="../member-view-fund.html"><i style="font-size:35px;;" class="fa fa-money-bill-alt "></i></a></span>
+                        <span ><a href="./member-view-fund.html"><i style="font-size:35px;;" class="fa fa-money-bill-alt "></i></a></span>
                    </li>  
                     <li class="nav-item nav-search">
-                        <span><a href="../member-view-event.html"><i style="font-size:35px;;" class="fa fa-calendar-alt "></i></a></span>
+                        <span><a href="./member-view-event.html "><i style="font-size:35px;;" class="fa fa-calendar-alt "></i></a></span>
                    </li> 
                 </ul>
             </nav>
@@ -52,7 +51,7 @@
                                     Create your own club
                             </a>
                             </c:if>
-                            <a class="dropdown-item" href="./user-change-password.html">
+                            <a class="dropdown-item" href="./user-change-password.jsp">
                                 <i class="ti-shield text-primary"></i>
                                     Change password
                             </a>

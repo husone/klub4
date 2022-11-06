@@ -90,6 +90,10 @@
         <servlet-name>UserCreateClub</servlet-name>
         <servlet-class>controller.UserCreateClub</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserEditProfile</servlet-name>
+        <servlet-class>controller.UserEditProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -173,6 +177,10 @@
     <servlet-mapping>
         <servlet-name>UserCreateClub</servlet-name>
         <url-pattern>/UserCreateClub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserEditProfile</servlet-name>
+        <url-pattern>/UserEditProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

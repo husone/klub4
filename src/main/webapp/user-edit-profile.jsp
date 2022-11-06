@@ -79,7 +79,7 @@
                                         <div class="card-body mt-2">
                                             <h3>${userData.name}</h3>
                                             <div class="mt-5">
-                                                <form action="" class="col-12 row mt-5">
+                                                <form action="./UserEditProfile" class="col-12 row mt-5">
                                                     <div class="form-group col-12 row align-items-center">
                                                         <label class="col-md-4" for="new-name"> <h5>Name</h5> </label>
                                                         <input type="text" name="new-name" id="new-name" placeholder="" value="${userData.name}" class="form-control col-md-8">
@@ -114,17 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <!-- content-wrapper ends -->
-                            <!-- partial:partials/_footer.html -->
-
-                            <!-- partial -->
                         </div>
-
-
-
                     </div>
                 </div>
             </section>

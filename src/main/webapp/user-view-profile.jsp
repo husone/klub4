@@ -106,17 +106,10 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <!-- content-wrapper ends -->
                             <!-- partial:partials/_footer.html -->
-
                             <!-- partial -->
                         </div>
-
-
-
                     </div>
                 </div>
             </section>
