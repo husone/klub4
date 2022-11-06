@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
     <link rel="stylesheet" href="./assets/css/user-detail.css">
     <link rel="stylesheet" href="./assets/css/fontawesome-all.min.css">
-
+    <script src="https://js.upload.io/upload-js/v2"></script>
 
     <style>
         .pagination {
@@ -223,7 +223,42 @@
                     $('#detail-post-modal').modal('hide');
                 });
 
-            });
+                $('.editModalButton').click(function () {
+                    $('#edit-modal').modal('show');
+                    $('#detail-post-modal').modal('hide');
+                });
+
+        });
+        </script>
+        <script>
+                                // DOM Elements
+                                const h1 = document.getElementById("image-data")
+                                const uploadButton = document.getElementById("imgPost")
+                                const imageUrl = document.getElementById("image-url");
+                                // 1) Instantiate Upload.js (at start of app).
+                                const upload = Upload({apiKey: "free"})
+
+                                // <input type="file" onchange="onFileSelected(event)" />
+                                async function onFileSelected(event) {
+                                    try {
+                                        // 2) Hide upload button when upload starts.
+                                        uploadButton.remove()
+
+                                        // 3) Upload file & show progress.
+                                        const [file] = event.target.files
+                                        const {fileUrl} = await upload.uploadFile(file, {
+                                            onProgress: ({ progress }) =>
+                                                h1.innerHTML = `File uploading ` + progress + `%`
+                                        })
+
+                                        // 4) Display uploaded file URL.
+                                        h1.innerHTML = `
+                              File uploaded`;
+                                        imageUrl.value = fileUrl;
+
+                                    } catch (e) {
+                                    }
+                                }
         </script>
     </body>
 

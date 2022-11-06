@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
     <link rel="stylesheet" href="./assets/css/user-detail.css">
     <link rel="stylesheet" href="./assets/css/fontawesome-all.min.css">
-
+    <script src="https://js.upload.io/upload-js/v2"></script>
 
     <style>
         .pagination {
@@ -97,8 +97,10 @@
                                             <div class="form-group row">
                                                 <label for="imgPost"
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Image</label>
+                                                <h5 id="image-data"></h5>
                                                 <input type="file" class="form-input col-sm-9" alt="img-post" id="imgPost"
-                                                    placeholder="" name="image">
+                                                    placeholder="" name="image" onchange="onFileSelected(event)">
+                                                <input name="image-url" id="image-url" style="display: none" required>
 
                                             </div>
                                             <div class="form-group row">
@@ -128,6 +130,38 @@
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                                // DOM Elements
+                                const h1 = document.getElementById("image-data")
+                                const uploadButton = document.getElementById("imgPost")
+                                const imageUrl = document.getElementById("image-url");
+                                // 1) Instantiate Upload.js (at start of app).
+                                const upload = Upload({apiKey: "free"})
+
+                                // <input type="file" onchange="onFileSelected(event)" />
+                                async function onFileSelected(event) {
+                                    try {
+                                        // 2) Hide upload button when upload starts.
+                                        uploadButton.remove()
+
+                                        // 3) Upload file & show progress.
+                                        const [file] = event.target.files
+                                        const {fileUrl} = await upload.uploadFile(file, {
+                                            onProgress: ({ progress }) =>
+                                                h1.innerHTML = `File uploading ` + progress + `%`
+                                        })
+
+                                        // 4) Display uploaded file URL.
+                                        h1.innerHTML = `
+                              File uploaded`;
+                                        imageUrl.value = fileUrl;
+
+                                    } catch (e) {
+                                    }
+                                }
+                    </script>
+
                     <!-- content-wrapper ends -->
                     <!-- partial:partials/_footer.html -->
                     <!-- partial -->
