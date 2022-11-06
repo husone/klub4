@@ -82,6 +82,18 @@
         <servlet-name>AdminSearchUser</servlet-name>
         <servlet-class>controller.AdminSearchUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserViewClubFollowCategory</servlet-name>
+        <servlet-class>controller.UserViewClubFollowCategory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserJoinClub</servlet-name>
+        <servlet-class>controller.UserJoinClub</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserSearchClub</servlet-name>
+        <servlet-class>controller.UserSearchClub</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -157,6 +169,18 @@
     <servlet-mapping>
         <servlet-name>AdminSearchUser</servlet-name>
         <url-pattern>/AdminSearchUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserViewClubFollowCategory</servlet-name>
+        <url-pattern>/UserViewClubFollowCategory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserJoinClub</servlet-name>
+        <url-pattern>/UserJoinClub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserSearchClub</servlet-name>
+        <url-pattern>/UserSearchClub</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
