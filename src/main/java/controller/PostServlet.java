@@ -105,9 +105,4 @@ public class PostServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("club.jsp");
         rd.forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 }

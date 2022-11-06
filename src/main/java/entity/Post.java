@@ -4,7 +4,6 @@
  */
 package entity;
 
-import java.util.ArrayList;
 import java.sql.Date;
 
 /**
@@ -20,7 +19,6 @@ public class Post {
     private Date time;
     private int clubID;
     private String image;
-    private ArrayList<Comment> comments;
     
     // constructor with postID, title, description, content, time, clubID, userID
     public Post(int postID, String title, String content, Date time, int clubID) {
@@ -30,7 +28,7 @@ public class Post {
         this.clubID = clubID;
     }
 
-    public Post(String title, String content, Date time, int clubID, int userID, String image) {
+    public Post(String title, String content, Date time, int clubID, String image) {
         this.title = title;
         this.content = content;
         this.time = time;
@@ -49,14 +47,13 @@ public class Post {
     }
 
     // constructor with postID, title, content, time, clubID, userID, image, comments
-    public Post(int postID, String title, String content, Date time, int clubID, int userID, String image, ArrayList<Comment> comments) {
+    public Post(int postID, String title, String content, Date time, int clubID, int userID, String image) {
         this.postID = postID;
         this.title = title;
         this.content = content;
         this.time = time;
         this.clubID = clubID;
         this.image = image;
-        this.comments = comments;
     }
 
     public void setPostID(int postID) {
@@ -83,10 +80,6 @@ public class Post {
         this.image = image;
     }
 
-    public void setComments(ArrayList<Comment> comments) {
-        this.comments = comments;
-    }
-
     public int getPostID() {
         return postID;
     }
@@ -110,9 +103,9 @@ public class Post {
     public String getImage() {
         return image;
     }
-
-    public ArrayList<Comment> getComments() {
-        return comments;
-    }    
+ 
     
+    public String getDateCreatedString() {
+        return time.toString();
+    }
 }
