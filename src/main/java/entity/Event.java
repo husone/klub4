@@ -112,6 +112,14 @@ public class Event {
         this.dateTo = dateTo;
     }
 
+    public String getDateToCreatedString() {
+        return dateTo.toString();
+    }
+
+    public String getDateFromCreatedString() {
+        return dateFrom.toString();
+    }
+
     @Override
     public String toString() {
         return "Event{" + "eventID=" + eventID + ", clubID=" + clubID + ", eventName=" + eventName + ", location=" + location + ", description=" + description + ", dateFrom=" + dateFrom + ", dateTo=" + dateTo + '}';

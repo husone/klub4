@@ -68,7 +68,7 @@
 
             </div>
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -94,14 +94,14 @@
                                 <div class="card">
                                     <div class="card-body form">
                                         <p class="card-title mb-4">Create New Event</p>
-                                        <form>
+                                        <form action="./EventServlet" method="POST">
                                             <div class="form-group row">
                                                 <label for="name"
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Event
                                                     Name</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="nameevent"
-                                                    placeholder="Event Name">
+                                                    placeholder="Event Name" name="eventName">
 
                                             </div>
                                             <div class="form-group row">
@@ -109,7 +109,7 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Descriptions</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="des"
-                                                    placeholder="Description">
+                                                    placeholder="Description" name="description">
 
                                             </div>
                                             <div class="form-group row">
@@ -117,7 +117,7 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Start
                                                     Date</label>
 
-                                                <input type="date" class="form-control col-sm-9" id="startdate">
+                                                <input type="date" class="form-control col-sm-9" id="startdate" name="dateFrom">
 
                                             </div>
                                             <div class="form-group row">
@@ -125,7 +125,7 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">End
                                                     Date</label>
 
-                                                <input type="date" class="form-control col-sm-9" id="enddate">
+                                                <input type="date" class="form-control col-sm-9" id="enddate" name="dateTo">
 
                                             </div>
                                             <div class="form-group row">
@@ -133,9 +133,10 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Place</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="placeevent"
-                                                    placeholder="Place">
+                                                    placeholder="Place" name="location">
 
                                             </div>
+                                            <input type="hidden" name="typeOfRequest" value="createEvent">
                                             <div class="col-sm-4 offset-8">
                                                 <button class="btn btn-success" type="submit">Create</button>
                                                 <button class="btn btn-danger" type="reset">Cancel</button>

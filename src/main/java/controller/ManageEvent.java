@@ -1,35 +1,53 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import DAO.ClubDAO;
+import DAO.EventDAO;
+import entity.Event;
+import entity.User;
 
 public class ManageEvent extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManageEvent</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManageEvent at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("userData");
+        if (user == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+            int userID = user.getUserID();
+            int clubID = ClubDAO.getClubIDByUserID(userID);
+            session.setAttribute("clubID", clubID);
+            List<Event> events = EventDAO.getAllEventsByClubID(clubID);
+            request.setAttribute("eventList", events);
+            request.getRequestDispatcher("/manager-manage-event.jsp").forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("userData");
+        if (user == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+            int userID = user.getUserID();
+            int clubID = ClubDAO.getClubIDByUserID(userID);
+            session.setAttribute("clubID", clubID);
+            List<Event> events = EventDAO.getAllEventsByClubID(clubID);
+            request.setAttribute("eventList", events);
+            request.getRequestDispatcher("/manager-manage-event.jsp").forward(request, response);
+        }
+
     }
 
     @Override

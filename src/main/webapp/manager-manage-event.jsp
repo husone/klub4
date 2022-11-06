@@ -278,7 +278,11 @@
 
                         <div class="text-center">
                             <button class="btn btn-success">Edit</button>
-                            <button id="conDelete"class="btn btn-danger">Delete</button>
+                            <form action="EventServlet" method="POST" style="display: inline-block">
+                                <input type="hidden" name="typeOfRequest" value="deleteEvent">
+                                <input type="hidden" name="eventID" value="${event.eventID}">
+                                <button type="submit" id="conDelete" class="btn btn-danger">Delete</button>
+                            </form>
                         </div>
 
                     </div>
