@@ -831,7 +831,6 @@
                                 onfocus="(this.type='date')">
                             <input type="password" class="col-10" id="password-register" placeholder="Password" name="password-register">
                             <input type="password" class="col-10" id="passwordConfirm-register" name="passwordConfirm-register" placeholder="Confirm password">
-                            <input type="text" class="col-10" id="username-register" name="username-register" placeholder="Username">
                             <button type="submit" class="col-10 btn btn-secondary"
                                 style="background-color: #699DEB">Register</button>
                         </div>

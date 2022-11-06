@@ -35,7 +35,6 @@ public class RegisterServlet extends HttpServlet {
             String passwordConfirm = request.getParameter("passwordConfirm-register");
             String address = request.getParameter("address-register");
             String dob = request.getParameter("dob-register");
-            // String username = request.getParameter("username-register");
 
             //change to Date
             Date sqlDate = Date.valueOf(dob);
