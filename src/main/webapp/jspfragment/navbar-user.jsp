@@ -13,16 +13,12 @@
                     <li class="nav-item nav-search">
                         <span><a href=""><i style="font-size:35px;;" class="fa fa-solid fa-globe "></i></a></span>
                     </li>  
-<<<<<<< HEAD
                     <li class="nav-item nav-search">
                         <span ><a href="./member-view-fund.html"><i style="font-size:35px;;" class="fa fa-money-bill-alt "></i></a></span>
                    </li>  
                     <li class="nav-item nav-search">
                         <span><a href="./member-view-event.html "><i style="font-size:35px;;" class="fa fa-calendar-alt "></i></a></span>
                    </li> 
-=======
-                    
->>>>>>> 74760c3913b533c5951d49fa228523dc3ac4fefb
                 </ul>
             </nav>
         </div>
@@ -44,7 +40,6 @@
                                 <i class="ti-layout-grid2-thumb text-primary"></i>
                                     Your own club
                             </a>
-<<<<<<< HEAD
                             </c:if>
                              <c:if test="${ClubDAO.getClubIDByUserID(userData.userID)==-1}">
                             <a class="dropdown-item" href="./user-create-club.jsp">
@@ -53,9 +48,6 @@
                             </a>
                             </c:if>
                             <a class="dropdown-item" href="./user-change-password.jsp">
-=======
-                            <a class="dropdown-item" href="./user-change-password.html">
->>>>>>> 74760c3913b533c5951d49fa228523dc3ac4fefb
                                 <i class="ti-shield text-primary"></i>
                                     Change password
                             </a>
