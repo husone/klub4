@@ -42,6 +42,15 @@
         <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
 
         <style>
+            .btn {
+                display:inline-block;
+                margin-bottom:0;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;
+                cursor:pointer;
+                background-image:none;
+                border:1px solid transparent;
+                padding:2px 5px;font-size:6px;
+                line-height:1.42857143;border-radius:6px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none
+            }
             /* .club-joined li:hover{
             background-color: #48b20f !important;
             color: #e9e2e2 !important;
@@ -64,7 +73,7 @@
                             <div class="col-6 mt-5 ">
                                 <div class="m-2 rounded container bg-light" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
                                     <div class="card mt-2 bg-light">
-                                        <div class="cart-header mt-2">
+                                        <div class="cart-header mt-4">
                                             <h3>Your profile</h3>
                                         </div>
 
@@ -74,7 +83,7 @@
                                                  style="border-top-left-radius:10px; border-top-right-radius: 10px ;">
 
                                             <div class="position-absolute" style="top:90px; left: 50px;">
-                                                <img height="80px" width="80px" src="${userData.avatar}" alt="" class="img-fluid rounded-circle">
+                                                <img style="border-radius: 50%; height :80px; width:80px"  src="${userData.avatar}" alt="" class="img-fluid ">
                                             </div>
 
                                         </div>
@@ -96,8 +105,8 @@
                                                     <p style="color:#4255A4; font-weight: bold;"> ${userData.dOB}</p>
                                                 </div>
 
-                                                <div class="">
-                                                    <a href="./user-edit-profile.jsp" type="button" class="btn btn-danger">Edit your profile</a>
+                                                <div class="mt-4 ">      
+                                                    <a href="./user-edit-profile.jsp" style="padding:10px 12px; text-decoration: none;" type="button" class="btn-sm btn-danger" >Edit profile</a>
                                                 </div>
                                             </div>
                                             </form>

@@ -103,11 +103,11 @@
                                             <form action="./ManageFund" method="post">
                                                 <div class="form-group">
                                                     <label class="col-12 p-0 font-weight-bold" for="new-fund-name"><h4>Name</h4></label>
-                                                    <input type="text" class="form-control form-control-sm col-12;" name="fundName" id="new-fund-name">
+                                                    <input type="text" class="form-control form-control-sm col-12" name="fundName" id="new-fund-name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-12 p-0 font-weight-bold" for="new-fund-amount"><h4>Amount/Person</h4></label>
-                                                    <input type="text" class="form-control form-control-sm col-12;" name="amount" id="new-fund-amount">
+                                                    <input type="text" class="form-control form-control-sm col-12" name="amount" id="new-fund-amount">
                                                 </div>
                                                 <input type="hidden"  name="typeOfRequest" value="createFund" />
                                                 <div class="justify-content-between">
