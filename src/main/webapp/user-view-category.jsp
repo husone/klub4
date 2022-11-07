@@ -106,7 +106,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="https://picsum.photos/1920/1080" style=" border-radius:10px" alt="">
+                                <img src="./assets/categorises/mon-the-thao-pho-bien-nhat-1024x576 (1) (1).jpg" style=" border-radius:10px" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="./UserViewClubFollowCategory?category=Recreation">Recreation & Sport</a></h3>
@@ -118,7 +118,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
+                                <img src="./assets/categorises/top-5-reasons-why-you-need-a-social-media-manager-616015983b3ba-sej-760x400 (1).png" alt="" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a  href="./UserViewClubFollowCategory?category=Media">Media & Publication</a></h3>
@@ -130,7 +130,7 @@
                     <div class=" col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
+                                <img src="./assets/categorises/Role-of-a-Case-Worker-in-a-Community-Services-scaled (1).jpg" alt="" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="./UserViewClubFollowCategory?category=Community">Community & Services</a></h3>
@@ -142,7 +142,7 @@
                     <div class=" col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
+                                <img src="./assets/categorises/6-Reasons-Why-Having-a-Professional-Coder-Certification-Is-Crucial (1).jpg" alt="" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="./UserViewClubFollowCategory?category=Academic">Academic & Education</a></h3>
@@ -154,7 +154,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
+                                <img src="./assets/categorises/student-privacy4 (1).jpg" alt="" style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="./UserViewClubFollowCategory?category=Student">Student Government & Council</a></h3>
@@ -166,7 +166,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="https://picsum.photos/1920/1080" alt="" class="img-fluid"
+                                <img src="./assets/categorises/images (1).jpg" alt="" class="img-fluid"
                                      style=" border-radius:10px">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
