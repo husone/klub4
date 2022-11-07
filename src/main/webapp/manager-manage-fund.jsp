@@ -1,6 +1,7 @@
 <%@page import="entity.Fund"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.FundDAO"%>
+<%@page import="DAO.MemberDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -131,7 +132,7 @@
                                                                     style="cursor:pointer;" data-toggle="tooltip"
                                                                     data-placement="top" title="Click to view detail">${fund.fundName}</td>
                                                                 <td class="font-weight-bold">${fund.amount}</td>
-                                                                <td>${fund.amount * 2}</td>
+                                                                <td>${fund.amount * MemberDAO.getMembersInClub(fund.clubID)}</td>
                                                                 <td>${fund.getDateCreatedString()}</td>
                                                                 <td class="font-weight-medium">
                                                                     <div class="badge badge-warning">?</div>
@@ -225,6 +226,7 @@
     <jsp:include page="./jspfragment/fund-detail-modal.jsp">
         <jsp:param name="fundId" value="${fund.fundId}" />
         <jsp:param name="fundName" value="${fund.fundName}" />
+        <jsp:param name="size" value="${MemberDAO.getMembersInClub(fund.clubID)}" />  
         <jsp:param name="dateString" value="${fund.getDateCreatedString()}" />
         <jsp:param name="amount" value="${fund.amount}" />
     </jsp:include>

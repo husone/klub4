@@ -31,7 +31,7 @@
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Total Amount</h4></td>
-                                <td><h4>${param.amount * 2}k</h4></td>
+                                <td><h4>${param.amount * param.size}k</h4></td>
                             </tr>
                             <tr>
                                 <td class="text-info"><h4>Day Create</h4></td>
