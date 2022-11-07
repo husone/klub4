@@ -80,13 +80,13 @@
                                 </div>
                                 <div class="col-12 col-xl-4">
                                     <div class=" d-flex row">
-                                        <form action="./AdminSearchUser">
+                                        <form action="./UserSearchClub">
                                             <div class="d-flex">
 
                                                 <input  type="search" class="form-control" name="searchData"
                                                         placeholder="Input to search">
                                                 <Button  class="btn btn-info mx-3">Search</Button>
-                                            </div>
+                                           </div>
                                         </form>
 
                                     </div>

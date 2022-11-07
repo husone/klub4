@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -64,7 +65,7 @@ public class UserViewClubFollowCategory extends HttpServlet {
        List <Club> listAllClubs= ClubDAO.getAllClubs();
        List <Club> result= new ArrayList<>();
         for (Club club : listAllClubs) {
-            if (club.getClubType().equalsIgnoreCase(category)) {
+            if (club.getClubType().toLowerCase().contains(category.toLowerCase())) {
                 result.add(club);
             }
         }
@@ -72,8 +73,11 @@ public class UserViewClubFollowCategory extends HttpServlet {
         if (result.isEmpty()) {
             request.setAttribute("noContent", "Not Found");
         }
+        HttpSession session= request.getSession();
+        session.setAttribute("listClub", result);
+        request.setAttribute("category", category);
         request.setAttribute("content", result);
-        request.getRequestDispatcher("/").forward(request, response);
+        request.getRequestDispatcher("user-view-club.jsp").forward(request, response);
     }
 
     /**

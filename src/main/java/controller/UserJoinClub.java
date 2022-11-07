@@ -39,7 +39,7 @@ public class UserJoinClub extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserJoinClub</title>");            
+            out.println("<title>Servlet UserJoinClub</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UserJoinClub at " + request.getContextPath() + "</h1>");
@@ -60,7 +60,14 @@ public class UserJoinClub extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String clubIdString = request.getParameter("clubId");
+        int clubId = Integer.parseInt(clubIdString);
+        HttpSession session = request.getSession();
+        User currentUser = (User) session.getAttribute("userData");
+        System.out.println(currentUser.getUserID());
+        MemberDAO.addMember(new Member(currentUser.getUserID(), clubId, 0, new Date(System.currentTimeMillis())));
+        request.getRequestDispatcher("/UserViewClub?clubID="+clubId).forward(request, response);
+
     }
 
     /**
@@ -74,12 +81,8 @@ public class UserJoinClub extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String clubIdString = request.getParameter("clubId");
-        int clubId = Integer.parseInt(clubIdString);
-        HttpSession session= request.getSession();
-        User currentUser= (User)session.getAttribute("dataUser");
-        MemberDAO.addMember(new Member(currentUser.getUserID(), clubId, 0, new Date(System.currentTimeMillis())));
-        request.getRequestDispatcher("/club_home.jsp").forward(request, response);
+        processRequest(request, response);
+
     }
 
     /**

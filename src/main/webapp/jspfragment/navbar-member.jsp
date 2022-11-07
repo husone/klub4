@@ -19,7 +19,7 @@
                          <span ><a href="../member-view-fund.html"><i style="font-size:35px;;" class="fa fa-money-bill-alt "></i></a></span>
                     </li>  
                      <li class="nav-item nav-search">
-                         <span><a href="../member-view-event.html"><i style="font-size:35px;;" class="fa fa-calendar-alt "></i></a></span>
+                         <span><a href="../member-view-event.jsp"><i style="font-size:35px;;" class="fa fa-calendar-alt "></i></a></span>
                     </li>  
                     
                 </ul>

@@ -1,16 +1,13 @@
-package controller;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package controller;
 
-import DAO.ClubDAO;
-import entity.Club;
+import DAO.MemberDAO;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +16,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ASUS
+ * @author sonsi
  */
-public class UserSearchClub extends HttpServlet {
+public class LeaveClub extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +37,10 @@ public class UserSearchClub extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserSearchClub</title>");            
+            out.println("<title>Servlet LeaveClub</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserSearchClub at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LeaveClub at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,28 +58,16 @@ public class UserSearchClub extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String data = request.getParameter("searchData");
-         String caterory= request.getParameter("category").trim();
-        List<Club> clubList = ClubDAO.getAllClubs();
-        List<Club> cl = new ArrayList<Club>();
-        for (Club club : clubList) {
-            if ((club.getClubName().toLowerCase().contains(data.toLowerCase()) || club.getDescription().toLowerCase().contains(data.toLowerCase()))&& club.getClubType().equalsIgnoreCase(caterory)) {
-                cl.add(club);
-            }
+        if (request.getParameter("clubID")!=null){
+        int clubID =  Integer.parseInt(request.getParameter("clubID"));
+        HttpSession session = request.getSession();
+        User currentUser = (User) session.getAttribute("userData");
+        MemberDAO.leaveClub(currentUser.getUserID(), clubID);
+        session.setAttribute("currentClubID", null);
         }
-        if (cl.isEmpty()) {
-          for (Club club : clubList) {
-            if (club.getClubName().toLowerCase().contains(data.toLowerCase()) || club.getDescription().toLowerCase().contains(data.toLowerCase())) {
-                cl.add(club);
-            }
-        }  
-        }
-        if (cl.isEmpty()) {
-            request.setAttribute("noContent", "Not found");
-        }
-        HttpSession session= request.getSession();
-        session.setAttribute("listClub", cl);
-        request.getRequestDispatcher("./user-view-club.jsp").forward(request, response);
+        request.getRequestDispatcher("/club_home.jsp").forward(request, response);
+        
+        
     }
 
     /**

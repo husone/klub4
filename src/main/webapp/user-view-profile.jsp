@@ -83,7 +83,7 @@
                                                  style="border-top-left-radius:10px; border-top-right-radius: 10px ;">
 
                                             <div class="position-absolute" style="top:90px; left: 50px;">
-                                                <img style='border-radius: 50%;' height="80px" width="80px" src="https://picsum.photos/400/400" alt="" class="img-fluid ">
+                                                <img style="border-radius: 50%; height :80px; width:80px"  src="${userData.avatar}" alt="" class="img-fluid ">
                                             </div>
 
                                         </div>
