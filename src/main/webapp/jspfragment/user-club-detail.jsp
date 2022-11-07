@@ -19,8 +19,8 @@
                         <h5 class="card-title">${ClubDAO.getClubByID(currentClubID).clubName}</h5>
                         <p class="card-text">${ClubDAO.getClubByID(currentClubID).description}
                         </p>
-                        <div>
-                            <a href="./LeaveClub?clubID=${currentClubID}" class="btn btn-block btn-danger btn-sm"> Leave club </a>
+                        <div class="">
+                            <a href="./LeaveClub?clubID=${currentClubID}" style="padding: 15px 30px; text-decoration: none" class="btn-danger btn-sm"> Leave club </a>
                         </div>
 
                     </div>
