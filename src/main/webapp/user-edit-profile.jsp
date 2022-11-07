@@ -42,6 +42,7 @@
         <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
 
         <style>
+
             /* .club-joined li:hover{
             background-color: #48b20f !important;
             color: #e9e2e2 !important;
@@ -62,7 +63,7 @@
                             <div class="col-6 mt-5 ">
                                 <div class="m-2 rounded container bg-light" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
                                     <div class="card mt-2 bg-light">
-                                        <div class="cart-header mt-2">
+                                        <div class="cart-header mt-4">
                                             <h3>Edit profile</h3>
                                         </div>
 
@@ -104,8 +105,8 @@
 
                                                     <div class="form-group col-12 row justify-content-end  ">
                                                         <div class="" >
-                                                            <button type="submit"class="btn btn-primary btn-sm btn-sm">Change</button>
-                                                            <button type="reset" class="btn btn-danger btn-sm"> Cancel </button>
+                                                            <button type="submit" style="padding:10px 12px; " type="button" class="btn-sm btn-info ">Change</button>
+                                                            <button type="reset" style="padding:10px 12px;" type="button" class="btn-sm btn-danger"> Cancel </button>
                                                         </div>
                                                     </div>
                                                 </form>
