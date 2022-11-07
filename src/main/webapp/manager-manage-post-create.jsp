@@ -122,7 +122,7 @@
                                             <input type="hidden" name="typeOfRequest" value="createPost">
                                             <div class="col-sm-4 offset-8">
                                                 <button class="btn btn-success" type="submit">Create</button>
-                                                <a href="./ManagePost" class="btn btn-danger">Cancel</button>
+                                                <a href="./ManagePost" class="btn">Cancel</button>
                                             </div>
                                         </form>
                                     </div>

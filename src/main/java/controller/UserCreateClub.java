@@ -83,7 +83,7 @@ public class UserCreateClub extends HttpServlet {
         // Club club = new Club(0, clubName, clubType, managerID, description, logo);
         ClubDAO.createClub(clubName, clubType, managerID, description, logo);
         request.getRequestDispatcher("/ManageMember").forward(request, response);
-    }
+    }   
 
     /**
      * Returns a short description of the servlet.

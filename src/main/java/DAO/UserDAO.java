@@ -316,6 +316,7 @@ public class UserDAO {
             statement.setString(5, address);
             if (statement.executeUpdate() != 0) {
                 checkRegister = true;
+                System.out.println("add user");
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);

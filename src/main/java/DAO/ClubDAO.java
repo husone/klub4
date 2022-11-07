@@ -35,12 +35,14 @@ public class ClubDAO {
             statement.setString(4, description);
             statement.setString(5, logo);
             statement.executeUpdate();
+            System.out.println("Add club");
             sql = "insert into members (userID, clubID, point) values (?,?,0)";
             statement = con.prepareStatement(sql);
             int clubId = getClubIDByUserID(managerID);
             statement.setInt(1, managerID);
             statement.setInt(2, clubId);
             statement.executeUpdate();
+            System.out.println("add mem");
             con.close();
         } catch (Exception e) {
             return;

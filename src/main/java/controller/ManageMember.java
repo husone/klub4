@@ -40,7 +40,7 @@ public class ManageMember extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String typeOfRequest = request.getParameter("typeOfRequest");
-        if (typeOfRequest.equals("delete")) {
+        if (typeOfRequest!=null &&  typeOfRequest.equals("delete")) {
             int userID = Integer.parseInt(request.getParameter("userID"));
             int clubID = Integer.parseInt(request.getParameter("clubID"));
             if (clubID != -1) {
