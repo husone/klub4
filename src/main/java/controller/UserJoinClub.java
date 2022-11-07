@@ -79,7 +79,7 @@ public class UserJoinClub extends HttpServlet {
         HttpSession session= request.getSession();
         User currentUser= (User)session.getAttribute("dataUser");
         MemberDAO.addMember(new Member(currentUser.getUserID(), clubId, 0, new Date(System.currentTimeMillis())));
-        response.sendRedirect("/");
+        request.getRequestDispatcher("/club_home.jsp").forward(request, response);
     }
 
     /**
