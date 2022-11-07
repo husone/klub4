@@ -83,11 +83,7 @@
                                                  style="border-top-left-radius:10px; border-top-right-radius: 10px ;">
 
                                             <div class="position-absolute" style="top:90px; left: 50px;">
-<<<<<<< Updated upstream
                                                 <img style="border-radius: 50%; height :80px; width:80px"  src="${userData.avatar}" alt="" class="img-fluid ">
-=======
-                                                <img style='border-radius: 50%; height:80px; width:80px'  src="${userData.avatar}" alt="" class="img-fluid ">
->>>>>>> Stashed changes
                                             </div>
 
                                         </div>
