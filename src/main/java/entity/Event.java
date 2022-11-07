@@ -17,7 +17,7 @@ public class Event {
     private String eventName;
     private String description;
     private String location; 
-    private Date dateFrom ;
+    private Date dateFrom;
     private Date dateTo;
 
     public Event(int eventID, int clubID, String eventName, String description, String location, Date dateFrom, Date dateTo) {

@@ -1,3 +1,7 @@
+<%@page import="DAO.EventDAO"%>
+<%@page import="entity.Event"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -56,25 +60,28 @@
         </header>
 
         <main>
+            <%
+                int clubID = (int) request.getSession().getAttribute("currentClubID");
 
-
+                List<Event> eventList = EventDAO.getAllEventsByClubID(clubID);
+                if (!eventList.isEmpty())
+                    request.setAttribute("el", eventList);
+            %>
             <section class="blog_area mt-5 " style="background-color: #FFFFFF">
                 <div class="pt-2">
                     <div class="row">
-
                         <jsp:include page="./jspfragment/user-joined-club.jsp"/>
-
                         <div class="col-md-6 mb-5 mb-lg-0 rounded" style="overflow-y :scroll; height:100vh">
-
-
-                            <div>
-
-                            </div>
-
-
                             <div class="blog_left_sidebar bt-3 pt-5 mx-5">
                                 <div class="col-12 row  justify-content-center">
+                                    <c:if test="${el == null}">
+                                        <div class="col-12">
+                                            <h3 class="col-12">Don't have any events</h3>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${el != null}">
                                     <div id='calendar' class="col-12 border" style='border-radius: 5%'></div>
+                                    </c:if>
                                     <style>
                                         html,
                                         body {
@@ -206,11 +213,9 @@
 
                                         document.addEventListener('DOMContentLoaded', function () {
                                             var calendarEl = document.getElementById('calendar');
-
                                             var calendar = new FullCalendar.Calendar(calendarEl, {
                                                 initialView: 'dayGridMonth',
                                                 initialDate: new Date(),
-
                                                 eventClick: function (info) {
 //                                                    alert(info.event.title)
                                                     document.getElementById("eventName").innerHTML = info.event.title;
@@ -220,72 +225,20 @@
                                                     document.getElementById("dateTo").innerHTML = info.event.end.toLocaleString();
                                                     document.getElementById("eventAddress").innerHTML = info.event.extendedProps.address;
                                                     modal.style.display = "block";
-                                                    $('section' ).addClass('blur' );
-
+                                                    $('section').addClass('blur');
                                                 },
-
                                                 events: [
+                                        <c:forEach var="i" items="${el}">   
                                                     {
-                                                        title: 'All Day Event',
-                                                        description: 'description for All Day Event',
-                                                        start: '2022-08-01',
-                                                        end: '2022-08-05',
-                                                        address: 'danang'
+                                                        title: '${i.eventName}',
+                                                        description: '${i.description}',
+                                                        start: '<fmt:formatDate value="${i.dateFrom}" pattern="yyyy-MM-dd" />',
+                                                        end: '<fmt:formatDate value="${i.dateTo}" pattern="yyyy-MM-dd" />',
+                                                        address: '${i.location}'
                                                     },
-                                                    {
-                                                        title: 'Long Event',
-                                                        description: 'description for Long Event',
-                                                        start: '2022-08-07',
-                                                        end: '2022-08-10'
-                                                    },
-                                                    {
-                                                        groupId: '999',
-                                                        title: 'Repeating Event',
-                                                        description: 'description for Repeating Event',
-                                                        start: '2022-08-09T16:00:00'
-                                                    },
-                                                    {
-                                                        groupId: '999',
-                                                        title: 'Repeating Event',
-                                                        description: 'description for Repeating Event',
-                                                        start: '2022-08-16T16:00:00'
-                                                    },
-                                                    {
-                                                        title: 'Conference',
-                                                        description: 'description for Conference',
-                                                        start: '2022-08-11',
-                                                        end: '2022-08-13'
-                                                    },
-                                                    {
-                                                        title: 'Meeting',
-                                                        description: 'description for Meeting',
-                                                        start: '2022-08-12T10:30:00',
-                                                        end: '2022-08-12T12:30:00'
-                                                    },
-                                                    {
-                                                        title: 'Lunch',
-                                                        description: 'description for Lunch',
-                                                        start: '2022-08-12T12:00:00'
-                                                    },
-                                                    {
-                                                        title: 'Meeting',
-                                                        description: 'description for Meeting',
-                                                        start: '2022-08-12T14:30:00'
-                                                    },
-                                                    {
-                                                        title: 'Birthday Party',
-                                                        description: 'description for Birthday Party',
-                                                        start: '2022-08-13T07:00:00'
-                                                    },
-                                                    {
-                                                        title: 'Click for Google',
-                                                        description: 'description for Click for Google',
-                                                        url: 'http://google.com/',
-                                                        start: '2022-08-28'
-                                                    },
+                                        </c:forEach>
                                                 ]
                                             });
-
                                             calendar.render();
                                         });
                                     </script>
@@ -296,35 +249,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="about-club blog_right_sidebar mt-5">
-                                <div class="text-center">
-                                    <h3>About Club</h3>
-                                    <hr>
-                                </div>
-
-                                <div class="m-2">
-                                    <div class="card" style="">
-                                        <img class="card-img-top" src="https://picsum.photos/1920/1080"
-                                             alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">CLB Bóng đá FUDA</h5>
-                                            <div>
-                                                <p class="card-text">Nơi các thợ săn ống đồng thể hiện kỹ năng săn giò đối
-                                                    thủ
-                                                </p>
-                                            </div>
-
-                                            <div class=" my-5">
-                                                <a href="#" class="btn btn-block btn-danger btn-sm"
-                                                   style="text-decoration:none ;"> Leave club </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                        <jsp:include page="./jspfragment/user-club-detail.jsp"/>
                     </div>
                 </div>
             </section>
@@ -416,23 +341,20 @@
 <script>
                                         // Get the modal
                                         var modal = document.getElementById("myModal");
-
                                         // Get the button that opens the modal
                                         var btn = document.getElementById("myBtn");
-
                                         // Get the <span> element that closes the modal
                                         var span = document.getElementById("close");
-
                                         // When the user clicks the button, open the modal 
                                         btn.onclick = function () {
                                             modal.style.display = "block";
-                                            $('section' ).addClass('blur' );
+                                            $('section').addClass('blur');
                                         }
 
                                         // When the user clicks on <span> (x), close the modal
                                         span.onclick = function () {
                                             modal.style.display = "none";
-                                            $('section' ).removeClass('blur' );
+                                            $('section').removeClass('blur');
                                         }
 
                                         // When the user clicks anywhere outside of the modal, close it

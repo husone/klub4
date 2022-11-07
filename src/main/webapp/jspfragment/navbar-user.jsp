@@ -11,16 +11,16 @@
             <nav>
                 <ul class="navbar-nav mr-lg-2">
                     <li class="nav-item nav-search">
-                        <span><a href="./club_home.jsp"><i style="font-size:35px ;" class="fa fa-home"></i></a>
+                        <span><a href="./club_home.jsp"><i style="font-size:35px;" class="fa fa-home"></i></a>
                     </li>
                     <li class="nav-item nav-search">
-                        <span><a href="./user-view-category.jsp"><i style="font-size:35px;;" class="fa fa-solid fa-globe "></i></a></span>
+                        <span><a href="./user-view-category.jsp"><i style="font-size:35px;" class="fa fa-solid fa-globe "></i></a></span>
                     </li>  
                     <li class="nav-item nav-search">
-                        <span ><a href="./member-view-fund.jsp"><i style="font-size:35px;;" class="fa fa-money-bill-alt "></i></a></span>
+                        <span ><a href="./member-view-fund.jsp"><i style="font-size:35px;" class="fa fa-money-bill-alt "></i></a></span>
                    </li>  
                     <li class="nav-item nav-search">
-                        <span><a href="./member-view-event.jsp "><i style="font-size:35px;;" class="fa fa-calendar-alt "></i></a></span>
+                        <span><a href="./member-view-event.jsp "><i style="font-size:35px;" class="fa fa-calendar-alt "></i></a></span>
                    </li> 
                 </ul>
             </nav>

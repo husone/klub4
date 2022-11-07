@@ -31,7 +31,7 @@
                                     <img src="${i.logo}"
                                          style="width:50px ; height:50px;" class="rounded-circle border" alt="">
                                 </div>
-                                <div class="col-8 my-auto">
+                                <div class="offset-2 col-6 my-auto">
                                     <span class="menu-title">${i.clubName}</span>
                                 </div>
                             </div>
