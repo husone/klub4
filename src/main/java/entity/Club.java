@@ -103,5 +103,12 @@ public class Club {
     public void setLogo(String logo) {
         this.logo = logo;
     }
+
+    @Override
+    public String toString() {
+        return "Club{" + "clubID=" + clubID + ", clubName=" + clubName + ", clubType=" + clubType + ", managerID=" + managerID + ", dateCreated=" + dateCreated + ", description=" + description + ", logo=" + logo + '}';
+    }
+    
+    
     
 }

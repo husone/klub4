@@ -4,9 +4,10 @@
 <%@page import="java.util.List"%>
 <%@page import="DAO.FundDAO"%>
 <%@page import="DAO.MemberDAO"%>
+
 <div class="col-md-3" style="overflow-y :scroll; height:100vh">
 
-    <nav class="club-joined sidebar pl-3" style="width:100% ;" id="sidebar">
+    <nav class="club-joined sidebar pl-3 mt-5" style="width:100% ;" id="sidebar">
         <%  User user = (User) request.getSession().getAttribute("userData");
 
             List<Club> clubList = MemberDAO.getClubsOfMember(user.getUserID());
@@ -14,8 +15,9 @@
                 request.setAttribute("cl", clubList);
         %>
         <c:if test="${cl == null}">
-            <div class="col-12">
-                <h3 class="col-12">You did not join any clubs</h3>
+            <div class="text-center">
+                <h3>You did not join any clubs</h3>
+                <hr>
             </div>
         </c:if>
         <c:if test="${cl != null}">

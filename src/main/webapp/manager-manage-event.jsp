@@ -252,33 +252,36 @@
 
                     </div>
 
-                    <div class="modal-body p-0 pb-3">
-                        <table class="table mx-auto" style="width: 80% ;">
+                    <div class="modal-body">
+                        <div class='table-responsive'>
+                            <table class="table table-borderless">
                             <tr>
-                                <td class="text-info"><h4>Id</h4></td>
-                                <td><h4>${event.eventID}</h4></td>
+                                <th style='background-color: #393E46' scope='row' class='table-dark'>Id</th>
+                                <td style="text-align: left; vertical-align: middle; background-color: #F2E7D5; color: #0E5E6F" class=''>${event.eventID}</td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Name</h4></td>
-                                <td><h4>${event.eventName}</h4></td>
+                                <th style='background-color: #393E46' scope='row' class='table-dark'>Name</th>
+                                <td style="text-align: left; vertical-align: middle; background-color: #F2E7D5; color: #0E5E6F" class=''>${event.eventName}</td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Description</h4></td>
-                                <td><h4>${event.description}</h4></td>
+                                <th style='background-color: #393E46' scope='row' class='table-dark'>Description</th>
+                                <td style="text-align: left; vertical-align: middle; background-color: #F2E7D5; color: #0E5E6F" class=''>${event.description}</td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Date Start</h4></td>
-                                <td><h4>${event.getDateFromCreatedString()}</h4></td>
+                                <th style='background-color: #393E46' scope='row' class='table-dark'>Date Start</th>
+                                <td style="text-align: left; vertical-align: middle; background-color: #F2E7D5; color: #0E5E6F" class=''>${event.getDateFromCreatedString()}</td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Date End</h4></td>
-                                <td><h4>${event.getDateToCreatedString()}</h4></td>
+                                <th style='background-color: #393E46' scope='row' class='table-dark'>Date End</th>
+                                <td style="text-align: left; vertical-align: middle; background-color: #F2E7D5; color: #0E5E6F" class=''>${event.getDateToCreatedString()}</td>
                             </tr>
                             <tr>
-                                <td class="text-info"><h4>Place</h4></td>
-                                <td><h4>${event.location}</h4></td>
+                                <th style='background-color: #393E46' scope='row' class='table-dark'>Place</th>
+                                <td style="text-align: left; vertical-align: middle; background-color: #F2E7D5; color: #0E5E6F" class=''>${event.location}</td>
                             </tr>
                         </table>
+                        </div>
+                        
 
                         <div class="text-center">
                             <button data-toggle="tooltip"

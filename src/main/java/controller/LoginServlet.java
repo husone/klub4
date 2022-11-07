@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("userData", UserDAO.getUserByEmail(email));
             if (email.equals("admin")){
-                request.getRequestDispatcher("/AdminDashboard").forward(request, response);
+                request.getRequestDispatcher("/admin-hello.jsp").forward(request, response);
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/club_home.jsp");
             dispatcher.forward(request, response);
