@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page import="DAO.ClubDAO"%>
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center col-md-3">

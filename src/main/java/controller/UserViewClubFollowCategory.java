@@ -77,7 +77,7 @@ public class UserViewClubFollowCategory extends HttpServlet {
         session.setAttribute("listClub", result);
         request.setAttribute("category", category);
         request.setAttribute("content", result);
-        request.getRequestDispatcher("user-view-club.jsp").forward(request, response);
+        request.getRequestDispatcher("/user-view-club.jsp").forward(request, response);
     }
 
     /**

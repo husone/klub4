@@ -33,6 +33,7 @@
         <!-- endinject -->
         <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
         <link rel="stylesheet" href="./assets/css/user-detail.css">
+          <link rel="stylesheet" href="./assets/css/fontawesome-all.min.css">
 
         <style>
             .pagination {
@@ -83,107 +84,15 @@
 
     <body>
         <header>
-            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row row">
-                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center col-md-3">
-                    <a class="navbar-brand brand-logo mr-5" href=""><img src="./assets/img/logo/loder.png" class="mr-2"
-                                                                         alt="logo" /></a>
-                    <a class="navbar-brand brand-logo-mini" href=""><img src="./assets/img/logo/loder.png" alt="logo" /></a>
-                </div>
-                <div class="navbar-menu-wrapper d-flex align-items-center col-md-9 row">
-
-                    <div class="col-md-7 d-flex justify-content-center col-12 fixed-botton">
-                        <nav>
-                            <ul class="navbar-nav mr-lg-2">
-                                <li class="nav-item nav-search">
-                                    <span><a href=""><i style="font-size:35px;;"
-                                                        class="fa fa-solid fa-globe "></i></a></span>
-                                </li>
-                            </ul>
-                        </nav>
-
-                    </div>
-
-                    <div class="col-md-4 ">
-                        <div class="d-flex justify-content-end">
-                            <ul class="navbar-nav navbar-nav-right">
-                                <li class="nav-item nav-profile dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                                       id="profileDropdown">
-                                        <img src="./assets/img/blog/avatar.png" alt="profile" />
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                                         aria-labelledby="profileDropdown">
-                                        <p class="dropdown-item view-profile">
-                                            <i class="ti-id-badge text-primary"></i>
-                                            Profile
-                                        </p>
-                                        <a class="dropdown-item" href="./manager-manage-member.html">
-                                            <i class="ti-layout-grid2-thumb text-primary"></i>
-                                            Your own club
-                                        </a>
-                                        <a class="dropdown-item" href="./user-change-password.html">
-                                            <i class="ti-shield text-primary"></i>
-                                            Change password
-                                        </a>
-                                        <a class="dropdown-item">
-                                            <i class="ti-power-off text-primary"></i>
-                                            Logout
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-
-
-                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                            data-toggle="offcanvas">
-                        <span class="icon-menu"></span>
-                    </button>
-                </div>
-            </nav>
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
         </header>
-        <div class="container-scroller">
-            <!-- partial:partials/_navbar.html -->
+        <div class="container">
+           
+            <div class="mt-5">
+              
 
-            <!-- partial -->
-            <div class="container-fluid page-body-wrapper">
-                <!-- partial:partials/_settings-panel.html -->
-                <div class="theme-setting-wrapper">
-                    <div id="settings-trigger"><i class="ti-settings"></i></div>
-                    <div id="theme-settings" class="settings-panel">
-                        <i class="settings-close ti-close"></i>
-                        <p class="settings-heading">SIDEBAR SKINS</p>
-                        <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-                            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
-                        </div>
-                        <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
-                        </div>
-                        <p class="settings-heading mt-2">HEADER SKINS</p>
-                        <div class="color-tiles mx-0 px-4">
-                            <div class="tiles success"></div>
-                            <div class="tiles warning"></div>
-                            <div class="tiles danger"></div>
-                            <div class="tiles info"></div>
-                            <div class="tiles dark"></div>
-                            <div class="tiles default"></div>
-                        </div>
-                    </div>
-                </div>
-            
-                <!-- partial -->
-                <!-- partial:partials/_sidebar.html -->
-
-            
-
-                <!-- partial -->
-                <!-- Detail Club Modal -->
-
-                <div class="main-panel">
-                    <div class="content-wrapper">
+                <div class="pt-5">
+                    <div class="">
                         <div class="row">
                             <div class="col-md-12 grid-margin">
                                 <div class="row">
@@ -219,7 +128,7 @@
                             <c:if test="${not empty sessionScope.listClub}">
                                 <c:forEach var="club" items="${sessionScope.listClub}">
                                     <div class="col-md-3 stretch-card grid-margin">
-                                        <div class="card">
+                                        <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
                                             <div class="card-body">
                                                 <img src="${club.logo}" alt="group-01" class="img-fluid">
                                                 <div class="text-md-center mt-1">
