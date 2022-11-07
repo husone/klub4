@@ -6,7 +6,9 @@ package controller;
  */
 
 import DAO.ClubDAO;
+import DAO.MemberDAO;
 import entity.Club;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -80,7 +82,18 @@ public class UserSearchClub extends HttpServlet {
         if (cl.isEmpty()) {
             request.setAttribute("noContent", "Not found");
         }
+        
+      
         HttpSession session= request.getSession();
+//        User currentUser= (User)session.getAttribute("userData");
+//        List<Club> clubsJoined= MemberDAO.getClubsOfMember(currentUser.getUserID());
+//        for (Club club : clubsJoined) {
+//            for (Club club1 : cl) {
+//                if (club.getClubID()==club1.getClubID()) {
+//                    cl.remove(club1);
+//                }
+//            }
+//        }
         session.setAttribute("listClub", cl);
         request.getRequestDispatcher("./user-view-club.jsp").forward(request, response);
     }

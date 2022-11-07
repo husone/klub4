@@ -130,9 +130,9 @@
                                     <div class="col-md-3 stretch-card grid-margin">
                                         <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
                                             <div class="card-body">
-                                                <img src="${club.logo}" alt="group-01" class="img-fluid">
+                                                <img src="${club.logo}" style="border-radius:10px" alt="group-01" class="img-fluid">
                                                 <div class="text-md-center mt-1">
-                                                    <h3>${club.getClubName()}</h3>
+                                                    <h4>${club.getClubName()}</h4>
                                                 </div>
                                                 <div class="row d-flex justify-content-center">
                                                     <div>
@@ -208,15 +208,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div style="text-align: center;">
-                    <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid">
+                <div style="text-align: center;" >
+                    <img src="https://picsum.photos/600/400" alt="group-01" class="img-fluid" style="border-radius:10px" >
                 </div>
 
                 <div class="col-12 mt-3">
                     <h3>${club.getClubName()}</h3>
                     <p>${club.getDescription()}</p>
                     <div class="col-md-5">
-                        <p>Thành viên: 96</p>
+                        <p>Members: ${MemberDAO.getMembersInClub(club.clubID).size()}</p>
                     </div>
                     <div class="col-md-6">
                         <p>Day founded: ${club.getdateCreated()}</p>
