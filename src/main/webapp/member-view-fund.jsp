@@ -1,7 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="DAO.FundDAO"%>
+<%@page import="DAO.ContributeFundDAO"%>
+<%@page import="DAO.MemberDAO"%>
 <%@page import="entity.Fund"%>
-<%@page import="entity.Fund"%>
-<%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -42,6 +43,8 @@
         <link rel="stylesheet" href="./assets/css/vertical-layout-light/style.css">
         <!-- endinject -->
         <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script>
 
         <style>
             /* .club-joined li:hover{
@@ -68,24 +71,98 @@
             <section class="blog_area mt-5 " style="background-color: #FFFFFF">
                 <div class="pt-2">
                     <div class="row">
+
                         <jsp:include page="./jspfragment/user-joined-club.jsp"/>
                         <div class="col-md-6 mb-5 mb-lg-0 rounded" style="overflow-y :scroll; height:100vh">
-                            <div class="blog_left_sidebar bt-3 pt-5 mx-5">
-                                <div class="col-12 row justify-content-center">
-                                    <div class="col-7" style=" border-radius: 10px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"> 
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Fund for maintaining club in november</h5>
-                                                <hr>
-                                                <p>Amount of money you have to contribute: <b class="text-danger" >15K</b> </p>
-                                                <div class="text-center mt-5">
-                                                    <a href="" class="btn btn-primary"><b class="text-white">Contribute now</b></a>
+                            <c:if test="${fl == null}">
+                                <h2>
+                                    Don't have any fund contributions.
+                                </h2>
+                            </c:if>
+                            <c:if test="${fl != null}">
+                                <c:forEach var="f" items="${fl}" >
+                                    <div class="blog_left_sidebar bt-3 pt-5 mx-5">
+                                        <div class="col-12 row justify-content-center">
+                                            <div class="col-7" style=" border-radius: 10px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"> 
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">${f.fundName}</h5>
+                                                        <hr>
+                                                        <p>Amount of money you have to contribute: <b class="text-danger" >${f.amount}.000 VND</b> </p>
+                                                        <div class="text-center mt-5">
+                                                            <c:if test="${ContributeFundDAO.isContributeFund(f.fundId,MemberDAO.getMember(userData.userID,currentClubID).memberID)}">
+                                                                <button href="" class="btn btn-success" disabled>Contributed</button>
+                                                            </c:if>
+                                                            <c:if test="${ContributeFundDAO.isContributeFund(f.fundId,MemberDAO.getMember(userData.userID,currentClubID).memberID)==false}">
+                                                                <button href="" class="btn btn-primary pay-button${f.fundId}" id="pay-button${f.fundId}"><b class="text-white">Pay with 
+                                                                        <span id="amountETH"></span> ETH</b></button>
+                                                                <div id="status"></div>
+                                                            </c:if>
+                                                        </div>
+
+
+                                                        <script type="text/javascript">
+                                                            let test = (${f.amount} / 3600);
+                                                            test = test.toFixed(4);
+                                                            document.getElementById("amountETH").innerHTML = test;
+                                                            console.log(typeof test)
+                                                            window.addEventListener('load', async () => {
+                                                                if (window.ethereum) {
+                                                                    window.web3 = new Web3(ethereum);
+                                                                    try {
+                                                                        await ethereum.enable();
+
+                                                                    } catch (err) {
+                                                                        $('#status').html('User denied account access', err)
+                                                                    }
+                                                                } else if (window.web3) {
+                                                                    window.web3 = new Web3(web3.currentProvider)
+
+                                                                } else {
+                                                                    $('#status').html('No Metamask (or other Web3 Provider) installed')
+                                                                }
+                                                            })
+
+                                                            $('.pay-button${f.fundId}').click(() => {
+                                                                // paymentAddress is where funds will be send to
+                                                                const paymentAddress = '0x42204448154CBC4E4d9e74aB08fd2A66dbc33999'
+                                                                const amountEth = ${f.amount} / 3600;
+                                                                console.log(amountEth)
+                                                                web3.eth.sendTransaction({
+                                                                    to: paymentAddress,
+                                                                    value: web3.toWei(amountEth, 'ether')
+                                                                }, (err, transactionId) => {
+                                                                    if (err) {
+                                                                        console.log('Payment failed', err)
+                                                                        $('#status').html('Payment failed')
+                                                                    } else {
+                                                                        console.log('Payment successful', transactionId)
+                                                                        $('.pay-button${f.fundId}').html('Payment successful')
+                                                                        document.getElementById("pay-button${f.fundId}").setAttribute("disabled", "");
+                                                                        $('#status').html('')
+                                                                        $.ajax({
+                                                                            type: 'POST',
+                                                                            url: '/klub4/ContributeFund',
+                                                                            data: 'memberID=' +${MemberDAO.getMember(userData.userID,currentClubID).memberID} + '&fundID=' + ${f.fundId},
+                                                                            error: function (response) {
+                                                                                console.log("response")
+                                                                            },
+                                                                            success: function (response) {
+                                                                                console.log("call")
+                                                                            }
+                                                                        })
+                                                                    }
+                                                                })
+                                                            })
+
+                                                        </script>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <jsp:include page="./jspfragment/user-club-detail.jsp"/>
                     </div>
@@ -96,9 +173,7 @@
 
 
         <!-- Scroll Up -->
-        <div id="back-top">
-            <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-        </div>
+
         <!-- JS here -->
 
         <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>

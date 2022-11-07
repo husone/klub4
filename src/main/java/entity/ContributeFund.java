@@ -44,6 +44,12 @@ public class ContributeFund {
     public void setTime(Date time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "ContributeFund{" + "fundId=" + fundId + ", memberId=" + memberId + ", time=" + time + '}';
+    }
+    
     
     
 }

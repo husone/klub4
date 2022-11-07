@@ -80,7 +80,7 @@
                                         </div>
                                     </c:if>
                                     <c:if test="${el != null}">
-                                    <div id='calendar' class="col-12 border" style='border-radius: 5%'></div>
+                                        <div id='calendar' class="col-12 border" style='border-radius: 5%'></div>
                                     </c:if>
                                     <style>
                                         html,
@@ -228,7 +228,7 @@
                                                     $('section').addClass('blur');
                                                 },
                                                 events: [
-                                        <c:forEach var="i" items="${el}">   
+                                        <c:forEach var="i" items="${el}">
                                                     {
                                                         title: '${i.eventName}',
                                                         description: '${i.description}',
@@ -249,35 +249,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="about-club blog_right_sidebar mt-5">
-                                <div class="text-center">
-                                    <h3>About Club</h3>
-                                    <hr>
-                                </div>
-
-                                <div class="m-2">
-                                    <div class="card" style="">
-                                        <img class="card-img-top" src="https://picsum.photos/1920/1080"
-                                             alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">CLB Bóng đá FUDA</h5>
-                                            <div>
-                                                <p class="card-text">Nơi các thợ săn ống đồng thể hiện kỹ năng săn giò đối
-                                                    thủ
-                                                </p>
-                                            </div>                
-                                        </div>
-                                            <div class="justify-content-center mt-5 d-flex">
-                                                <a href="#" style="padding: 15px 30px; text-decoration: none" 
-                                                   class="btn-danger btn-sm"> Leave club </a>
-                                            </div>
-                                        
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                        <jsp:include page="./jspfragment/user-club-detail.jsp"/>
                     </div>
                 </div>
             </section>

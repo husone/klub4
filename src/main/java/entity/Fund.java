@@ -74,6 +74,13 @@ public class Fund {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "Fund{" + "fundId=" + fundId + ", clubID=" + clubID + ", fundName=" + fundName + ", dateCreated=" + dateCreated + ", amount=" + amount + '}';
+    }
+    
+    
     
     
 }
