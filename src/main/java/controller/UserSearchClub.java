@@ -85,15 +85,16 @@ public class UserSearchClub extends HttpServlet {
         
       
         HttpSession session= request.getSession();
-//        User currentUser= (User)session.getAttribute("userData");
-//        List<Club> clubsJoined= MemberDAO.getClubsOfMember(currentUser.getUserID());
-//        for (Club club : clubsJoined) {
-//            for (Club club1 : cl) {
-//                if (club.getClubID()==club1.getClubID()) {
-//                    cl.remove(club1);
-//                }
-//            }
-//        }
+        User currentUser= (User)session.getAttribute("userData");
+        List<Club> clubsJoined= MemberDAO.getClubsOfMember(currentUser.getUserID());
+         for (int i = 0; i< clubsJoined.size(); i++) {
+            for (int j = 0; j < cl.size(); j++) {
+                if (clubsJoined.get(i).getClubID() == cl.get(j).getClubID()) {
+                    cl.remove(j);
+                }
+            }
+            
+        }
         session.setAttribute("listClub", cl);
         request.getRequestDispatcher("./user-view-club.jsp").forward(request, response);
     }
