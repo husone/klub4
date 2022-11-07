@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -48,67 +49,7 @@
 
     <body>
         <header>
-            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row row">
-                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center col-md-3">
-                    <a class="navbar-brand brand-logo mr-5" href=""><img src="./assets/img/logo/loder.png" class="mr-2"
-                                                                         alt="logo" /></a>
-                    <a class="navbar-brand brand-logo-mini" href=""><img src="./assets/img/logo/loder.png" alt="logo" /></a>
-                </div>
-                <div class="navbar-menu-wrapper d-flex align-items-center col-md-9 row">
-
-                    <div class="col-md-7 d-flex justify-content-center col-12 fixed-botton">
-                        <nav>
-                            <ul class="navbar-nav mr-lg-2">
-                                <li class="nav-item nav-search">
-                                    <span><a href=""><i style="font-size:35px;;"
-                                                        class="fa fa-solid fa-globe "></i></a></span>
-                                </li>
-                            </ul>
-                        </nav>
-
-                    </div>
-
-                    <div class="col-md-4 ">
-                        <div class="d-flex justify-content-end">
-                            <ul class="navbar-nav navbar-nav-right">
-                                <li class="nav-item nav-profile dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                                       id="profileDropdown">
-                                        <img src="./assets/img/blog/avatar.png" alt="profile" />
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                                         aria-labelledby="profileDropdown">
-                                        <p class="dropdown-item view-profile">
-                                            <i class="ti-id-badge text-primary"></i>
-                                            Profile
-                                        </p>
-                                        <a class="dropdown-item" href="./manager-manage-member.html">
-                                            <i class="ti-layout-grid2-thumb text-primary"></i>
-                                            Your own club
-                                        </a>
-                                        <a class="dropdown-item" href="./user-change-password.html">
-                                            <i class="ti-shield text-primary"></i>
-                                            Change password
-                                        </a>
-                                        <a class="dropdown-item">
-                                            <i class="ti-power-off text-primary"></i>
-                                            Logout
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-
-
-                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                            data-toggle="offcanvas">
-                        <span class="icon-menu"></span>
-                    </button>
-                </div>
-            </nav>
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
         </header>
 
         <main>
@@ -118,70 +59,7 @@
                 <div class="pt-2">
                     <div class="row">
 
-                        <div class="col-md-3" style="overflow-y :scroll; height:100vh">
-
-                            <nav class="club-joined sidebar pl-3" style="width:100% ;" id="sidebar">
-
-                                <ul class="nav">
-                                    <div class="col-12">
-                                        <h3 class="col-12">Club you's joined</h3>
-                                    </div>
-                                    <li class="nav-item py-0 active" style="width:100% ;">
-                                        <a class="nav-link py-1" href="" style="width:100%">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <img src="./assets/img/blog/avatar.png"
-                                                         style="width:50px ; height:50px;" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="col-8 my-auto">
-                                                    <span class="menu-title">CLB Bong da FUDA</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item py-0 " style="width:100% ;">
-                                        <a class="nav-link py-1" href="" style="width:100%">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <img src="./assets/img/blog/avatar.png"
-                                                         style="width:50px ; height:50px;" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="col-8 my-auto">
-                                                    <span class="menu-title">CLB Bong da FUDA</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item py-0 " style="width:100% ;">
-                                        <a class="nav-link py-1" href="" style="width:100%">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <img src="./assets/img/blog/avatar.png"
-                                                         style="width:50px ; height:50px;" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="col-8 my-auto">
-                                                    <span class="menu-title">CLB Bong da FUDA</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item py-0 " style="width:100% ;">
-                                        <a class="nav-link py-1" href="" style="width:100%">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <img src="./assets/img/blog/avatar.png"
-                                                         style="width:50px ; height:50px;" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="col-8 my-auto">
-                                                    <span class="menu-title">CLB Bong da FUDA</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </nav>
-                        </div>
+                        <jsp:include page="./jspfragment/user-joined-club.jsp"/>
 
                         <div class="col-md-6 mb-5 mb-lg-0 rounded" style="overflow-y :scroll; height:100vh">
 
@@ -317,23 +195,38 @@
                                         }
                                     </style>
                                     <script>
+//                                        var eventName = document.getElementById("eventName");
+//                                        var eventDescription = document.getElementById("eventDescription");
+//                                        var dateFrom = document.getElementById("dateFrom");
+//                                        var dateTo = document.getElementById("dateTo");
+//                                        var address = document.getElementById("eventAddress");
+           
                                         document.addEventListener('DOMContentLoaded', function () {
                                             var calendarEl = document.getElementById('calendar');
 
                                             var calendar = new FullCalendar.Calendar(calendarEl, {
                                                 initialView: 'dayGridMonth',
-                                                initialDate: '2022-08-12',
+                                                initialDate: new Date(),
 
                                                 eventClick: function (info) {
-                                                    alert('Event: ' + info.event.title);
-                                                    info.el.style.borderColor = 'red';
+//                                                    alert(info.event.title)
+                                                    document.getElementById("eventName").innerHTML = info.event.title;
+//                                                    console.log(document.getElementById("eventName").innerHTML)
+                                                    document.getElementById("eventDescription").innerHTML = info.event.extendedProps.description;
+                                                    document.getElementById("dateFrom").innerHTML = info.event.start.toLocaleString();
+                                                    document.getElementById("dateTo").innerHTML = info.event.end.toLocaleString();
+                                                    document.getElementById("eventAddress").innerHTML = info.event.extendedProps.address;
+                                                    modal.style.display = "block";
+                                                    
                                                 },
 
                                                 events: [
                                                     {
                                                         title: 'All Day Event',
                                                         description: 'description for All Day Event',
-                                                        start: '2022-08-01'
+                                                        start: '2022-08-01',
+                                                        end: '2022-08-05',
+                                                        address: 'danang'
                                                     },
                                                     {
                                                         title: 'Long Event',
@@ -385,7 +278,7 @@
                                                         description: 'description for Click for Google',
                                                         url: 'http://google.com/',
                                                         start: '2022-08-28'
-                                                    }
+                                                    },
                                                 ]
                                             });
 
@@ -394,7 +287,7 @@
                                     </script>
                                     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
                                     <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
-                                    <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
+                                    <!--<script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>-->
                                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
                                 </div>
                             </div>
@@ -482,3 +375,63 @@
     </body>
 
 </html>
+<button id="myBtn" style="display:none">Open Modal</button>
+<!-- The Modal -->
+
+<!-- Modal content -->
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header primary">
+                <h2 class="modal-title" id="eventName"></h3>
+                <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"><div class="row">
+                    <h3 class="col-sm-4">Desciption</h4>
+                    <h3 style="color:black; font-weight: bold;" id="eventDescription"></h3>
+                </div>
+                <div class="row">
+                    <h3 class="col-sm-4">Date from</h3>
+                    <h3 style="color:black; font-weight: bold;" id="dateFrom"></h3>
+                </div>
+                <div class="row">
+                    <h3 class="col-sm-4">Date to</h3>
+                    <h3 style="color:black; font-weight: bold;" id="dateTo"></h3>
+                </div>
+                <div class="row">
+                    <h3 class="col-sm-4">Address</h3>
+                    <h3 style="color:black; font-weight: bold;" id="eventAddress"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+                                        // Get the modal
+                                        var modal = document.getElementById("myModal");
+
+                                        // Get the button that opens the modal
+                                        var btn = document.getElementById("myBtn");
+
+                                        // Get the <span> element that closes the modal
+                                        var span = document.getElementById("close");
+
+                                        // When the user clicks the button, open the modal 
+                                        btn.onclick = function () {
+                                            modal.style.display = "block";
+                                        }
+
+                                        // When the user clicks on <span> (x), close the modal
+                                        span.onclick = function () {
+                                            modal.style.display = "none";
+                                        }
+
+                                        // When the user clicks anywhere outside of the modal, close it
+
+    </script>
+
+</body>
+</html>
+
