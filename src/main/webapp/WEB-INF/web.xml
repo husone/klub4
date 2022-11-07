@@ -65,6 +65,10 @@
         <servlet-name>PostServlet</servlet-name>
         <servlet-class>controller.PostServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserCreateClub</servlet-name>
+        <servlet-class>controller.UserCreateClub</servlet-class>
+    </servlet>
     <!-- Servlet Mapping -->
     <servlet>
         <servlet-name>AdminDeleteClub</servlet-name>
@@ -221,6 +225,10 @@
     <servlet-mapping>
         <servlet-name>UserChangePassword</servlet-name>
         <url-pattern>/UserChangePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserCreateClub</servlet-name>
+        <url-pattern>/UserCreateClub</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

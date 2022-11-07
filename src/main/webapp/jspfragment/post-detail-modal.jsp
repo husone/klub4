@@ -30,7 +30,7 @@
                                     </div>
                                     <input type="hidden" name="typeOfRequest" value="updatePost">
                                     <input type="hidden" name="postID" value="${param.postID}">
-                                    <div class="col-sm-4 offset-8">
+                                    <div class="col-sm-5 offset-8 d-flex">
                                         <button class="btn btn-success" type="submit">Edit</button>
                                         <a href="./ManagePost" class="btn btn-danger" type="reset">Cancel</a>
                                     </div>
@@ -93,14 +93,15 @@
                                 </table>
 
                                 <div class="col-7 offset-1">
-                                        <button data-toggle="tooltip"
-                                            data-placement="top" 
-                                            title="Click to view detail" 
-                                            class="editModalButton btn btn-success">Edit</button>
+                                        
 
                                     <form action="./PostServlet" method="POST">
                                         <input type="hidden" name="typeOfRequest" value="deletePost" />
                                         <input type="hidden" name="postID" value="${param.postID}" />
+                                        <button data-toggle="tooltip"
+                                            data-placement="top" 
+                                            title="Click to view detail" 
+                                            class="editModalButton btn btn-success">Edit</button>
                                         <button type="submit" class="btn btn-danger" id="conDelete">Delete</button>
                                     </form>
 

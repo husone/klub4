@@ -68,6 +68,7 @@
                                         <div class="card-body">
                                             <div class="mt-3">
                                                 <form action="./UserCreateClub" method="post" class="col-12 ">
+                                                    <input type="hidden" name="typeOfRequest" value="nothing">
                                                     <div class="form-group col-12 row align-items-center">
                                                         <label class="col-md-4" for="club-name"> <h5>Your Club Name</h5> </label>
                                                         <input  type="text" name="club-name" id="club-name" placeholder="Enter your club's name" value="" class="form-control col-md-8" required="">
