@@ -40,6 +40,9 @@
         <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
 
         <style>
+            section.blur {
+                filter: blur(5px);
+            }
             /* .club-joined li:hover{
             background-color: #48b20f !important;
             color: #e9e2e2 !important;
@@ -200,7 +203,7 @@
 //                                        var dateFrom = document.getElementById("dateFrom");
 //                                        var dateTo = document.getElementById("dateTo");
 //                                        var address = document.getElementById("eventAddress");
-           
+
                                         document.addEventListener('DOMContentLoaded', function () {
                                             var calendarEl = document.getElementById('calendar');
 
@@ -217,7 +220,8 @@
                                                     document.getElementById("dateTo").innerHTML = info.event.end.toLocaleString();
                                                     document.getElementById("eventAddress").innerHTML = info.event.extendedProps.address;
                                                     modal.style.display = "block";
-                                                    
+                                                    $('section' ).addClass('blur' );
+
                                                 },
 
                                                 events: [
@@ -383,32 +387,33 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header primary">
-                <h2 class="modal-title" id="eventName"></h3>
+                <h2 class="modal-title" id="eventName"></h2>
                 <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body"><div class="row">
-                    <h4 class="col-sm-4">Desciption</h4>
-                    <h4 style="color:black; font-weight: bold;" id="eventDescription"></h4>
+                    <h3 class="col-sm-4" style='color: #50577A; font-weight: 1000'>Desciption</h3>
+                    <h4 style="color:black; font-weight: lighter;" id="eventDescription"></h4>
                 </div>
                 <div class="row">
-                    <h3 class="col-sm-4">Date from</h3>
-                    <h3 style="color:black; font-weight: bold;" id="dateFrom"></h3>
+                    <h3 class="col-sm-4" style='color: #50577A; font-weight: 1000'>Date from</h3>
+                    <h4 style="color:black; font-weight: lighter;" id="dateFrom"></h4>
                 </div>
                 <div class="row">
-                    <h3 class="col-sm-4">Date to</h3>
-                    <h3 style="color:black; font-weight: bold;" id="dateTo"></h3>
+                    <h3 class="col-sm-4" style='color: #50577A; font-weight: 1000'>Date to</h3>
+                    <h4 style="color:black; font-weight: lighter;" id="dateTo"></h4>
                 </div>
                 <div class="row">
-                    <h3 class="col-sm-4">Address</h3>
-                    <h3 style="color:black; font-weight: bold;" id="eventAddress"></h3>
+                    <h3 class="col-sm-4" style='color: #50577A; font-weight: 1000'>Address</h3>
+                    <h4 style="color:black; font-weight: lighter;" id="eventAddress"></h4>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <script>
+
+<script>
                                         // Get the modal
                                         var modal = document.getElementById("myModal");
 
@@ -421,16 +426,18 @@
                                         // When the user clicks the button, open the modal 
                                         btn.onclick = function () {
                                             modal.style.display = "block";
+                                            $('section' ).addClass('blur' );
                                         }
 
                                         // When the user clicks on <span> (x), close the modal
                                         span.onclick = function () {
                                             modal.style.display = "none";
+                                            $('section' ).removeClass('blur' );
                                         }
 
                                         // When the user clicks anywhere outside of the modal, close it
 
-    </script>
+</script>
 
 </body>
 </html>
