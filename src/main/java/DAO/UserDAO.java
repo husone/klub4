@@ -141,7 +141,7 @@ public class UserDAO {
             }
         }
         if (checkUser) {
-            String sql =  "delete comments from comments inner join members on comments.memberID = members.memberID where members.memberID = ?;"
+            String sql = "delete comments from comments inner join members on comments.memberID = members.memberID where members.memberID = ?;"
                     + "delete from members where userID = ?;"
                     + "DELETE FROM USERS WHERE userID=?;";
             try {
@@ -171,19 +171,38 @@ public class UserDAO {
         boolean checkUpdate = false;
 
         String sql = "UPDATE USERS\n"
-                + "SET username = ?, name = ?, email = ?, password = ?, dOB = ?, address = ?, avatar = ?\n"
+                + "SET name = ?, dOB = ?, address = ?, avatar = ? \n"
                 + "WHERE userID = ?;";
         try {
 
             con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, user.getName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
-            statement.setDate(4, user.getdOB());
-            statement.setString(5, user.getAddress());
-            statement.setInt(6, user.getUserID());
-            statement.setString(7, user.getAvatar());
+            statement.setDate(2, user.getdOB());
+            statement.setString(3, user.getAddress());
+            statement.setString(4, user.getAvatar());
+            statement.setInt(5, user.getUserID());
+            checkUpdate = statement.execute();
+            System.out.println("Done");
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("failed");
+        }
+        return checkUpdate;
+    }
+    
+     public static boolean updatePW(int userID, String pw) {
+        boolean checkUpdate = false;
+
+        String sql = "UPDATE USERS\n"
+                + "SET password = ? \n"
+                + "WHERE userID = ?;";
+        try {
+
+            con = db.openConnection();
+            statement = con.prepareStatement(sql);
+            statement.setString(1, BCrypt.hashpw(pw, BCrypt.gensalt(12)));
+            statement.setInt(2, userID);
             checkUpdate = statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -297,6 +316,7 @@ public class UserDAO {
             statement.setString(5, address);
             if (statement.executeUpdate() != 0) {
                 checkRegister = true;
+                System.out.println("add user");
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -338,6 +358,7 @@ public class UserDAO {
 
     /**
      * Get User List from members table
+     *
      * @param Array<Member> members
      * @return List of User
      */

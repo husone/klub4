@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     @Override
@@ -52,7 +53,7 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/club_home.jsp");
             dispatcher.forward(request, response);
         } else {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("index.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
         }
     }

@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="./assets/img/logo/logo.png" />
     <link rel="stylesheet" href="./assets/css/user-detail.css">
     <link rel="stylesheet" href="./assets/css/fontawesome-all.min.css">
-
+    <script src="https://js.upload.io/upload-js/v2"></script>
 
     <style>
         .pagination {
@@ -70,7 +70,7 @@
 
             </div>
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -114,7 +114,10 @@
                                         <span class="menu-title">Create New</span>
                                     </a>
                                 </div>
-
+                                <c:if test="${empty postList}">
+                                    <h3 style="margin: auto">Empty</h3>
+                                </c:if>
+                                <c:if test="${not empty postList}">
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
@@ -145,12 +148,11 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                </c:if>
                             </div>
-
-
                         </div>
 
+                        <c:if test="${not empty postList}">
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -163,7 +165,7 @@
                                 <a href="#">&raquo;</a>
                             </div>
                         </div>
-
+                        </c:if>
                     </div>
 
 
@@ -218,12 +220,48 @@
                     $('#detail-post-modal').modal('hide');
                 });
 
-            });
+                $('.editModalButton').click(function () {
+                    $('#edit-modal').modal('show');
+                    $('#detail-post-modal').modal('hide');
+                });
+
+        });
+        </script>
+        <script>
+                                // DOM Elements
+                                const h1 = document.getElementById("image-data")
+                                const uploadButton = document.getElementById("imgPost")
+                                const imageUrl = document.getElementById("image-url");
+                                // 1) Instantiate Upload.js (at start of app).
+                                const upload = Upload({apiKey: "free"})
+
+                                // <input type="file" onchange="onFileSelected(event)" />
+                                async function onFileSelected(event) {
+                                    try {
+                                        // 2) Hide upload button when upload starts.
+                                        uploadButton.remove()
+
+                                        // 3) Upload file & show progress.
+                                        const [file] = event.target.files
+                                        const {fileUrl} = await upload.uploadFile(file, {
+                                            onProgress: ({ progress }) =>
+                                                h1.innerHTML = `File uploading ` + progress + `%`
+                                        })
+
+                                        // 4) Display uploaded file URL.
+                                        h1.innerHTML = `
+                              File uploaded`;
+                                        imageUrl.value = fileUrl;
+
+                                    } catch (e) {
+                                    }
+                                }
         </script>
     </body>
 
 </html>
 
+<c:if test="${not empty postList}">
 <c:forEach items="${postList}" var="post">
     <jsp:include page="./jspfragment/post-detail-modal.jsp">
         <jsp:param name="postID" value="${post.postID}" />
@@ -233,3 +271,4 @@
         <jsp:param name="image" value="${post.image}" />
     </jsp:include>
 </c:forEach>
+</c:if>

@@ -68,7 +68,7 @@
 
             </div>
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -94,14 +94,14 @@
                                 <div class="card">
                                     <div class="card-body form">
                                         <p class="card-title mb-4">Create New Event</p>
-                                        <form>
+                                        <form action="./EventServlet" method="POST">
                                             <div class="form-group row">
                                                 <label for="name"
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Event
                                                     Name</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="nameevent"
-                                                    placeholder="Event Name">
+                                                    placeholder="Event Name" name="eventName">
 
                                             </div>
                                             <div class="form-group row">
@@ -109,7 +109,7 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Descriptions</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="des"
-                                                    placeholder="Description">
+                                                    placeholder="Description" name="description">
 
                                             </div>
                                             <div class="form-group row">
@@ -117,7 +117,7 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Start
                                                     Date</label>
 
-                                                <input type="date" class="form-control col-sm-9" id="startdate">
+                                                <input type="date" class="form-control col-sm-9" id="startdate" name="dateFrom">
 
                                             </div>
                                             <div class="form-group row">
@@ -125,7 +125,7 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">End
                                                     Date</label>
 
-                                                <input type="date" class="form-control col-sm-9" id="enddate">
+                                                <input type="date" class="form-control col-sm-9" id="enddate" name="dateTo">
 
                                             </div>
                                             <div class="form-group row">
@@ -133,9 +133,10 @@
                                                     class="col-sm-2 col-form-label ml-1 font-weight-bold">Place</label>
 
                                                 <input type="text" class="form-control col-sm-9" id="placeevent"
-                                                    placeholder="Place">
+                                                    placeholder="Place" name="location">
 
                                             </div>
+                                            <input type="hidden" name="typeOfRequest" value="createEvent">
                                             <div class="col-sm-4 offset-8">
                                                 <button class="btn btn-success" type="submit">Create</button>
                                                 <button class="btn btn-danger" type="reset">Cancel</button>
@@ -201,80 +202,3 @@
     </body>
 
 </html>
-
-<div class="modal fade" id="detail-fund-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width:600px ;">
-            <div class="detail-user container d-flex justify-content-center align-items-center p-0">
-                <div class="card text-black">
-                    <div class="modal-header border-0 m-0">
-                        <h3>Detail Amount Contribution</h3>
-                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="rounded" style="background-color:red; padding:7px;"><i
-                                    class="ti-close text-white"></i></span>
-                        </button>
-
-                    </div>
-
-                    <div class="modal-body p-0 pb-3">
-                        <table class="table mx-auto" style="width: 80% ;">
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Id</h4>
-                                </td>
-                                <td>
-                                    <h4>101</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Name</h4>
-                                </td>
-                                <td>
-                                    <h4>Fund for september</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Description</h4>
-                                </td>
-                                <td>
-                                    <h4>Fund for maintaining club in september</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Amount/Person</h4>
-                                </td>
-                                <td>
-                                    <h4>15k</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Total Amount</h4>
-                                </td>
-                                <td>
-                                    <h4>1.500k (15k x 100 members)</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-info">
-                                    <h4>Day Create</h4>
-                                </td>
-                                <td>
-                                    <h4>01/09/2022</h4>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div class="text-center">
-                            <button class="btn btn-success">Mark as completed</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

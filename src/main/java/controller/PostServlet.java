@@ -24,45 +24,45 @@ public class PostServlet extends HttpServlet {
 
     protected void processCreateRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        System.out.println("Called processCreatePost request");
 
-            HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 
-            String title = request.getParameter("title");
-            String content = request.getParameter("content");
-            String image = request.getParameter("image");
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String image = request.getParameter("image-url");
 
-            User user = (User) session.getAttribute("userData");
-            int userID = user.getUserID();
-            int clubID = ClubDAO.getClubIDByUserID(userID);
-            // Get Date from system
-            Date time = new Date(System.currentTimeMillis());
+        User user = (User) session.getAttribute("userData");
+        int userID = user.getUserID();
+        int clubID = ClubDAO.getClubIDByUserID(userID);
+        // Get Date from system
+        Date time = new Date(System.currentTimeMillis());
 
-            Post post = new Post(title, content, time, clubID, image);
+        Post post = new Post(title, content, time, clubID, image);
 
-            PostDAO.createPost(post);
+        PostDAO.createPost(post);
 
     }
 
     protected void processUpdateRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        System.out.println("Called processUpdatePost request");
 
-            HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
+        int postID = Integer.parseInt(request.getParameter("postID"));
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String image = request.getParameter("image-url");
 
-            String title = request.getParameter("title");
-            String content = request.getParameter("content");
-            String image = request.getParameter("image");
+        User user = (User) session.getAttribute("userData");
+        int userID = user.getUserID();
+        int clubID = ClubDAO.getClubIDByUserID(userID);
+        // Get Date from system
+        Date time = new Date(System.currentTimeMillis());
 
-            User user = (User) session.getAttribute("userData");
-            int userID = user.getUserID();
-            int clubID = ClubDAO.getClubIDByUserID(userID);
-            // Get Date from system
-            Date time = new Date(System.currentTimeMillis());
+        Post post = new Post(postID, title, content, time, clubID, image);
 
-            Post post = new Post(title, content, time, clubID, image);
-
-            PostDAO.updatePost(post);
+        PostDAO.updatePost(post);
 
     }
 
@@ -70,15 +70,15 @@ public class PostServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-            int postID = Integer.parseInt(request.getParameter("postID"));
-            PostDAO.deletePost(postID);
+        int postID = Integer.parseInt(request.getParameter("postID"));
+        PostDAO.deletePost(postID);
 
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         RequestDispatcher rd = request.getRequestDispatcher("manager-manage-post-create.jsp");
         rd.forward(request, response);
     }
@@ -90,24 +90,18 @@ public class PostServlet extends HttpServlet {
         String typeOfRequest = request.getParameter("typeOfRequest");
 
         switch (typeOfRequest) {
-            case "create":
+            case "createPost":
                 processCreateRequest(request, response);
                 break;
-            case "update":
+            case "updatePost":
                 processUpdateRequest(request, response);
                 break;
-            case "delete":
+            case "deletePost":
                 processDeleteRequest(request, response);
                 break;
             default:
                 break;
         }
-        RequestDispatcher rd = request.getRequestDispatcher("club.jsp");
-        rd.forward(request, response);
+        response.sendRedirect("ManagePost");
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 }

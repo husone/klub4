@@ -64,7 +64,7 @@
     <body>
         <div class="container-scroller">
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -105,7 +105,10 @@
                                         <i class="ti-plus"> </i>Create New
                                     </a>
                                 </div>
-
+                                <c:if test="${empty fundList}">
+                                    <h3 style="margin: auto">Empty</h3>
+                                </c:if>
+                                <c:if test="${not empty fundList}">
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
@@ -141,12 +144,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                </c:if>
 
                             </div>
 
 
                         </div>
-
+                        <c:if test="${not empty fundList}">
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -159,7 +163,7 @@
                                 <a href="#">&raquo;</a>
                             </div>
                         </div>
-
+                        </c:if>
                     </div>
 
 
@@ -216,7 +220,7 @@
     </body>
 
 </html>
-
+<c:if test="${not empty fundList}"> 
 <c:forEach items="${fundList}" var="fund">
     <jsp:include page="./jspfragment/fund-detail-modal.jsp">
         <jsp:param name="fundId" value="${fund.fundId}" />
@@ -225,3 +229,4 @@
         <jsp:param name="amount" value="${fund.amount}" />
     </jsp:include>
 </c:forEach>
+</c:if>

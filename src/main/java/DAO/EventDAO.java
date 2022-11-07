@@ -34,7 +34,7 @@ public class EventDAO {
         ArrayList<Event> events = new ArrayList<>();
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM event";
+            String sql = "SELECT * FROM events";
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
@@ -63,7 +63,7 @@ public class EventDAO {
         ArrayList<Event> events = new ArrayList<>();
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM event WHERE clubID = ?";
+            String sql = "SELECT * FROM events WHERE clubID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, clubID);
             rs = statement.executeQuery();
@@ -92,7 +92,7 @@ public class EventDAO {
         Event event = null;
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM event WHERE eventID = ?";
+            String sql = "SELECT * FROM events WHERE eventID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, eventID);
             rs = statement.executeQuery();
@@ -119,7 +119,7 @@ public class EventDAO {
     public static boolean addEvent(Event event) {
         try {
             con = db.openConnection();
-            String sql = "INSERT INTO event(clubID, eventName, description, location, dateFrom, dateTo) VALUES(?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO events(clubID, eventName, description, location, dateFrom, dateTo) VALUES(?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
             statement.setInt(1, event.getClubID());
             statement.setString(2, event.getEventName());
@@ -143,7 +143,7 @@ public class EventDAO {
     public static boolean updateEvent(Event event) {
         try {
             con = db.openConnection();
-            String sql = "UPDATE event SET eventName = ?, description = ?, location = ?, dateFrom = ?, dateTo = ? WHERE eventID = ?";
+            String sql = "UPDATE events SET eventName = ?, description = ?, location = ?, dateFrom = ?, dateTo = ? WHERE eventID = ?";
             statement = con.prepareStatement(sql);
             statement.setString(1, event.getEventName());
             statement.setString(2, event.getDescription());
@@ -167,7 +167,7 @@ public class EventDAO {
     public static boolean deleteEvent(int eventID) {
         try {
             con = db.openConnection();
-            String sql = "DELETE FROM event WHERE eventID = ?";
+            String sql = "DELETE FROM events WHERE eventID = ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, eventID);
             statement.executeUpdate();
@@ -188,7 +188,7 @@ public class EventDAO {
         ArrayList<Event> events = new ArrayList<>();
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM event WHERE clubID = ? AND dateFrom <= ? AND dateTo >= ?";
+            String sql = "SELECT * FROM events WHERE clubID = ? AND dateFrom <= ? AND dateTo >= ?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, clubID);
             statement.setDate(2, date);
@@ -219,7 +219,7 @@ public class EventDAO {
         ArrayList<Event> events = new ArrayList<>();
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM event WHERE dateFrom <= ? AND dateTo >= ?";
+            String sql = "SELECT * FROM events WHERE dateFrom <= ? AND dateTo >= ?";
             statement = con.prepareStatement(sql);
             statement.setDate(1, date);
             statement.setDate(2, date);

@@ -142,14 +142,13 @@ public class PostDAO {
         PreparedStatement statement = null;
         try {
             Connection con = db.openConnection();
-            String sql = "UPDATE [POSTS] SET title = ?, content = ?, time = ?, clubID = ?, image = ? WHERE postID = ?";
+            String sql = "UPDATE [POSTS] SET title = ?, content = ?, time = ?, image = ? WHERE postID = ?";
             statement = con.prepareStatement(sql);
             statement.setString(1, post.getTitle());
             statement.setString(2, post.getContent());
             statement.setDate(3, post.getTime());
-            statement.setInt(4, post.getClubID());
-            statement.setString(5, post.getImage());
-            statement.setInt(6, post.getPostID());
+            statement.setString(4, post.getImage());
+            statement.setInt(5, post.getPostID());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, "PostDAO updatePostMethod", ex);

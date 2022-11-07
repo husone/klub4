@@ -66,7 +66,7 @@
     <body>
         <div class="container-scroller">
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="./jspfragment/navbar-user.jspf" />
+            <jsp:include page="./jspfragment/navbar-user.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
@@ -101,6 +101,10 @@
 
 
                         <div class="row">
+                            <c:if test="${empty memberList}">
+                                <h3 style="margin: auto">Empty</h3>
+                            </c:if>
+                            <c:if test="${not empty memberList}">
                             <div class="col-md grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
@@ -127,12 +131,14 @@
                                                     </c:forEach>
                                                 </tbody>
                                             </table>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </c:if>
                         </div>
-
+                        <c:if test="${not empty memberList}">
                         <div class="row justify-content-center">
                             <div class="pagination">
                                 <a href="#">&laquo;</a>
@@ -145,6 +151,7 @@
                                 <a href="#">&raquo;</a>
                             </div>
                         </div>
+                        </c:if>
 
                     </div>
 
@@ -200,6 +207,7 @@
 
 </html>
 
+<c:if test="${not empty memberList}">
 <c:forEach items="${memberList}" var="i">
     <jsp:include page="./jspfragment/user-modal.jsp">
         <jsp:param name="name" value="${i.name}" />
@@ -210,3 +218,4 @@
         <jsp:param name="clubID" value="${clubID}" />
     </jsp:include>
 </c:forEach>
+</c:if>
