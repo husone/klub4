@@ -7,20 +7,17 @@
 <div class="col-md-3" style="overflow-y :scroll; height:100vh">
 
     <nav class="club-joined sidebar pl-3" style="width:100% ;" id="sidebar">
-        <c:if test="${cl == null}">
-            <div class="col-12">
-                    <h3 class="col-12">You did not join any clubs</h3>
-                </div>
-        </c:if>
-
         <%  User user = (User) request.getSession().getAttribute("userData");
 
             List<Club> clubList = MemberDAO.getClubsOfMember(user.getUserID());
             if (!clubList.isEmpty())
                 request.setAttribute("cl", clubList);
         %>
-
-
+        <c:if test="${cl == null}">
+            <div class="col-12">
+                <h3 class="col-12">You did not join any clubs</h3>
+            </div>
+        </c:if>
         <c:if test="${cl != null}">
             <ul class="nav">
                 <div class="col-12">
