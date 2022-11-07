@@ -122,6 +122,11 @@
         <servlet-name>UserViewClub</servlet-name>
         <servlet-class>UserViewClub</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>controller.CommentServlet</servlet-class>
+    </servlet>
+    <!--  -->
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -237,6 +242,10 @@
     <servlet-mapping>
         <servlet-name>UserViewClub</servlet-name>
         <url-pattern>/UserViewClub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/CommentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

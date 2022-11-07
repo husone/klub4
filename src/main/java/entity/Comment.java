@@ -24,6 +24,12 @@ public class Comment {
         this.time = time;
         this.content = content;
     }
+
+    public Comment(int memberID, int postID, String content) {
+        this.memberID = memberID;
+        this.postID = postID;
+        this.content = content;
+    }
     
     public int getCommentID() {
         return commentID;
@@ -65,6 +71,10 @@ public class Comment {
         this.content = content;
     }
 
+    //time to string
+    public String getTimeString() {
+        return time.toString();
+    }
     
     
 }
