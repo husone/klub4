@@ -138,6 +138,36 @@ public class MemberDAO {
         return clubs;
     }
 
+    //get member by userID and clubID
+    public static Member getMember(int userID, int clubID) {
+        ConnectDB db = ConnectDB.getInstance();
+        Connection con = null;
+        Member member = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+//        String check = null;
+        try {
+            con = db.openConnection();
+            String sql = "SELECT * FROM MEMBERS WHERE userID = ? AND clubID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, userID);
+            statement.setInt(2, clubID);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                Date  date = new Date(rs.getDate(5).getTime());
+                member = new Member(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4),date);
+            }
+            rs.close();
+            statement.close();
+            con.close();
+
+        } catch (Exception e) {
+            return null;
+        }
+        return member;
+    }
+    
+
     public static void main(String[] args) {
         List<Member> members = getAllMembers();
         for (Member member : members) {
