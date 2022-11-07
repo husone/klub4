@@ -4,6 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="DAO.FundDAO"%>
 <%@page import="DAO.MemberDAO"%>
+
 <div class="col-md-3" style="overflow-y :scroll; height:100vh">
 
     <nav class="club-joined sidebar pl-3" style="width:100% ;" id="sidebar">
