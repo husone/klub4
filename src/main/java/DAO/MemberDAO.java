@@ -57,7 +57,7 @@ public class MemberDAO {
             return;
         }
     }
-    
+
     public static List<Member> getAllMembers() {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
@@ -71,8 +71,8 @@ public class MemberDAO {
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next()) {
-                Date  date = rs.getDate(5);
-                members.add(new Member(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4),date));
+                Date date = rs.getDate(5);
+                members.add(new Member(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), date));
             }
             rs.close();
             statement.close();
@@ -98,8 +98,8 @@ public class MemberDAO {
             statement.setInt(1, clubID);
             rs = statement.executeQuery();
             while (rs.next()) {
-                java.util.Date  date = new java.util.Date(rs.getDate(5).getTime());
-                members.add(new Member(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4),date));
+                java.util.Date date = new java.util.Date(rs.getDate(5).getTime());
+                members.add(new Member(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), date));
             }
             rs.close();
             statement.close();
@@ -127,7 +127,9 @@ public class MemberDAO {
             rs = statement.executeQuery();
             while (rs.next()) {
                 clubs.add(ClubDAO.getClubByID(rs.getInt(1)));
+                System.out.println(""+rs.getInt(1));
             }
+            System.out.println(""+userID);
             rs.close();
             statement.close();
             con.close();
@@ -137,11 +139,12 @@ public class MemberDAO {
         }
         return clubs;
     }
-    
+
     public static boolean leaveClub(int userID, int clubID) {
         ConnectDB db = ConnectDB.getInstance();
         Connection con = null;
 //        List<Club> clubs = new ArrayList<>();
+        System.out.println("" + userID + " " + clubID);
         PreparedStatement statement = null;
         try {
             con = db.openConnection();
@@ -150,7 +153,7 @@ public class MemberDAO {
             statement.setInt(1, userID);
             statement.setInt(2, clubID);
 
-            statement.executeUpdate();
+            statement.execute();
             con.close();
             return true;
 
@@ -158,8 +161,6 @@ public class MemberDAO {
             return false;
         }
     }
-    
-    
 
     //get member by userID and clubID
     public static Member getMember(int userID, int clubID) {
@@ -177,8 +178,8 @@ public class MemberDAO {
             statement.setInt(2, clubID);
             rs = statement.executeQuery();
             while (rs.next()) {
-                Date  date = new Date(rs.getDate(5).getTime());
-                member = new Member(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4),date);
+                Date date = new Date(rs.getDate(5).getTime());
+                member = new Member(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), date);
             }
             rs.close();
             statement.close();
@@ -217,8 +218,7 @@ public class MemberDAO {
         }
         return memberID;
     }
-    
-    
+
     //get userID by memberID
     public static int getUserID(int memberID) {
         ConnectDB db = ConnectDB.getInstance();
@@ -244,7 +244,7 @@ public class MemberDAO {
             return 0;
         }
         return userID;
-    }   
+    }
 
     public static void main(String[] args) {
         List<Member> members = getAllMembers();
@@ -252,5 +252,5 @@ public class MemberDAO {
             System.out.println(member.getUserID());
         }
     }
-    
+
 }

@@ -63,6 +63,7 @@ public class ClubDAO {
             statement.setInt(1, clubID);
             statement.setInt(2, clubID);
             statement.setInt(3, clubID);
+            statement.execute();
             con.close();
         } catch (Exception e) {
             return;
@@ -179,8 +180,9 @@ public class ClubDAO {
         ResultSet rs = null;
         try {
             con = db.openConnection();
-            String sql = "SELECT * FROM CLUBS";
+            String sql = "SELECT * FROM CLUBS WHERE clubID = ? ";
             statement = con.prepareStatement(sql);
+            statement.setInt(1, clubID);
             rs = statement.executeQuery();
             while (rs.next()) {
                 java.sql.Date date = new java.sql.Date(rs.getDate(5).getTime());
