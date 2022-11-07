@@ -102,7 +102,7 @@
                                             data-placement="top" 
                                             title="Click to view detail" 
                                             class="editModalButton btn btn-success">Edit</button>
-                                        <button type="submit" class="btn btn-danger" id="conDelete">Delete</button>
+                                        <button type="submit" class="btn btn-danger mx-1" id="conDelete">Delete</button>
                                     </form>
 
                                 </div>
