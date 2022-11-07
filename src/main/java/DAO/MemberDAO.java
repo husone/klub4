@@ -137,6 +137,29 @@ public class MemberDAO {
         }
         return clubs;
     }
+    
+    public static boolean leaveClub(int userID, int clubID) {
+        ConnectDB db = ConnectDB.getInstance();
+        Connection con = null;
+//        List<Club> clubs = new ArrayList<>();
+        PreparedStatement statement = null;
+        try {
+            con = db.openConnection();
+            String sql = "DELETE FROM MEMBERS WHERE userID = ? and clubID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, userID);
+            statement.setInt(2, clubID);
+
+            statement.executeUpdate();
+            con.close();
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    
 
     public static void main(String[] args) {
         List<Member> members = getAllMembers();
