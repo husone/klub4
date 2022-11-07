@@ -30,7 +30,7 @@
                                     </div>
                                     <input type="hidden" name="typeOfRequest" value="updatePost">
                                     <input type="hidden" name="postID" value="${param.postID}">
-                                    <div class="col-sm-4 offset-8">
+                                    <div class="col-sm-5 offset-8 d-flex">
                                         <button class="btn btn-success" type="submit">Edit</button>
                                         <a href="./ManagePost" class="btn btn-danger" type="reset">Cancel</a>
                                     </div>
