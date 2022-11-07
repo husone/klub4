@@ -93,14 +93,15 @@
                                 </table>
 
                                 <div class="col-7 offset-1">
-                                        <button data-toggle="tooltip"
-                                            data-placement="top" 
-                                            title="Click to view detail" 
-                                            class="editModalButton btn btn-success">Edit</button>
+                                        
 
                                     <form action="./PostServlet" method="POST">
                                         <input type="hidden" name="typeOfRequest" value="deletePost" />
                                         <input type="hidden" name="postID" value="${param.postID}" />
+                                        <button data-toggle="tooltip"
+                                            data-placement="top" 
+                                            title="Click to view detail" 
+                                            class="editModalButton btn btn-success">Edit</button>
                                         <button type="submit" class="btn btn-danger" id="conDelete">Delete</button>
                                     </form>
 
