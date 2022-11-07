@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import entity.Club;
 import entity.Member;
 import java.sql.Connection;
 import java.sql.Date;
@@ -108,6 +109,40 @@ public class MemberDAO {
             return null;
         }
         return members;
+    }
+
+    //get clubs a member is in
+    public static List<Club> getClubsOfMember(int userID) {
+        ConnectDB db = ConnectDB.getInstance();
+        Connection con = null;
+        List<Club> clubs = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+//        String check = null;
+        try {
+            con = db.openConnection();
+            String sql = "SELECT clubID FROM MEMBERS WHERE userID = ?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, userID);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                clubs.add(ClubDAO.getClubByID(rs.getInt(1)));
+            }
+            rs.close();
+            statement.close();
+            con.close();
+
+        } catch (Exception e) {
+            return null;
+        }
+        return clubs;
+    }
+
+    public static void main(String[] args) {
+        List<Member> members = getAllMembers();
+        for (Member member : members) {
+            System.out.println(member.getUserID());
+        }
     }
     
 }
