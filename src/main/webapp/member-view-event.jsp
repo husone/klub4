@@ -71,7 +71,7 @@
 
                             <div class="blog_left_sidebar bt-3 pt-5 mx-5">
                                 <div class="col-12 row  justify-content-center">
-                                    <div id='calendar' class="col-12 border"></div>
+                                    <div id='calendar' class="col-12 border" style='border-radius: 5%'></div>
                                     <style>
                                         html,
                                         body {
@@ -375,11 +375,11 @@
     </body>
 
 </html>
-<button id="myBtn" style="display:none">Open Modal</button>
+<button id="myBtn" style="">Open Modal</button>
 <!-- The Modal -->
 
 <!-- Modal content -->
-<div class="modal" tabindex="-1" role="dialog" id="myModal">
+<div class="modal" aria-hidden="true" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header primary">
@@ -389,8 +389,8 @@
                 </button>
             </div>
             <div class="modal-body"><div class="row">
-                    <h3 class="col-sm-4">Desciption</h4>
-                    <h3 style="color:black; font-weight: bold;" id="eventDescription"></h3>
+                    <h4 class="col-sm-4">Desciption</h4>
+                    <h4 style="color:black; font-weight: bold;" id="eventDescription"></h4>
                 </div>
                 <div class="row">
                     <h3 class="col-sm-4">Date from</h3>
@@ -407,7 +407,7 @@
             </div>
         </div>
     </div>
-
+</div>
     <script>
                                         // Get the modal
                                         var modal = document.getElementById("myModal");
