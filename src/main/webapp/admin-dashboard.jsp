@@ -32,13 +32,13 @@
     <body>
         <div class="container-scroller">
             <!-- partial:partials/_navbar.html -->
-            <jsp:include page="jspfragment/navbar-admin.jspf" />
+            <jsp:include page="jspfragment/navbar-admin.jsp" />
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_settings-panel.html -->
                 <!-- partial -->
                 <!-- partial:partials/_sidebar.html -->
-                <jsp:include page="jspfragment/sidebar-admin.jspf" />
+                <jsp:include page="jspfragment/sidebar-admin.jsp" />
                 <!-- partial -->
                 <div class="main-panel">
                     <div class="content-wrapper">
