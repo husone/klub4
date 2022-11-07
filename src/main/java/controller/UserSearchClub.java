@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -79,8 +80,9 @@ public class UserSearchClub extends HttpServlet {
         if (cl.isEmpty()) {
             request.setAttribute("noContent", "Not found");
         }
-        request.setAttribute("content", cl);
-        request.getRequestDispatcher("/").forward(request, response);
+        HttpSession session= request.getSession();
+        session.setAttribute("listClub", cl);
+        request.getRequestDispatcher("./user-view-club.jsp").forward(request, response);
     }
 
     /**

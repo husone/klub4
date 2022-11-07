@@ -375,7 +375,7 @@
                                         <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
                                         <div class="topic-content-box">
                                             <div class="topic-content">
-                                                <h3><a href="#">Media & Publication</a></h3>
+                                                <h3><a  href="./UserViewClubFollowCategory?category=Media">Media & Publication</a></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -387,7 +387,7 @@
                                         <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
                                         <div class="topic-content-box">
                                             <div class="topic-content">
-                                                <h3><a href="#">Community & Services</a></h3>
+                                                <h3><a href="./UserViewClubFollowCategory?category=Community">Community & Services</a></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -399,7 +399,7 @@
                                         <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
                                         <div class="topic-content-box">
                                             <div class="topic-content">
-                                                <h3><a href="#">Academic & Education</a></h3>
+                                                <h3><a href="./UserViewClubFollowCategory?category=Academic">Academic & Education</a></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -411,7 +411,7 @@
                                         <img src="https://picsum.photos/1920/1080" alt="" style=" border-radius:10px">
                                         <div class="topic-content-box">
                                             <div class="topic-content">
-                                                <h3><a href="#">Student Government & Council</a></h3>
+                                                <h3><a href="./UserViewClubFollowCategory?category=Student">Student Government & Council</a></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -424,7 +424,7 @@
                                             style=" border-radius:10px">
                                         <div class="topic-content-box">
                                             <div class="topic-content">
-                                                <h3><a href="#">MultiCutural & Religious</a></h3>
+                                                <h3><a href="./UserViewClubFollowCategory?category=MultiCutural">MultiCutural & Religious</a></h3>
                                             </div>
                                         </div>
                                     </div>
