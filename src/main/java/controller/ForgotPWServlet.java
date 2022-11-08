@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.UserDAO;
 import Email.Generate;
 import Email.SendEmailTLS;
+import entity.User;
 
 public class ForgotPWServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response, String here)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -41,29 +42,40 @@ public class ForgotPWServlet extends HttpServlet {
         String email = request.getParameter("forgot-email");
         String here = "1";
         String OTP = request.getParameter("OTP");
-        String password = request.getParameter("new-password");
-        if (OTP == null || OTP.isEmpty()){
-        if (UserDAO.checkRegister(email)) {
-            // System.out.println("Vo roi ne ");
-            here = "2";
+        String password = request.getParameter("newPassword");
+        System.out.println("here" + email + OTP + password);
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        if (!UserDAO.checkRegister(email)) {
+            out.print("Email not found");
+        } else {
+            if (OTP.isEmpty()){
             String PIN = Generate.OTP(6);
             UserDAO.setPIN(email, PIN);
             SendEmailTLS.sendEmailResetPassword(email, PIN);
-            PrintWriter out = response.getWriter();
-            out.println("<form action=\"./ForgotPWServlet\" method=\"post\">");
-            out.println("<input type=\"text\" class=\"col-10\" id=\"OTP\" name=\"OTP\" placeholder=\"OTP\"> ");
-            out.println("<input type=\"text\" class=\"col-10\" id=\"new-password\" name=\"new-password\" placeholder=\"New password\">");
-            out.println("<button type=\"submit\" class=\"col-10 btn btn-secondary\"\n"+"style=\"background-color: #699DEB\">Submit</button>");
-            out.println("</form>");
-        } 
+            out.print("OTP sent!");
+        }
+            else {
+                User user = UserDAO.getUserByEmail(email);
+                System.out.println(user.getOTP() + " " +OTP);
+                if (OTP.equals(user.getOTP())){
+                    UserDAO.updatePW(user.getUserID(), password);
+                    UserDAO.deletePIN(email, "");
+                    out.print("Password changed!");
+                }
+                else {
+                    out.print("Wrong OTP");
+                }
+            }
+//        } 
 //        else {
 //            if (UserDAO.)
 //        }
-    }}
-    
+    }
+}
 
-    @Override
-    public String getServletInfo() {
+@Override
+public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 }

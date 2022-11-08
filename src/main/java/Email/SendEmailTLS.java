@@ -18,8 +18,8 @@ import java.util.Properties;
 public class SendEmailTLS {
 
     static Session loginGetSession(){
-        final String username = readENV.get("EMAIL_USERNAME");
-        final String password = readENV.get("EMAIL_PASSWORD");
+        final String username = "sonsieusen1@gmail.com";
+        final String password = "enpxjipbhnypaelm";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -63,7 +63,7 @@ public class SendEmailTLS {
             + "                    <tr>"
             + "                        <td style=\"text-align:center;\">"
             + "                            <a href=\"/\" title=\"logo\" target=\"_blank\">"
-            + "                                <img width=\"100\" src=\"https://upcdn.io/W142hJkeAL1H6TLJrD8xMp3\" title=\"logo\" alt=\"logo\">"
+            + "                                <img width=\"100\" src=\"https://upcdn.io/W142hJk/raw/demo/VxBhBwz.png\" title=\"logo\" alt=\"logo\">"
             + "                            </a>"
             + "                        </td>"
             + "                    </tr>"
