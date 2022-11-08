@@ -18,7 +18,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Klub4 Admin</title>
+        <title>Klub4 </title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="./assets/js/vendor/feather/feather.css">
         <link rel="stylesheet" href="./assets/js/vendor/ti-icons/css/themify-icons.css">
