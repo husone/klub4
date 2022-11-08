@@ -305,7 +305,7 @@ public class UserDAO {
      */
     public static boolean registerUser(String name, String email, String password, Date dob, String address) {
         boolean checkRegister = false;
-        String sql = "INSERT INTO USERS (name, email, password, dOB, address) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO USERS (name, email, password, dOB, address, avatar) VALUES (?, ?, ?, ?, ?, ?);";
         try {
             con = db.openConnection();
             statement = con.prepareStatement(sql);
@@ -314,6 +314,7 @@ public class UserDAO {
             statement.setString(3, BCrypt.hashpw(password, BCrypt.gensalt(12)));
             statement.setDate(4, dob);
             statement.setString(5, address);
+            statement.setString(6, "https://cdn.discordapp.com/attachments/886904350650277911/1039335193439371314/avatar.png");
             if (statement.executeUpdate() != 0) {
                 checkRegister = true;
                 System.out.println("add user");
