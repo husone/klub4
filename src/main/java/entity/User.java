@@ -99,4 +99,11 @@ public class User {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "userID=" + userID + ", name=" + name + ", email=" + email + ", password=" + password + ", dOB=" + dOB + ", address=" + address + ", OTP=" + OTP + ", avatar=" + avatar + '}';
+    }
+    
+    
 }

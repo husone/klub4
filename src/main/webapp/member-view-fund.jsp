@@ -95,17 +95,17 @@
                                                             </c:if>
                                                             <c:if test="${ContributeFundDAO.isContributeFund(f.fundId,MemberDAO.getMember(userData.userID,currentClubID).memberID)==false}">
                                                                 <button href="" class="btn btn-primary pay-button${f.fundId}" id="pay-button${f.fundId}"><b class="text-white">Pay with 
-                                                                        <span id="amountETH"></span> ETH</b></button>
+                                                                        <span id="amountETH${f.fundId}"></span> ETH</b></button>
                                                                 <div id="status"></div>
                                                             </c:if>
                                                         </div>
 
 
                                                         <script type="text/javascript">
-                                                            let test = (${f.amount} / 3600);
-                                                            test = test.toFixed(4);
-                                                            document.getElementById("amountETH").innerHTML = test;
-                                                            console.log(typeof test)
+                                                            let test${f.fundId} = (${f.amount} / 3600);
+                                                            test${f.fundId} = test${f.fundId}.toFixed(4);   
+                                                            document.getElementById("amountETH${f.fundId}").innerHTML = test${f.fundId};
+
                                                             window.addEventListener('load', async () => {
                                                                 if (window.ethereum) {
                                                                     window.web3 = new Web3(ethereum);
@@ -126,11 +126,11 @@
                                                             $('.pay-button${f.fundId}').click(() => {
                                                                 // paymentAddress is where funds will be send to
                                                                 const paymentAddress = '0x42204448154CBC4E4d9e74aB08fd2A66dbc33999'
-                                                                const amountEth = ${f.amount} / 3600;
-                                                                console.log(amountEth)
+                                                                const amountEth${f.fundId} = ${f.amount} / 3600;
+//                                                                console.log(amountEth)
                                                                 web3.eth.sendTransaction({
                                                                     to: paymentAddress,
-                                                                    value: web3.toWei(amountEth, 'ether')
+                                                                    value: web3.toWei(amountEth${f.fundId}, 'ether')
                                                                 }, (err, transactionId) => {
                                                                     if (err) {
                                                                         console.log('Payment failed', err)

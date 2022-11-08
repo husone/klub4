@@ -113,7 +113,7 @@
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
-                                            <p class="card-title mb-0">Top Products</p>
+                                            <p class="card-title mb-0">Fund Contributions</p>
                                             <div class="table-responsive">
                                                 <table class="table table-striped table-borderless">
                                                     <thead>
@@ -132,7 +132,7 @@
                                                                     style="cursor:pointer;" data-toggle="tooltip"
                                                                     data-placement="top" title="Click to view detail">${fund.fundName}</td>
                                                                 <td class="font-weight-bold">${fund.amount}</td>
-                                                                <td>${fund.amount * MemberDAO.getMembersInClub(fund.clubID)}</td>
+                                                                <td>${fund.amount * MemberDAO.getMembersInClub(fund.clubID).size()}</td>
                                                                 <td>${fund.getDateCreatedString()}</td>
                                                                 <td class="font-weight-medium">
                                                                     <div class="badge badge-warning">?</div>
@@ -151,20 +151,6 @@
 
 
                         </div>
-                        <c:if test="${not empty fundList}">
-                        <div class="row justify-content-center">
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#" class="active">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div>
-                        </c:if>
                     </div>
 
 
@@ -226,7 +212,7 @@
     <jsp:include page="./jspfragment/fund-detail-modal.jsp">
         <jsp:param name="fundId" value="${fund.fundId}" />
         <jsp:param name="fundName" value="${fund.fundName}" />
-        <jsp:param name="size" value="${MemberDAO.getMembersInClub(fund.clubID)}" />  
+        <jsp:param name="size" value="${MemberDAO.getMembersInClub(fund.clubID).size()}" />  
         <jsp:param name="dateString" value="${fund.getDateCreatedString()}" />
         <jsp:param name="amount" value="${fund.amount}" />
     </jsp:include>
