@@ -143,6 +143,14 @@
         <servlet-name>ContributeFund</servlet-name>
         <servlet-class>controller.ContributeFund</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPWServlet</servlet-name>
+        <servlet-class>controller.ForgotPWServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForgotPWServlet</servlet-name>
+        <url-pattern>/ForgotPWServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
         <url-pattern>/vnpayajax/*</url-pattern>

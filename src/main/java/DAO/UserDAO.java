@@ -190,8 +190,8 @@ public class UserDAO {
         }
         return checkUpdate;
     }
-    
-     public static boolean updatePW(int userID, String pw) {
+
+    public static boolean updatePW(int userID, String pw) {
         boolean checkUpdate = false;
 
         String sql = "UPDATE USERS\n"
@@ -325,15 +325,18 @@ public class UserDAO {
     }
 
     public static boolean setPIN(String email, String PIN) {
-        if (getUserByEmail(email) == null) {
-            return false;
-        }
-        String sql = "INSERT INTO USERS (PIN) VALUES (?) WHERE EMAIL = ? ;";
+
+        String sql = "UPDATE USERS SET PIN= ? WHERE EMAIL = ? ;";
         try {
             Connection con = db.openConnection();
             statement = con.prepareStatement(sql);
             statement.setString(1, PIN);
             statement.setString(2, email);
+//            System.out.println("set pin -ing");
+//            System.out.println(""+PIN + email);
+            statement.executeUpdate();
+            System.out.println("set pin -done");
+
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -341,19 +344,7 @@ public class UserDAO {
     }
 
     public static boolean deletePIN(String email, String PIN) {
-        if (getUserByEmail(email) == null) {
-            return false;
-        }
-        String sql = "INSERT INTO USERS (PIN) VALUES (?) WHERE EMAIL = ? ;";
-        try {
-            Connection con = db.openConnection();
-            statement = con.prepareStatement(sql);
-            statement.setString(1, PIN);
-            statement.setString(2, email);
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return true;
+        return setPIN(email, "");
     }
 
     /**
@@ -369,6 +360,5 @@ public class UserDAO {
         }
         return users;
     }
-    
 
 }
