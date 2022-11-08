@@ -226,7 +226,7 @@
                 </div>
                 <div class="col-md-5">
                     <button id="returnBtn" type="button" class="btn btn-warning"
-                            data-dismiss="modal">Quay lại</button>
+                            data-dismiss="modal">Back</button>
                     <a id="joinBtn" href="./UserJoinClub?clubId=${club.getClubID()}" type="button" class="btn btn-success">Join</a>
                 </div>
             </div>
