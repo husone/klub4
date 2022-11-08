@@ -7,6 +7,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Club"%>
 <%@page import="java.util.List"%>
+<%@page import="DAO.MemberDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -17,7 +18,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Klub4 Admin</title>
+        <title>Klub4 </title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="./assets/js/vendor/feather/feather.css">
         <link rel="stylesheet" href="./assets/js/vendor/ti-icons/css/themify-icons.css">

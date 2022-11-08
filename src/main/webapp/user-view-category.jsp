@@ -13,7 +13,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Klub4 Admin</title>
+        <title>Klub4</title>
         <!-- CSS here -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="">
+                <form action="" class="d-none">
                     <div class="row col-12 mb-20">
                         <div class="d-flex col-12">
                             <input style="border-radius: 30px; height: 40px;" class="col-4 offset-8" placeholder="Search clubs">
