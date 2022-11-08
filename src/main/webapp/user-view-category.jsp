@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="">
+                <form action="" class="d-none">
                     <div class="row col-12 mb-20">
                         <div class="d-flex col-12">
                             <input style="border-radius: 30px; height: 40px;" class="col-4 offset-8" placeholder="Search clubs">

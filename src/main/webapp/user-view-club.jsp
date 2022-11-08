@@ -7,6 +7,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Club"%>
 <%@page import="java.util.List"%>
+<%@page import="DAO.MemberDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>

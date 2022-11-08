@@ -79,9 +79,9 @@ public class UserSearchClub extends HttpServlet {
             }
         }  
         }
-        if (cl.isEmpty()) {
-            request.setAttribute("noContent", "Not found");
-        }
+//        if (cl.isEmpty()) {
+//            request.setAttribute("noContent", "Not found");
+//        }
         
       
         HttpSession session= request.getSession();
@@ -94,6 +94,10 @@ public class UserSearchClub extends HttpServlet {
                 }
             }
             
+        }
+        if (cl.isEmpty()) {
+            String message="Not found "+data;
+            request.setAttribute("noContent", message);
         }
         session.setAttribute("listClub", cl);
         request.getRequestDispatcher("./user-view-club.jsp").forward(request, response);
