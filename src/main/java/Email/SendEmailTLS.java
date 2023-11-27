@@ -18,8 +18,8 @@ import java.util.Properties;
 public class SendEmailTLS {
 
     static Session loginGetSession(){
-        final String username = "sonsieusen1@gmail.com";
-        final String password = "enpxjipbhnypaelm";
+        final String username = readENV.EMAIL;
+        final String password = readENV.EMAIL_PASSWORD;
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
